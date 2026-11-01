@@ -41,15 +41,91 @@ PolyWrench combines Delphi’s open-source toolkit with a new desktop interface 
 | Language tools | Braille, Morse, IPA, NATO phonetics and Shavian transliteration |
 | Experiments | Recipe tables and unusual unit conversions |
 
-## Upgrade an Ubuntu installation
+## Install or update PolyWrench
 
-Quit PolyWrench completely, then install the newer package over the current version:
+Packaged applications do **not** need Node.js, npm, Git, Python or Rust. Download the package for your operating system and processor:
+
+| Operating system | Package | GitHub Actions artifact |
+| --- | --- | --- |
+| Ubuntu, Debian, Linux Mint and other Debian-based systems, x86-64 | `.deb` | `PolyWrench-Linux-x64` |
+| Other Linux distributions, x86-64 | `.AppImage` | `PolyWrench-Linux-x64` |
+| Windows, x86-64 | `.exe` installer | `PolyWrench-Windows-x64` |
+| macOS, Intel | `.dmg` | `PolyWrench-macOS-x64` |
+| macOS, Apple Silicon (M-series) | `.dmg` | `PolyWrench-macOS-arm64` |
+
+`x64`, `x86-64` and `amd64` refer to the same processor family. The current workflow does not produce Linux ARM or Windows ARM installers. On macOS, **Apple menu → About This Mac** identifies an Apple chip or Intel processor.
+
+### Download an installer
+
+- **Published releases:** open [Releases](https://github.com/aatish1321/PolyWrench/releases) and download the matching package from a published release's assets, when available.
+- **Builds before publication:** open [Desktop checks and packages](https://github.com/aatish1321/PolyWrench/actions/workflows/desktop.yml), select a successful run for the version/commit you want, and download the matching artifact from the table above. Sign into GitHub to download workflow artifacts, then extract the downloaded ZIP to find the installer. Artifacts are temporary and can expire; see [GitHub's download instructions](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/download-workflow-artifacts?tool=webui).
+- **Built locally:** packages are in the project's `release/` directory; see [Build desktop packages](#build-desktop-packages).
+
+The commands below use version **0.1.3**. Substitute the filename you downloaded for a later version. Quit PolyWrench completely before updating, including any open application windows.
+
+### Ubuntu, Debian and Linux Mint
+
+Open a terminal in the folder containing the `.deb`, then run:
+
+```bash
+sudo apt install ./PolyWrench-0.1.3-linux-amd64.deb
+```
+
+For a local build, run this from the project directory instead:
 
 ```bash
 sudo apt install ./release/PolyWrench-0.1.3-linux-amd64.deb
 ```
 
-Reopen PolyWrench from Applications. Changing source files does not update an already installed copy; rebuild and install a new package, or quit the installed app and use `npm run desktop` from the project directory to preview a built local checkout. The 0.1.3 package includes the Peach & Teal palette, redesigned dashboard, tool workspaces, updated mascot, offline Google Sans fonts, frosted surfaces and restrained animations. Reduced-motion and reduced-transparency preferences are respected.
+The same command installs PolyWrench for the first time **or upgrades an existing installation when the package version is newer**. It does not create a second copy, and you do not need to uninstall first. Launch PolyWrench from your Applications menu after installation.
+
+If you rebuilt a package **without changing its version**, force replacement of the installed files with `--reinstall`:
+
+```bash
+sudo apt install --reinstall ./PolyWrench-0.1.3-linux-amd64.deb
+```
+
+For example, upgrading **0.1.2 → 0.1.3** uses ordinary `apt install`; replacing an already installed **0.1.3** with a rebuilt **0.1.3** uses `--reinstall`. See the [APT reinstall option](https://manpages.ubuntu.com/manpages/jammy/man8/apt-get.8.html).
+
+### Other Linux distributions: AppImage
+
+Keep the `.AppImage` in a permanent folder, such as `~/Applications`. Open a terminal in that folder, make the file executable and run it:
+
+```bash
+chmod +x ./PolyWrench-0.1.3-linux-x86_64.AppImage
+./PolyWrench-0.1.3-linux-x86_64.AppImage
+```
+
+Run it as your normal user. AppImage runs directly rather than installing through a package manager; application-menu integration depends on your desktop environment. If it reports missing FUSE support, follow the [official AppImage FUSE instructions](https://docs.appimage.org/user-guide/troubleshooting/fuse.html), or use the `.deb` on a Debian-based system.
+
+To update, quit the old copy, download the newer AppImage, make it executable and launch it. Update any shortcut that points to the old filename. Keep the previous file until you have checked the new build, then remove the old AppImage if you no longer need it.
+
+### Windows
+
+1. Extract the downloaded artifact ZIP if applicable, then double-click the PolyWrench `.exe` installer.
+2. Follow the setup wizard and choose the installation folder.
+3. Launch PolyWrench from the Start menu or the shortcut created by setup.
+
+To update, quit PolyWrench and run the newer installer using the same installation location. Uninstalling first is unnecessary. Unsigned builds may display an unknown-publisher warning; check that the installer came from this repository before proceeding.
+
+### macOS: Intel and Apple Silicon
+
+1. Download the `.dmg` matching your Mac: **x64 for Intel**, **arm64 for Apple Silicon**.
+2. Open the disk image and drag **PolyWrench.app** into **Applications**.
+3. Eject the disk image, then open PolyWrench from Applications.
+
+To update, quit PolyWrench, open the newer matching DMG and drag the app into Applications again. Choose **Replace** when Finder asks about the existing copy.
+
+Development builds are not signed/notarized. If macOS blocks an unverified developer, follow [Apple's instructions](https://support.apple.com/en-us/102445): after attempting to open the app, use **System Settings → Privacy & Security → Open Anyway** only if you trust the downloaded build.
+
+### After installing or updating
+
+- Open **Offline Setup** to install the engines/models needed for your tools; see [First launch and offline setup](#first-launch-and-offline-setup).
+- Settings and downloaded packs are stored separately from the application. These update steps retain the existing user-data directory; avoid deleting it when replacing the app.
+- Updates are manual: PolyWrench does not currently download or install application updates automatically.
+- Editing or pulling source files does not update an installed application. Build and install a new package, or use [Run from source](#run-from-source) to preview a checkout.
+
+Version 0.1.3 includes the Peach & Teal palette, Google Sans fonts bundled for offline use, frosted surfaces and animations. Reduced-motion and reduced-transparency preferences are respected.
 
 ## Run from source
 
