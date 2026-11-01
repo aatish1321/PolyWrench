@@ -2,7 +2,7 @@
 
 Verified on Ubuntu x86-64, 2026-11-01:
 
-- Type checking and focused ESLint checks passed.
+- Type checking and focused ESLint checks passed. The merged dependency updates (including Vite 8.3.5 and Satori 0.33.5) were installed and the production build, native checks and desktop smoke verification were rerun.
 - All 102 desktop routes rendered; all individual tool routes use the new PolyWrench header and shared control styling.
 - Dashboard tool counts are checked against the generated inventory; all three quick-pick links are present.
 - Light/dark themes and the compact 960px window were checked, including no horizontal document overflow.
