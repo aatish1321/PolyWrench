@@ -1,3 +1,10 @@
+# Peach & Teal — PolyWrench 0.1.3
+
+- Applied the selected palette to the dashboard, sidebar, converter artwork, tool controls and editor chrome. Dark mode uses matching teal, peach and gold surfaces.
+- Text/background token checks passed the 4.5:1 contrast threshold in both themes. Secondary text was slightly darkened from the preview for readability.
+- Production build, focused lint and the 104-route Electron smoke passed on Ubuntu. Light, dark and compact screenshots were inspected; the harness now waits for the selected navigation background to finish changing before theme screenshots.
+- Ubuntu AppImage/deb packages were rebuilt as 0.1.3. Package inspection confirmed the version, selected light/dark colors and bundled Google Sans font bytes.
+
 # Google Sans update — PolyWrench 0.1.2
 
 - Google Sans upright and italic variable fonts are bundled locally with their full OFL notice. Replaced interface font assets were removed.

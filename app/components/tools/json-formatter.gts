@@ -59,7 +59,7 @@ const samples: Record<string, string> = {
 		(inner, level) => `{"level${level}":[${inner},${level}]}`,
 		'"core"',
 	),
-	default: '{"name":"PolyWrench","version":"0.1.2","tools":[{"id":"image-converter","category":"Images","formats":["png","jpeg","webp"]},{"id":"json-formatter","category":"Developer tools","indent":[2,4,"tab"]}],"platforms":["Linux","Windows","macOS"],"offline":true,"license":"AGPL-3.0-or-later"}',
+	default: '{"name":"PolyWrench","version":"0.1.3","tools":[{"id":"image-converter","category":"Images","formats":["png","jpeg","webp"]},{"id":"json-formatter","category":"Developer tools","indent":[2,4,"tab"]}],"platforms":["Linux","Windows","macOS"],"offline":true,"license":"AGPL-3.0-or-later"}',
 };
 
 const indentIds: IndentId[] = INDENT_OPTIONS.map((option) => option.id);

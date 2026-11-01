@@ -17,12 +17,12 @@ html:root {
   --pw-font-body: 'Google Sans', sans-serif;
   --canon-font: var(--pw-font-body);
   --pw-glass-panel: color-mix(in srgb, var(--lg-panel) 83%, transparent);
-  --pw-glass-shadow: 0 8px 28px rgb(73 52 116 / 4%);
+  --pw-glass-shadow: 0 8px 28px rgb(32 62 57 / 4%);
 }
 html:root.dark { --pw-glass-shadow: 0 10px 30px rgb(0 0 0 / 12%); }
 .lg-app { font-family: var(--pw-font-body); background: var(--lg-bg); }
 .lg-app .lg-main {
-  background: radial-gradient(ellipse at 4% 5%, rgb(193 166 249 / 12%), transparent 48%), radial-gradient(ellipse at 96% 55%, rgb(152 218 193 / 10%), transparent 48%);
+  background: radial-gradient(ellipse at 4% 5%, color-mix(in srgb, var(--lg-pink) 24%, transparent), transparent 48%), radial-gradient(ellipse at 96% 55%, color-mix(in srgb, var(--lg-mint) 22%, transparent), transparent 48%);
 }
 .lg-app :is(h1, h2, h3), .lg-brand, .lg-total-line > strong { font-family: var(--pw-font-display); font-optical-sizing: auto; }
 .lg-app .lg-brand { letter-spacing: -.35px; }
@@ -62,7 +62,7 @@ html:root.dark { --pw-glass-shadow: 0 10px 30px rgb(0 0 0 / 12%); }
 .lg-quick-card:nth-child(3) { animation-delay: 175ms; }
 .lg-brand:hover .lg-logo { animation: pw-wave 550ms ease-out; }
 .lg-primary a, .lg-tool-nav a, .lg-button, .lg-quick-card, .lg-quick-art > span, .lg-art-file, .lg-workflow-widget { transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease; }
-.lg-quick-card:hover, .lg-workflow-widget:hover { transform: translateY(-3px); box-shadow: 0 9px 22px rgb(73 52 116 / 8%); }
+.lg-quick-card:hover, .lg-workflow-widget:hover { transform: translateY(-3px); box-shadow: 0 9px 22px rgb(32 62 57 / 8%); }
 .lg-quick-card:hover .lg-quick-art > span { transform: rotate(0) translateY(-4px); }
 .lg-converter-card:hover .lg-art-file--pink { transform: rotate(-25deg) translate(-3px, -3px); }
 .lg-converter-card:hover .lg-art-file--yellow { transform: rotate(21deg) translate(2px, -3px); }

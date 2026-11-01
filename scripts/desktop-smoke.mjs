@@ -251,6 +251,16 @@ try {
 			document.documentElement.classList.contains('dark'),
 		),
 	);
+	await page.waitForFunction(
+		() =>
+			getComputedStyle(
+				document.querySelector(
+					'.lg-primary a[aria-current]',
+				),
+			).backgroundColor ===
+			getComputedStyle(document.querySelector('.lg-search'))
+				.backgroundColor,
+	);
 	await page.screenshot({ path: 'artifacts/workspace-dark.png' });
 	await page.click('button[aria-label="Toggle colour theme"]');
 	await page.setViewport({ width: 960, height: 720 });
@@ -260,6 +270,16 @@ try {
 				document.documentElement.scrollWidth <=
 				innerWidth,
 		),
+	);
+	await page.waitForFunction(
+		() =>
+			getComputedStyle(
+				document.querySelector(
+					'.lg-primary a[aria-current]',
+				),
+			).backgroundColor ===
+			getComputedStyle(document.querySelector('.lg-search'))
+				.backgroundColor,
 	);
 	await page.screenshot({ path: 'artifacts/workspace-compact.png' });
 	await page.setViewport({ width: 1440, height: 960 });

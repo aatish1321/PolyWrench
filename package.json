@@ -1,6 +1,6 @@
 {
 	"name": "delphitools-v2",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"private": true,
 	"description": "PolyWrench \u2014 offline desktop toolkit and batch file converter",
 	"repository": {
