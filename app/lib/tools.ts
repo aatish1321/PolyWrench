@@ -260,9 +260,9 @@ export const toolCategories: ToolCategory[] = [
 			},
 			{
 				id: 'substrata',
-				name: 'Substrata',
+				name: 'Image Studio',
 				description:
-					'Edit, arrange and mark up images in the browser',
+					'Edit, arrange and mark up images locally',
 				icon: 'brush',
 				href: '/editor',
 				route: 'editor',
@@ -272,9 +272,9 @@ export const toolCategories: ToolCategory[] = [
 			},
 			{
 				id: 'errata',
-				name: 'Errata',
+				name: 'PDF Studio',
 				description:
-					'Edit PDFs in your browser. Yeah. For real.',
+					'Edit PDFs locally on your device.',
 				icon: 'signature',
 				href: '/errata',
 				route: 'errata',
@@ -1178,44 +1178,8 @@ export const toolCategories: ToolCategory[] = [
 		],
 	},
 	{
-		id: 'elsewhere',
-		name: 'Elsewhere',
-		tools: [
-			{
-				id: 'ios-app',
-				name: 'delphitools for iOS',
-				description:
-					'Built natively for iPhone and iPad. No accounts, no tracking, no compromises.',
-				icon: 'smartphone',
-				href: 'https://apps.apple.com/us/app/delphitools/id6761313703',
-				external: true,
-				magazine: true,
-			},
-			{
-				id: 'cli',
-				name: 'delphitools CLI',
-				description:
-					'The same tools, in your shell. Entirely offline.',
-				icon: 'square-terminal',
-				href: 'https://github.com/1612elphi/delphitools-cli',
-				external: true,
-				magazine: true,
-			},
-			{
-				id: CANON_KIT_ID,
-				name: "Delphi's Canon UI Kit",
-				description:
-					'The components that make up delphitools',
-				icon: 'component',
-				href: '/canon',
-				route: 'canon',
-				magazine: true,
-			},
-		],
-	},
-	{
 		id: 'experiments',
-		name: "Alien Delphi's Experiments",
+		name: 'Experiments',
 		tools: [
 			{
 				id: 'stupid-units',
@@ -1275,7 +1239,7 @@ const workflowsEntry: Tool = {
 
 const experimentsEntry: Tool = {
 	id: 'experiments',
-	name: "Alien Delphi's Experiments",
+	name: 'Experiments',
 	description: 'Unfinished tool sketches',
 	icon: 'flask-conical',
 	href: '/experiments',
@@ -1293,13 +1257,13 @@ export interface Suite {
 export const suites: Suite[] = [
 	{
 		id: 'substrata',
-		tagline: 'the delphitools image editor',
+		tagline: 'the PolyWrench image editor',
 		word: 'Edit images',
 		features: ['Layers', 'Masks', 'Crop', 'Text'],
 	},
 	{
 		id: 'errata',
-		tagline: 'the delphitools PDF editor',
+		tagline: 'the PolyWrench PDF editor',
 		word: 'Edit PDFs',
 		features: ['Redact', 'Forms', 'Sign', 'Impose'],
 	},

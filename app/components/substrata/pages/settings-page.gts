@@ -66,8 +66,8 @@ import './pages.css';
 
 const COLUMN = 300;
 const COLUMN_GAP = 1;
-const BUG_MAILTO = 'mailto:tools@rmv.fyi?subject=substrata%20bug%20report';
-const REPO_URL = 'https://github.com/1612elphi/delphitools';
+const BUG_MAILTO = 'https://github.com/aatish1321/PolyWrench/issues';
+const REPO_URL = 'https://github.com/aatish1321/PolyWrench';
 const GUIDE_DEFAULTS: GuidesPref = {
 	rulers: false,
 	guides: true,
@@ -418,7 +418,7 @@ export default class SettingsPage extends Component<{
 	};
 
 	openShortcuts = () => openModal('shortcuts');
-	openAboutDelphitools = () => openModal('about-delphitools');
+	openAboutPolyWrench = () => openModal('about-polywrench');
 
 	<template>
 		<span
@@ -437,8 +437,8 @@ export default class SettingsPage extends Component<{
 				>
 					<Cell
 						class="sub-pg-back"
-						@label="Back to delphitools"
-						@text="Back to delphitools"
+						@label="Back to PolyWrench"
+						@text="Back to PolyWrench"
 						@icon="arrow-left"
 						@onClick={{this.leave}}
 					/>
@@ -893,10 +893,11 @@ export default class SettingsPage extends Component<{
 							>v{{VERSION}}</span>
 						</CanonRow>
 						<p class="sub-pg-statement">
-							Substrata is a simple,
-							uncomplicated image
-							editor for the browser,
-							based on Fabric.JS.
+							Image Studio is a
+							simple, uncomplicated
+							image editor for your
+							desktop, based on
+							Fabric.JS.
 						</p>
 						<button
 							type="button"
@@ -913,9 +914,9 @@ export default class SettingsPage extends Component<{
 							class="sub-pg-link"
 							{{on
 								"click"
-								this.openAboutDelphitools
+								this.openAboutPolyWrench
 							}}
-						>About delphitools<IconSvg
+						>About PolyWrench<IconSvg
 								@name="chevron-right"
 							/></button>
 						<a
@@ -935,7 +936,7 @@ export default class SettingsPage extends Component<{
 						<LinkTo
 							@route="index"
 							class="sub-pg-link"
-						>Back to delphitools<IconSvg
+						>Back to PolyWrench<IconSvg
 								@name="arrow-left"
 							/></LinkTo>
 					</div>

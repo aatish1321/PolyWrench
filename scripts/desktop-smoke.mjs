@@ -119,6 +119,7 @@ try {
 	);
 	const status = await page.evaluate(() => window.desktop.status());
 	assert(status.packs.length >= 7, 'Offline setup manifest available');
+	await assertAppBranding(page);
 	const networkBlocked = await page.evaluate(async () => {
 		try {
 			await fetch('https://example.com/');
@@ -170,6 +171,56 @@ try {
 		document.querySelector('#native-file-test').remove(),
 	);
 	await mkdir('artifacts', { recursive: true });
+	await page.evaluate(() => document.fonts.ready);
+	const typography = await page.evaluate(() => ({
+		body: getComputedStyle(document.querySelector('.lg-app'))
+			.fontFamily,
+		heading: getComputedStyle(
+			document.querySelector('.lg-welcome h1'),
+		).fontFamily,
+		loaded: [...document.fonts]
+			.filter((font) => font.status === 'loaded')
+			.map((font) => font.family),
+		frost: getComputedStyle(document.querySelector('.lg-widget'))
+			.backdropFilter,
+	}));
+	assert(
+		typography.body.includes('IBM Plex Sans') &&
+			typography.heading.includes('Bricolage Grotesque'),
+	);
+	assert(
+		typography.loaded.some((name) =>
+			name.includes('IBM Plex Sans'),
+		) &&
+			typography.loaded.some((name) =>
+				name.includes('Bricolage Grotesque'),
+			),
+		'Both fonts load from packaged files',
+	);
+	assert(typography.frost.includes('blur'), 'Frosted surface is enabled');
+	await page.emulateMediaFeatures([
+		{ name: 'prefers-reduced-motion', value: 'reduce' },
+	]);
+	assert.equal(
+		await page.$eval(
+			'.lg-widget',
+			(el) => getComputedStyle(el).animationName,
+		),
+		'none',
+		'Reduced motion disables entrance animation',
+	);
+	await page.emulateMediaFeatures([
+		{ name: 'prefers-reduced-motion', value: 'no-preference' },
+	]);
+	await page.evaluate(() =>
+		Promise.all(
+			document
+				.getAnimations()
+				.map((animation) =>
+					animation.finished.catch(() => {}),
+				),
+		),
+	);
 	await page.screenshot({ path: 'artifacts/workspace.png' });
 	await page.click('button[aria-label="Toggle colour theme"]');
 	assert(
@@ -195,7 +246,13 @@ try {
 		() => document.querySelectorAll('.lg-tool-card').length === 1,
 	);
 	const rows = await inventory();
-	const routes = ['/converter', '/setup', ...rows.map((row) => row.href)];
+	const routes = [
+		'/converter',
+		'/setup',
+		'/w/image-to-pdf.pdf-compressor',
+		'/privacy',
+		...rows.map((row) => row.href),
+	];
 	const results = [];
 	for (const route of routes) {
 		const before = exceptions.length;
@@ -219,10 +276,28 @@ try {
 				'/tools/pdf-organiser',
 				'/converter',
 			].includes(route)
-		)
+		) {
+			await page.evaluate(() =>
+				Promise.all(
+					document
+						.getAnimations()
+						.filter(
+							(animation) =>
+								animation.effect?.getComputedTiming()
+									.iterations !==
+								Infinity,
+						)
+						.map((animation) =>
+							animation.finished.catch(
+								() => {},
+							),
+						),
+				),
+			);
 			await page.screenshot({
 				path: `artifacts/${route.split('/').pop()}.png`,
 			});
+		}
 		if (route === '/tools/image-converter') {
 			await (
 				await page.$(
@@ -247,12 +322,14 @@ try {
 				path: 'artifacts/image-converter-loaded.png',
 			});
 		}
+		await assertAppBranding(page);
 		const errors = exceptions.slice(before);
 		results.push({ route, passed: errors.length === 0, errors });
 		console.log(
 			`${errors.length ? 'FAIL' : 'PASS'} ${route}${errors.length ? `: ${errors.join('; ')}` : ''}`,
 		);
 	}
+	await verifyAppAbout(page);
 	if (process.env.POLYWRENCH_VERIFY_OFFLINE) {
 		await verifyOffline(page);
 	}
@@ -428,4 +505,57 @@ async function verifyOffline(page) {
 	console.log(
 		'PASS real Pandoc WASM document conversion with networking disabled',
 	);
+}
+
+async function assertAppBranding(page) {
+	const content = await page.evaluate(() => {
+		const labels = [
+			...document.querySelectorAll(
+				'[aria-label], [title], img[alt], a[href]',
+			),
+		].flatMap((element) =>
+			['aria-label', 'title', 'alt', 'href'].map(
+				(name) => element.getAttribute(name) || '',
+			),
+		);
+		return [
+			document.title,
+			document.body.innerText,
+			...labels,
+		].join('\n');
+	});
+	assert(
+		!/delphi(?:tools|e)?\b|delphi\.tools|1612elphi|rmv\.fyi/i.test(
+			content,
+		),
+		'Application labels and links use PolyWrench branding',
+	);
+}
+
+async function verifyAppAbout(page) {
+	await page.goto('app://local/editor', { waitUntil: 'load' });
+	await page.waitForSelector('.sub-ed');
+
+	await page.click('.sub-ed-stack [title="Menu"]');
+	await page.waitForSelector('.sub-pg-link');
+	await page.evaluate(() =>
+		[...document.querySelectorAll('.sub-pg-link')]
+			.find((element) =>
+				element.textContent.includes(
+					'About PolyWrench',
+				),
+			)
+			?.click(),
+	);
+	await page.waitForSelector('dialog[open] .dt-about-body');
+	assert(
+		(
+			await page.$eval(
+				'dialog[open] .dt-about-body',
+				(element) => element.innerText,
+			)
+		).includes('PolyWrench'),
+	);
+	await assertAppBranding(page);
+	console.log('PASS PolyWrench About dialog and editor menu branding');
 }

@@ -3,7 +3,7 @@ import ErrataShell from 'delphitools-v2/components/errata/errata-shell';
 
 // bypass application chrome
 <template>
-	{{pageTitle "Errata"}}
+	{{pageTitle "PDF Studio"}}
 
 	<div class="sub-editor-viewport">
 		<ErrataShell />

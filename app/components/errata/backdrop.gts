@@ -30,7 +30,7 @@ async function drawTile(): Promise<string> {
 	] as const) {
 		ctx.font = NAME;
 		ctx.letterSpacing = '0px';
-		ctx.fillText('Errata', x, y + 4);
+		ctx.fillText('PDF Studio', x, y + 4);
 		ctx.font = KIND;
 		ctx.letterSpacing = '2px';
 		ctx.fillText('PDF EDITOR', x + 1, y + 20);

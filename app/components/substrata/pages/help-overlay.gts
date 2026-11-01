@@ -19,7 +19,7 @@ import './pages.css';
 // iOS HelpCopy, by the control's name
 const NOTES: Record<string, string> = {
 	Help: 'Hide this button in General Settings',
-	Settings: 'Project, canvas and Substrata settings',
+	Settings: 'Project, canvas and Image Studio settings',
 	Undo: 'Steps back through the undo chain by one',
 	Redo: 'Steps forward through the undo chain by one',
 	Share: 'Export as image or share directly',

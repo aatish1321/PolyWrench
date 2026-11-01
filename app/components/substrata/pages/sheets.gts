@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { LinkTo } from '@ember/routing';
 import CanonDialog from 'delphicanon/components/canon-dialog';
 import CanonSheet from 'delphicanon/components/canon-sheet';
-import AboutDelphitoolsBody from 'delphitools-v2/components/about-delphitools';
+import AboutPolyWrench from 'delphitools-v2/components/about-polywrench';
 import { VERSION } from 'delphitools-v2/lib/build-flags';
 import { ensureScene } from 'delphitools-v2/lib/substrata/file-ops';
 import {
@@ -114,28 +114,28 @@ export default class Sheets extends Component<{ Args: { phone: boolean } }> {
 			<Frame
 				class="sub-pg-dialog"
 				@open={{this.is "about-substrata"}}
-				@title="About Substrata"
+				@title="About Image Studio"
 				@onClose={{this.closeIf "about-substrata"}}
 			>
 				<div class="sub-pg-about">
 					<p>v{{VERSION}}</p>
 					<p>
-						Substrata is a simple,
+						Image Studio is a simple,
 						uncomplicated image editor for
-						the browser, based on Fabric.JS.
+						your desktop.
 					</p>
 					<LinkTo
 						@route="index"
-					>delphitools</LinkTo>
+					>PolyWrench</LinkTo>
 				</div>
 			</Frame>
 			<Frame
 				class="sub-pg-dialog is-wide"
-				@open={{this.is "about-delphitools"}}
-				@title="About delphitools"
-				@onClose={{this.closeIf "about-delphitools"}}
+				@open={{this.is "about-polywrench"}}
+				@title="About PolyWrench"
+				@onClose={{this.closeIf "about-polywrench"}}
 			>
-				<div class="sub-pg-about"><AboutDelphitoolsBody
+				<div class="sub-pg-about"><AboutPolyWrench
 					/></div>
 			</Frame>
 		{{/let}}

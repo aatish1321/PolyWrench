@@ -54,9 +54,9 @@ const presets = [
 
 // iOS -regexSample launch argument
 const samplePattern = String.raw`([\w.]+)@([\w-]+\.\w+)`;
-const sampleText = `Ruby <ruby@delphi.tools> filed this on 2026-09-25, cc bob.smith@example.org.
-Call +44 20 7946 0958 or visit https://delphi.tools/regex-tester today.
-Invoice #4471 is due 2026-10-01; support@delphi-tools.co.uk has a copy.`;
+const sampleText = `Alex <alex@example.org> filed this on 2026-09-25, cc bob.smith@example.org.
+Call +44 20 7946 0958 or visit https://example.org/regex-tester today.
+Invoice #4471 is due 2026-10-01; support@example.co.uk has a copy.`;
 
 const CopyIcon = <template><IconSvg @name="copy" /></template>;
 

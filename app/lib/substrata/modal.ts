@@ -7,7 +7,7 @@ export type ModalId =
 	| 'onboarding'
 	| 'shortcuts'
 	| 'about-substrata'
-	| 'about-delphitools';
+	| 'about-polywrench';
 
 let open: ModalId | null = null;
 const listeners = new Set<Listener>();

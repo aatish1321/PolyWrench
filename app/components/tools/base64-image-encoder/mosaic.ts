@@ -6,7 +6,7 @@ export const maxBytes = 5 * 1024 * 1024;
 /** iOS Base64Mosaic: banner height, character size in px, opacity of the text outside the picture. */
 export const tuning = { height: 216, point: 7, faint: 0.28 };
 
-export const idleText = btoa('delphitools base64 '.repeat(60));
+export const idleText = btoa('PolyWrench base64 '.repeat(60));
 
 export interface Cell {
 	width: number;

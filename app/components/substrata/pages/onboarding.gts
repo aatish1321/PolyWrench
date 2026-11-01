@@ -14,8 +14,8 @@ import { toast } from 'delphitools-v2/lib/substrata/toast';
 import { TrackedExternal } from 'delphitools-v2/lib/tracked-external';
 import './pages.css';
 
-const BUG_MAILTO = 'mailto:tools@rmv.fyi?subject=substrata%20bug%20report';
-const REPO_URL = 'https://github.com/1612elphi/delphitools';
+const BUG_MAILTO = 'https://github.com/aatish1321/PolyWrench/issues';
+const REPO_URL = 'https://github.com/aatish1321/PolyWrench';
 
 const touch = navigator.maxTouchPoints > 1;
 const SLIDES = touch
@@ -101,16 +101,18 @@ export default class Onboarding extends Component<{
 				class="sub-pg-onb"
 				@open={{@open}}
 				@onClose={{this.closed}}
-				aria-label="Substrata"
+				aria-label="Image Studio"
 			>
 				<:default>
 					<div class="sub-pg-onb-page">
 						{{#if (this.is "hello")}}
-							<span aria-hidden="true">✦</span>
+							<span
+								aria-hidden="true"
+							>✦</span>
 							<p>
 								Hi, this is
-								Substrata, the
-								delphitools
+								Image Studio,
+								the PolyWrench
 								image editor. It
 								does effects,
 								layers, filters,
@@ -123,7 +125,9 @@ export default class Onboarding extends Component<{
 								calibrate your
 								excitement.</p>
 						{{else if (this.is "local")}}
-							<span aria-hidden="true">✦</span>
+							<span
+								aria-hidden="true"
+							>✦</span>
 							<p>
 								Everything is
 								local,
@@ -135,7 +139,9 @@ export default class Onboarding extends Component<{
 								machines.
 							</p>
 						{{else if (this.is "private")}}
-							<span aria-hidden="true">✦</span>
+							<span
+								aria-hidden="true"
+							>✦</span>
 							<p>
 								Because this is
 								in your browser,
@@ -183,18 +189,21 @@ export default class Onboarding extends Component<{
 								on local
 								storage.
 							</p>
-							<span aria-hidden="true">✦</span>
+							<span
+								aria-hidden="true"
+							>✦</span>
 							<StorageButton />
 							<p>
-								Substrata will
-								still work if
-								you leave this
-								off, and won’t
-								save any cookies
-								or local data,
-								but you won’t be
-								able to autosave
-								or remember tool
+								Image Studio
+								will still work
+								if you leave
+								this off, and
+								won’t save any
+								cookies or local
+								data, but you
+								won’t be able to
+								autosave or
+								remember tool
 								preferences.
 							</p>
 						{{else if (this.is "touch")}}
@@ -213,9 +222,11 @@ export default class Onboarding extends Component<{
 								bugs.
 							</p>
 						{{else}}
-							<span aria-hidden="true">✦</span>
+							<span
+								aria-hidden="true"
+							>✦</span>
 							<p>
-								Substrata is
+								Image Studio is
 								still an early
 								access public
 								beta. Please
@@ -224,7 +235,8 @@ export default class Onboarding extends Component<{
 								directly:
 								<a
 									href={{BUG_MAILTO}}
-								>tools@rmv.fyi</a>
+								>PolyWrench
+									issues</a>
 								or press the
 								Feedback button
 								up in the top

@@ -384,7 +384,10 @@ app.whenReady()
 					try {
 						await fs.access(file);
 					} catch {
-						if (!path.extname(name))
+						if (
+							name.startsWith('w/') ||
+							!path.extname(name)
+						)
 							file = path.join(
 								root,
 								'index.html',

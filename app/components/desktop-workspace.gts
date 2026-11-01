@@ -13,6 +13,7 @@ import { IconSvg } from 'delphitools-v2/components/icon';
 import FlowState from 'delphitools-v2/components/flow-state';
 import CanonToast from 'delphicanon/components/canon-toast';
 import './desktop-workspace.css';
+import './desktop-effects.css';
 
 export default class DesktopWorkspace extends Component<{
 	Blocks: { default: [] };
@@ -54,8 +55,8 @@ export default class DesktopWorkspace extends Component<{
 					index: 'Dashboard',
 					converter: 'Batch Converter',
 					setup: 'Offline Setup',
-					editor: 'Substrata',
-					errata: 'Errata',
+					editor: 'Image Studio',
+					errata: 'PDF Studio',
 					workflows: 'Workflows',
 					experiments: 'Experiments',
 				} as Record<string, string>

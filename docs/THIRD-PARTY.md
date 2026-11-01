@@ -8,7 +8,7 @@ PolyWrench is an independent derivative of Delphi Tools, pinned by `UPSTREAM.jso
 - **MediaInfo:** BSD-2-Clause. License in `public/mediainfo/`.
 - **jSquash codecs:** MozJPEG, libwebp, OxiPNG, libavif/aom and libjxl. Notices are included in `public/compress/` and `public/jxl/`.
 - **Pandoc WASM JavaScript wrapper:** MIT. Its source header and upstream attribution remain in `app/lib/pandoc/pandoc-core.js`. The separately downloaded Pandoc WASM engine is GPL-2.0-or-later.
-- **Font files:** Open Sans, iA Writer Quattro, Iosevka and Noto Sans Shavian, SIL Open Font License 1.1. Embedded font notices are recorded in `FONT-NOTICES.txt`. Upstream licenses: https://github.com/googlefonts/opensans/blob/main/OFL.txt , https://github.com/iaolo/iA-Fonts/tree/master/iA%20Writer%20Quattro , https://github.com/be5invis/Iosevka/blob/main/LICENSE.md , https://github.com/notofonts/shavian/blob/main/OFL.txt .
+- **Font files:** Bricolage Grotesque, IBM Plex Sans, Open Sans, iA Writer Quattro, Iosevka and Noto Sans Shavian, SIL Open Font License 1.1. Embedded font notices are recorded in `FONT-NOTICES.txt`. Upstream licenses: https://github.com/googlefonts/opensans/blob/main/OFL.txt , https://github.com/iaolo/iA-Fonts/tree/master/iA%20Writer%20Quattro , https://github.com/be5invis/Iosevka/blob/main/LICENSE.md , https://github.com/notofonts/shavian/blob/main/OFL.txt .
 - **Phosphor shapes:** MIT, original notices retained in `app/lib/substrata/preset-shapes.ts`.
 - **CMU-derived Shavian dictionaries:** BSD-2-Clause. https://github.com/cmusphinx/cmudict .
 - **EFF word list:** CC BY 3.0, Electronic Frontier Foundation. https://www.eff.org/dice .
@@ -31,3 +31,10 @@ The source repository, npm lockfile and upstream source links identify the match
 ## Excluded upstream artwork
 
 The original hero artwork, illustrations, stickers, promotional character/magazine art and branded backdrops are omitted. FluoWrite was also omitted because its notice does not permit font redistribution. Plain interface placeholders and open-font fallbacks replace those references in active screens. The PolyWrench logo was provided by the project owner.
+
+## PolyWrench interface fonts
+
+- Bricolage Grotesque: converted without changing glyphs to WOFF2 from Google Fonts revision `6ce172f74aa355ea43eb964fa4a91570a4d3064d`, `ofl/bricolagegrotesque/BricolageGrotesque[opsz,wdth,wght].ttf`. The full license is bundled as `public/fonts/BricolageGrotesque-OFL.txt`.
+- IBM Plex Sans: converted without changing glyphs to WOFF2 from Google Fonts revision `0b58fb370093f9a9f4ff785d94405710b79de67c`, `ofl/ibmplexsans/IBMPlexSans[wdth,wght].ttf`. The full license is bundled as `public/fonts/IBMPlexSans-OFL.txt`.
+
+Both font families load from packaged local files; no runtime font service is used.

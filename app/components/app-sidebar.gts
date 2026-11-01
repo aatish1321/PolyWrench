@@ -13,7 +13,7 @@ import CanonSidebar from 'delphicanon/components/canon-sidebar';
 import CanonSidebarRow from 'delphicanon/components/canon-sidebar-row';
 import { IconSvg } from 'delphitools-v2/components/icon';
 import './app-sidebar.css';
-import AboutDelphitoolsBody from 'delphitools-v2/components/about-delphitools';
+import AboutPolyWrench from 'delphitools-v2/components/about-polywrench';
 import { toolCategories, featuredTools } from 'delphitools-v2/lib/tools';
 import type { Tool, ToolCategory } from 'delphitools-v2/lib/tools';
 import { matchesQuery } from 'delphitools-v2/lib/tool-search';
@@ -271,7 +271,7 @@ export default class AppSidebar extends Component {
 					{{#if this.inDocs}}
 						<NavRow
 							class="dt-docs-back"
-							@name="delphitools"
+							@name="PolyWrench"
 							@icon="arrow-left"
 							@href={{this.sidebar.appUrl}}
 						/>
@@ -284,7 +284,7 @@ export default class AppSidebar extends Component {
 								src={{if
 									this.halloween
 									"/heroes/garbajcam.png"
-									"/delphi-lowlod.png"
+									"/polywrench.png"
 								}}
 								width="64"
 								height="64"
@@ -308,7 +308,7 @@ export default class AppSidebar extends Component {
 									{{if
 										this.halloween
 										"garbajtools"
-										"delphitools"
+										"PolyWrench"
 									}}
 								</span>
 								<span
@@ -481,7 +481,7 @@ export default class AppSidebar extends Component {
 
 					{{#unless this.query}}
 						<CanonHeading
-							@text="delphitools"
+							@text="PolyWrench"
 						/>
 						<CanonSidebarRow
 							@title="About"
@@ -497,11 +497,11 @@ export default class AppSidebar extends Component {
 						<CanonDialog
 							class="dt-about"
 							@open={{this.aboutOpen}}
-							@title="About delphitools"
+							@title="About PolyWrench"
 							@onClose={{this.closeAbout}}
 						>
 							<:default>
-								<AboutDelphitoolsBody
+								<AboutPolyWrench
 								/>
 							</:default>
 							<:footer as |close|>

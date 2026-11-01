@@ -42,8 +42,8 @@ const DownloadIcon = <template><IconSvg @name={{(downloadIcon)}} /></template>;
 
 // iOS -diffSample launch argument
 const sample = {
-	old: '# delphitools\nPrivacy-first tools for designers.\nNothing leaves the device.\n\nTools:\n- Colour converter\n- Regex tester\n- Paper sizes\n- Unit converter\n\nEvery tool works offline, on iPhone and iPad.\nVersion 1.0, built in Karlsruhe.',
-	new: '# delphitools\nPrivacy-first tools for designers and developers.\nNothing leaves the device.\n\nTools:\n- Colour converter\n- Regex tester\n- Text diff\n- JSON formatter\n- Paper sizes\n\nEvery tool works offline, on iPhone, iPad and iPhone Duo.\nVersion 1.1, built in Karlsruhe.',
+	old: '# Project notes\nConvert the images.\nReview the document.\n\nNext steps:\n- Pick a format\n- Export the files',
+	new: '# Project notes\nConvert and resize the images.\nReview the document.\n\nNext steps:\n- Pick a format\n- Check the preview\n- Export the files',
 };
 
 /** The port of TextDiffViewController, with both texts typed in the picture. */

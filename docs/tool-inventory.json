@@ -119,14 +119,14 @@
     },
     {
       "id": "substrata",
-      "name": "Substrata",
+      "name": "Image Studio",
       "category": "Images & Assets",
       "href": "/editor",
       "component": null
     },
     {
       "id": "errata",
-      "name": "Errata",
+      "name": "PDF Studio",
       "category": "Images & Assets",
       "href": "/errata",
       "component": null
@@ -680,14 +680,14 @@
     {
       "id": "stupid-units",
       "name": "Stupid Units",
-      "category": "Alien Delphi's Experiments",
+      "category": "Experiments",
       "href": "/tools/stupid-units",
       "component": "stupid-units"
     },
     {
       "id": "recipe-table",
       "name": "Recipe Table",
-      "category": "Alien Delphi's Experiments",
+      "category": "Experiments",
       "href": "/tools/recipe-table",
       "component": "recipe-table"
     },

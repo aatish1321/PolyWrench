@@ -12,10 +12,5 @@ import { LinkTo } from '@ember/routing';
 				Back to safety
 			</LinkTo>
 		</div>
-		<img
-			class="dt-404-bottom-tile"
-			src="/tiles/bottom-tile.png"
-			alt=""
-		/>
 	</div>
 </template>

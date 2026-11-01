@@ -1,3 +1,13 @@
+BricolageGrotesque.woff2
+Copyright 2022 The Bricolage Grotesque Project Authors (https://github.com/ateliertriay/bricolage)
+This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL
+https://scripts.sil.org/OFL
+
+IBMPlexSans.woff2
+Copyright 2019 IBM Corp. All rights reserved.
+This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL
+http://scripts.sil.org/OFL
+
 Iosevka-400.woff2
 Copyright 2015-2023, Renzhi Li (aka. Belleve Invis, belleve@typeof.net).
 

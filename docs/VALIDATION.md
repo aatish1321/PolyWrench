@@ -1,3 +1,18 @@
+# Branding, type and motion — PolyWrench 0.1.2
+
+Verified on Ubuntu x86-64, 2026-11-01:
+
+- Production build, type checking, focused ESLint and 10 native regression tests passed.
+- Desktop smoke passed on 104 routes, including direct workflow links and the privacy page.
+- Application-owned visible text, titles, accessibility labels and links are checked for old branding on every tested screen; the Image Studio About dialog and settings menu are checked explicitly.
+- Bricolage Grotesque and IBM Plex Sans were confirmed loaded from bundled font files. Frosted panel styles were checked, and reduced-motion emulation disabled entrance animations.
+- Light, dark and compact layouts were captured after entrance motion settled. Actual image conversion still passed through the new interface.
+- Paste-image filename branding was checked against the actual download-name function. Palette and transliteration exports now use the application's name.
+- The 0.1.2 AppImage and deb were built. Packaged font bytes match their source assets, and the old website CLI installer is absent from the package.
+- Existing note storage keys and document-format identifiers were preserved; application branding changes do not rewrite user content.
+
+The original processing code's license notices remain packaged. Credits are not displayed in the application; project attribution remains in the README and required license/provenance files.
+
 # Interface update — PolyWrench 0.1.1
 
 Verified on Ubuntu x86-64, 2026-11-01:

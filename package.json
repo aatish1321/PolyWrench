@@ -1,6 +1,6 @@
 {
 	"name": "delphitools-v2",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"private": true,
 	"description": "PolyWrench \u2014 offline desktop toolkit and batch file converter",
 	"repository": {
@@ -232,8 +232,8 @@
 			],
 			"category": "public.app-category.utilities",
 			"extendInfo": {
-				"NSMicrophoneUsageDescription": "Record audio locally in Local GUI Tools.",
-				"NSCameraUsageDescription": "Record media locally in Local GUI Tools.",
+				"NSMicrophoneUsageDescription": "Record audio locally in PolyWrench.",
+				"NSCameraUsageDescription": "Record media locally in PolyWrench.",
 				"NSScreenCaptureUsageDescription": "Record a screen or window locally."
 			}
 		},

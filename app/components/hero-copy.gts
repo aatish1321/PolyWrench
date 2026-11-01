@@ -4,7 +4,7 @@ import { on } from '@ember/modifier';
 import { service } from '@ember/service';
 import { LinkTo } from '@ember/routing';
 import { htmlSafe } from '@ember/template';
-import { BUILT_WITH } from 'delphitools-v2/components/about-delphitools';
+import { BUILT_WITH } from 'delphitools-v2/components/about-polywrench';
 import Icon from 'delphitools-v2/components/icon';
 import { isHalloween } from 'delphitools-v2/lib/hero-art';
 import type MagazineService from 'delphitools-v2/services/magazine';
@@ -40,7 +40,7 @@ const STACK = [
 	},
 	{
 		name: 'Canon',
-		route: withRoute("Delphi's Canon UI Kit"),
+		route: withRoute('Interface components'),
 		icon: CANON_ICON,
 		wide: false,
 	},
@@ -146,7 +146,7 @@ export default class HeroCopy extends Component {
 								<br />
 								Fully
 								<a
-									href="https://github.com/1612elphi/delphitools"
+									href="https://github.com/aatish1321/PolyWrench"
 								>open source</a>,
 								0-BSD licensed
 								for anyone.
@@ -221,7 +221,7 @@ export default class HeroCopy extends Component {
 						<p class="dt-hero-flip-more">
 							Plus
 							<a
-								href="https://github.com/1612elphi/delphitools"
+								href="https://github.com/aatish1321/PolyWrench"
 								target="_blank"
 								rel="noopener noreferrer"
 							>many more open source

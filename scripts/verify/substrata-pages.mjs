@@ -194,8 +194,8 @@ await clickText('.sub-pg-link', 'Keyboard shortcuts');
 check('keyboard shortcuts dialog', await page.evaluate(() => !!document.querySelector('dialog[open] .sub-pg-key-row')));
 await page.keyboard.press('Escape');
 await sleep(400);
-await clickText('.sub-pg-link', 'About delphitools');
-check('about delphitools dialog', await page.evaluate(() => !!document.querySelector('dialog[open] .dt-about-body')));
+await clickText('.sub-pg-link', 'About PolyWrench');
+check('about PolyWrench dialog', await page.evaluate(() => !!document.querySelector('dialog[open] .dt-about-body')));
 await page.keyboard.press('Escape');
 await sleep(400);
 
@@ -370,8 +370,8 @@ await page.evaluate(() => {
 	window.__substrataUi.pageOpen = true;
 });
 await sleep(300);
-await page.evaluate(() => document.querySelector('.sub-pg-drawer .sub-panel-header [title="Back to delphitools"]').click());
+await page.evaluate(() => document.querySelector('.sub-pg-drawer .sub-panel-header [title="Back to PolyWrench"]').click());
 await page.waitForFunction(() => location.pathname === '/', { timeout: 5000 }).catch(() => {});
-check('header cell goes back to delphitools', await page.evaluate(() => location.pathname === '/'));
+check('header cell goes back to PolyWrench', await page.evaluate(() => location.pathname === '/'));
 
 await finish(browser);

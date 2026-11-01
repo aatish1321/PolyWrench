@@ -10,7 +10,7 @@ module('Unit | Tool | paste-image', function () {
 		assert.strictEqual(extensionFor('image/svg+xml'), 'svg');
 		assert.strictEqual(
 			downloadName(new Date(2026, 9, 16), 'image/png'),
-			'delphitools-paste-image-2026-10-16.png',
+			'polywrench-paste-image-2026-10-16.png',
 		);
 	});
 });

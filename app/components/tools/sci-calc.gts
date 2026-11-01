@@ -530,8 +530,8 @@ export default class SciCalcTool extends Component {
 					<Keypad @onPress={{this.press}} />
 				</CanonRows>
 				<div class="sci-nameplate" aria-hidden="true">
-					<span class="sci-maker">DELPHI
-						ELECTRONICS</span>
+					<span class="sci-maker">POLYWRENCH
+					</span>
 					<span class="sci-model">SC-1</span>
 				</div>
 				<CanonSheet

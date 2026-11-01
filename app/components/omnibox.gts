@@ -303,7 +303,7 @@ export default class Omnibox extends Component<OmniboxSignature> {
 				<WhatsNew />
 			</div>
 			<img src={{this.artSrc}} alt="" class="dt-hero-art" />
-			<h1 class="dt-sr-only">delphitools</h1>
+			<h1 class="dt-sr-only">PolyWrench</h1>
 		</header>
 
 		<div class="dt-omni-zone">

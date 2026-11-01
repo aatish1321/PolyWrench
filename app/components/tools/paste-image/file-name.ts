@@ -4,5 +4,5 @@ export function extensionFor(type: string): string {
 }
 
 export function downloadName(date: Date, type: string): string {
-	return `delphitools-paste-image-${date.toLocaleDateString('en-CA')}.${extensionFor(type)}`;
+	return `polywrench-paste-image-${date.toLocaleDateString('en-CA')}.${extensionFor(type)}`;
 }

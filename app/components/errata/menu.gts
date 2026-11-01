@@ -150,7 +150,7 @@ export default class ErrataMenu extends Component<Signature> {
 			<div class="err-menu">
 				<div class="err-menu-grid">
 					<MenuCard
-						@title="Back to delphitools"
+						@title="Back to PolyWrench"
 						@icon="arrow-left"
 						@onClick={{this.leave}}
 					/>

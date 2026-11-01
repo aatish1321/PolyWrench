@@ -225,7 +225,7 @@ let out = await result();
 const today = new Date().toLocaleDateString('en-CA');
 check(
 	'Download writes the crop as PNG',
-	out?.type === 'image/png' && out.width === 990 && out.height === 450 && names[0] === `delphitools-paste-image-${today}.png`,
+	out?.type === 'image/png' && out.width === 990 && out.height === 450 && names[0] === `polywrench-paste-image-${today}.png`,
 	JSON.stringify({ out, name: names[0] }),
 );
 
@@ -256,7 +256,7 @@ await sleep(400);
 out = await result();
 check(
 	'the whole image downloads as pasted',
-	out?.type === 'image/jpeg' && names.at(-1) === `delphitools-paste-image-${today}.jpg`,
+	out?.type === 'image/jpeg' && names.at(-1) === `polywrench-paste-image-${today}.jpg`,
 	JSON.stringify({ out, name: names.at(-1) }),
 );
 

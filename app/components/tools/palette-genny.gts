@@ -481,7 +481,7 @@ export default class PaletteGenny extends Component {
 		ctx.fillStyle = '#999999';
 		ctx.font = '16px system-ui, sans-serif';
 		ctx.textAlign = 'right';
-		ctx.fillText('delphi.tools', width - pad, height - pad + 5);
+		ctx.fillText('PolyWrench', width - pad, height - pad + 5);
 
 		downloadUrl(canvas.toDataURL('image/png'), 'palette.png');
 	};

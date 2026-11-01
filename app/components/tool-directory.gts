@@ -434,12 +434,12 @@ export default class ToolDirectory extends Component {
 									>{{tool.description}}</p></a>{{/each}}</div></section>{{else}}<p
 					>No tools match your search.</p>{{/each}}
 			</section>
-			<footer class="lg-directory-footer">Built on Delphi’s
-				open-source tools. No accounts. No uploads.<a
-					href="https://github.com/1612elphi/delphitools"
+			<footer class="lg-directory-footer">PolyWrench. Your
+				tools, on your device.<a
+					href="https://github.com/aatish1321/PolyWrench"
 					target="_blank"
 					rel="noopener noreferrer"
-				>Upstream source & credits ↗</a></footer>
+				>Source & documentation ↗</a></footer>
 		</div>
 	</template>
 }
