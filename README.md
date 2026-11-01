@@ -14,13 +14,16 @@ PolyWrench combines Delphi’s open-source toolkit with a new desktop interface 
 
 ## Features
 
-- **One workspace:** category navigation, tool search, light/dark themes and a searchable tool directory.
+- **A colourful workspace:** a pastel dashboard with live engine-readiness widgets, quick tool cards, category navigation, search and light/dark themes.
+- **Consistent tool screens:** rounded settings panels, clean controls, shared typography and individual tool headers.
 - **Batch conversion:** select or drop multiple files, choose an output format and folder, select standard/high quality, follow per-file status, cancel a batch and reveal completed outputs.
 - **Preserved originals:** conversions create separate outputs. Existing filenames receive a numbered suffix instead of being overwritten.
 - **Offline setup:** explicitly download conversion engines, the document tool’s WASM engine and speech/background-removal models. Downloads have pinned versions, expected sizes and SHA-256 verification. Interrupted setup can be retried.
 - **Local processing:** renderer network requests are blocked in production. Downloads run only when requested in Offline Setup. External links open in your browser after confirmation.
 - **Creative suites:** Substrata image editor, Errata PDF editor and workflows for chaining compatible tools.
 - **100 tool, suite and workspace entries** from the pinned Delphi snapshot. The [complete inventory](docs/tool-inventory.json) is generated from the actual registry, with source components checked for existence.
+
+![PolyWrench Image Converter workspace](docs/image-converter.png)
 
 ### Included tool families
 
@@ -36,6 +39,16 @@ PolyWrench combines Delphi’s open-source toolkit with a new desktop interface 
 | Calculators | Scientific, symbolic algebra, graphing, bases, encodings, units and time |
 | Language tools | Braille, Morse, IPA, NATO phonetics and Shavian transliteration |
 | Experiments | Recipe tables and unusual unit conversions |
+
+## Upgrade an Ubuntu installation
+
+Quit PolyWrench completely, then install the newer package over the current version:
+
+```bash
+sudo apt install ./release/PolyWrench-0.1.1-linux-amd64.deb
+```
+
+Reopen PolyWrench from Applications. Changing source files does not update an already installed copy; rebuild and install a new package, or quit the installed app and use `npm run desktop` from the project directory to preview a built local checkout. The 0.1.1 package includes the redesigned dashboard, tool workspaces and the updated mascot logo.
 
 ## Run from source
 

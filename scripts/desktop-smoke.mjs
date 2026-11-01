@@ -13,13 +13,9 @@ const data =
 const executable = process.env.ELECTRON_EXECUTABLE || electron;
 const args = [
 	'--remote-debugging-port=0',
+	'--disable-gpu',
 	...(process.platform === 'linux'
-		? [
-				'--no-sandbox',
-				'--disable-gpu',
-				'--gtk-version=3',
-				'--ozone-platform=x11',
-			]
+		? ['--no-sandbox', '--gtk-version=3', '--ozone-platform=x11']
 		: []),
 	...(process.env.ELECTRON_EXECUTABLE ? [] : ['.']),
 ];
@@ -28,9 +24,14 @@ const child = spawn(executable, args, {
 	stdio: ['ignore', 'ignore', 'pipe'],
 });
 let browser;
+let page;
+let stderr = '';
+const rendererErrors = [];
+child.stderr.on('data', (chunk) => {
+	stderr = (stderr + chunk.toString()).slice(-20000);
+});
 try {
 	const endpoint = await new Promise((resolve, reject) => {
-		let stderr = '';
 		const timer = setTimeout(
 			() =>
 				reject(
@@ -40,8 +41,7 @@ try {
 				),
 			30000,
 		);
-		child.stderr.on('data', (chunk) => {
-			stderr += chunk.toString();
+		child.stderr.on('data', () => {
 			const match = stderr.match(
 				/DevTools listening on (ws:\/\/[^\s]+)/,
 			);
@@ -61,7 +61,6 @@ try {
 		});
 	});
 	browser = await puppeteer.connect({ browserWSEndpoint: endpoint });
-	let page;
 	for (let attempt = 0; attempt < 100 && !page; attempt++) {
 		page = (await browser.pages()).find((p) =>
 			p.url().startsWith('app://local/'),
@@ -75,11 +74,14 @@ try {
 	const exceptions = [];
 	page.on('pageerror', (error) => {
 		exceptions.push(error.message);
+		rendererErrors.push(error.stack || error.message);
 		console.log('PAGE ERROR:', error.message);
 	});
 	page.on('console', (message) => {
-		if (message.type() === 'error')
+		if (message.type() === 'error') {
+			rendererErrors.push(message.text());
 			console.log('CONSOLE:', message.text());
+		}
 	});
 	page.on('requestfailed', (request) =>
 		console.log(
@@ -89,7 +91,28 @@ try {
 		),
 	);
 	await page.setViewport({ width: 1440, height: 960 });
+	// Attach before a controlled reload so early startup errors are observable on every OS.
+	// Wait for the first load to finish; interrupting BrowserWindow.loadURL aborts startup.
+	await page.waitForFunction(() => document.readyState === 'complete', {
+		timeout: 30000,
+	});
+	await page.reload({ waitUntil: 'load' });
 	await page.waitForSelector('.lg-tool-card', { timeout: 30000 });
+	assert.equal(
+		await page.$$eval('.lg-quick-card', (cards) => cards.length),
+		3,
+	);
+	const toolCount = await page.$eval(
+		'.lg-tool-total .lg-total-line > strong',
+		(element) => Number(element.textContent),
+	);
+	assert.equal(
+		toolCount,
+		(await inventory()).filter(
+			(entry) => entry.category !== 'Workspace',
+		).length,
+	);
+
 	assert(
 		await page.evaluate(() => !!window.desktop),
 		'Preload API available',
@@ -148,6 +171,25 @@ try {
 	);
 	await mkdir('artifacts', { recursive: true });
 	await page.screenshot({ path: 'artifacts/workspace.png' });
+	await page.click('button[aria-label="Toggle colour theme"]');
+	assert(
+		await page.evaluate(() =>
+			document.documentElement.classList.contains('dark'),
+		),
+	);
+	await page.screenshot({ path: 'artifacts/workspace-dark.png' });
+	await page.click('button[aria-label="Toggle colour theme"]');
+	await page.setViewport({ width: 960, height: 720 });
+	assert(
+		await page.evaluate(
+			() =>
+				document.documentElement.scrollWidth <=
+				innerWidth,
+		),
+	);
+	await page.screenshot({ path: 'artifacts/workspace-compact.png' });
+	await page.setViewport({ width: 1440, height: 960 });
+
 	await page.type('input[aria-label="Search all tools"]', 'json');
 	await page.waitForFunction(
 		() => document.querySelectorAll('.lg-tool-card').length === 1,
@@ -165,6 +207,46 @@ try {
 				{ timeout: 15000 },
 			);
 		await new Promise((resolve) => setTimeout(resolve, 100));
+		if (route.startsWith('/tools/'))
+			assert(
+				await page.$('.pw-tool-header h1'),
+				'PolyWrench tool header is present',
+			);
+		if (
+			[
+				'/tools/image-converter',
+				'/tools/json-formatter',
+				'/tools/pdf-organiser',
+				'/converter',
+			].includes(route)
+		)
+			await page.screenshot({
+				path: `artifacts/${route.split('/').pop()}.png`,
+			});
+		if (route === '/tools/image-converter') {
+			await (
+				await page.$(
+					'.image-converter input[type="file"]',
+				)
+			).uploadFile('public/polywrench.png');
+			await page.waitForFunction(
+				() => {
+					const button =
+						document.querySelector(
+							'.conv-download',
+						);
+					return button && !button.disabled;
+				},
+				{ timeout: 30000 },
+			);
+			assert(
+				!(await page.$('.conv-failure')),
+				'Image conversion succeeds through the redesigned controls',
+			);
+			await page.screenshot({
+				path: 'artifacts/image-converter-loaded.png',
+			});
+		}
 		const errors = exceptions.slice(before);
 		results.push({ route, passed: errors.length === 0, errors });
 		console.log(
@@ -185,6 +267,46 @@ try {
 	console.log(
 		`Desktop smoke passed: ${routes.length} routes, network blocking, preload and IPC validation`,
 	);
+} catch (error) {
+	await mkdir('artifacts', { recursive: true });
+	await writeFile('artifacts/electron-stderr.log', stderr);
+	console.error('Electron diagnostics:', stderr.slice(-6000));
+	if (process.env.GITHUB_ACTIONS)
+		console.error(
+			'::error title=PolyWrench desktop failure::' +
+				[
+					error.message,
+					...rendererErrors,
+					stderr.slice(-4000),
+				]
+					.join(' | ')
+					.replaceAll('%', '%25')
+					.replaceAll('\r', '%0D')
+					.replaceAll('\n', '%0A'),
+		);
+	if (page && !page.isClosed()) {
+		await page
+			.screenshot({ path: 'artifacts/startup-failure.png' })
+			.catch(() => {});
+		await writeFile(
+			'artifacts/startup-failure.html',
+			await page.content().catch(() => 'Page unavailable'),
+		);
+		console.error(
+			'Page diagnostics:',
+			await page
+				.evaluate(() => ({
+					url: location.href,
+					readyState: document.readyState,
+					text: document.body?.innerText.slice(
+						0,
+						3000,
+					),
+				}))
+				.catch(() => 'Page unavailable'),
+		);
+	}
+	throw error;
 } finally {
 	browser?.disconnect();
 	child.kill();
@@ -194,7 +316,12 @@ try {
 			: resolve(),
 	);
 	if (!process.env.POLYWRENCH_TEST_DATA)
-		await rm(data, { recursive: true, force: true });
+		await rm(data, {
+			recursive: true,
+			force: true,
+			maxRetries: 6,
+			retryDelay: 250,
+		});
 }
 
 async function verifyOffline(page) {

@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>PolyWrench</title>
+    <link rel="icon" type="image/png" href="/polywrench.png">
     <meta name="description" content="Offline desktop tools and batch file conversion.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script>
@@ -13,7 +14,7 @@
           if ((d.getMonth() === 9 && d.getDate() === 31) || /[?&]halloween\b/.test(location.search))
             document.documentElement.classList.add('halloween');
           var t = localStorage.getItem('theme');
-          var dark = t === 'dark' || (t !== 'light' && matchMedia('(prefers-color-scheme:dark)').matches);
+          var dark = t === 'dark';
           // delphicanon tokens follow prefers-color-scheme unless html.light is set
           document.documentElement.classList.add(dark ? 'dark' : 'light');
           if (localStorage.getItem('font') === 'classic') document.documentElement.classList.add('classic');

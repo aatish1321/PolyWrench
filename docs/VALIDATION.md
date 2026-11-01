@@ -1,4 +1,16 @@
-# Validation — PolyWrench 0.1.0
+# Interface update — PolyWrench 0.1.1
+
+Verified on Ubuntu x86-64, 2026-11-01:
+
+- Type checking and focused ESLint checks passed.
+- All 102 desktop routes rendered; all individual tool routes use the new PolyWrench header and shared control styling.
+- Dashboard tool counts are checked against the generated inventory; all three quick-pick links are present.
+- Light/dark themes and the compact 960px window were checked, including no horizontal document overflow.
+- An actual image was loaded and converted through the redesigned Image Converter controls.
+- The replacement logo was used in the app, README asset, window icon and freshly built 0.1.1 AppImage/deb packages.
+- The original Windows CI startup timeout is not yet explained by its limited log. The harness now attaches listeners before a controlled reload, disables hardware rendering for CI on all platforms, and saves screenshots, HTML and Electron diagnostics on failure. CI uploads these even when smoke checks fail. Windows success must be confirmed by the new workflow run; a longer timeout alone was not treated as a fix.
+
+# Original implementation — PolyWrench 0.1.0
 
 Verified on Ubuntu 26.04 x86-64, 2026-11-01, using Electron 42.11.18. The local development shell used Node 26; CI and the documented development setup use Node 24 LTS.
 

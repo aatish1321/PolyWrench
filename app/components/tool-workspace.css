@@ -1,0 +1,95 @@
+/* PolyWrench's tool surfaces share controls, spacing and colour with the dashboard. */
+.pw-tool-workspace {
+  --pw-tool-tint: var(--lg-purple);
+  --canon-font: system-ui, sans-serif;
+  --canon-background: var(--lg-bg);
+  --canon-foreground: var(--lg-ink);
+  --canon-card: var(--lg-panel);
+  --canon-muted: var(--lg-tint);
+  --canon-muted-foreground: var(--lg-muted);
+  --canon-border: var(--lg-line);
+  --canon-primary: var(--lg-accent);
+  --canon-primary-foreground: var(--lg-panel);
+  --canon-heading-background: transparent;
+  --canon-accent-bg: var(--pw-tool-tint);
+  --canon-panel-padding: 16px;
+  --canon-text-body: 13px;
+  --canon-text-subheadline: 12px;
+  --canon-text-footnote: 11px;
+  --canon-text-caption: 10px;
+  --canon-text-callout: 12px;
+  --canon-text-title2: 21px;
+  --canon-text-title3: 18px;
+  --canon-control-height: 38px;
+  --canon-row-height: 43px;
+  --canon-primary-height: 46px;
+  --canon-secondary-height: 40px;
+  --canon-frame: 1px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  height: 100%;
+  min-height: 440px;
+  padding: 25px 30px 12px;
+}
+.pw-tool-workspace[data-category="audio-video"], .pw-tool-workspace[data-category="audio-and-video"] { --pw-tool-tint: var(--lg-mint); }
+.pw-tool-workspace[data-category="pdf"], .pw-tool-workspace[data-category="print-production"] { --pw-tool-tint: var(--lg-peach); }
+.pw-tool-workspace[data-category="colour"] { --pw-tool-tint: var(--lg-pink); }
+.pw-tool-workspace[data-category="dev-tools"], .pw-tool-workspace[data-category="calculators"] { --pw-tool-tint: var(--lg-lime); }
+.pw-tool-header { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.pw-tool-identity { display: flex; align-items: center; gap: 15px; min-width: 0; }
+.pw-tool-icon { display: grid; place-items: center; flex-shrink: 0; width: 57px; height: 60px; border-radius: 19px; background: var(--pw-tool-tint); }
+.pw-tool-icon svg { width: 27px; height: 27px; }
+.pw-tool-category { font-size: 10px; color: var(--lg-muted); margin-bottom: 5px; }
+.pw-tool-category > span { margin: 0 6px; color: var(--lg-line); }
+.pw-tool-header h1 { font: 600 26px/1.2 system-ui, sans-serif; letter-spacing: -.8px; }
+.pw-tool-header p { margin-top: 6px; color: var(--lg-muted); font-size: 11px; line-height: 1.6; }
+.pw-tool-back { font-size: 11px; gap: 18px; flex-shrink: 0; }
+.pw-tool-stage { flex: 1; min-height: 0; border: 1px solid var(--lg-line); border-radius: 21px; overflow: hidden; background: var(--lg-panel); }
+.pw-tool-stage .dt-canon-tool > :not(.dt-canon-edge) { max-inline-size: none; border-inline: 0; }
+.pw-tool-stage .canon-split { background: var(--lg-bg); }
+.pw-tool-stage .canon-split-rule { background: transparent; }
+.pw-tool-stage .canon-split-sidebar { background: color-mix(in srgb, var(--pw-tool-tint) 25%, var(--lg-bg)); }
+.pw-tool-stage .canon-split-main { background: var(--lg-bg); }
+.pw-tool-stage .canon-rows { background: var(--lg-panel); gap: 5px; border: 1px solid var(--lg-line); border-radius: 14px; padding: 7px; overflow: clip; }
+.pw-tool-stage .canon-heading { padding: 10px 9px 7px; color: var(--lg-muted); font-size: 10px; font-weight: 600; letter-spacing: .2px; background: transparent; }
+.pw-tool-stage .canon-row { border-radius: 9px; background: var(--lg-panel); }
+.pw-tool-stage .canon-row-detail { line-height: 1.5; }
+.pw-tool-stage .canon-grid { background: transparent; gap: 5px; }
+.pw-tool-stage .canon-button { border-radius: 9px; background: var(--lg-tint); font-size: 12px; }
+.pw-tool-stage .canon-button--primary { border-radius: 12px; background: var(--lg-accent); color: var(--lg-panel); font-weight: 600; }
+.pw-tool-stage .canon-button--primary:hover:enabled { background: color-mix(in srgb, var(--lg-accent) 90%, #000); }
+.pw-tool-stage .canon-button--cell { background: var(--lg-panel); }
+.pw-tool-stage .canon-button--filled { background: var(--lg-accent); color: var(--lg-panel); }
+.pw-tool-stage .canon-segmented { border-radius: 11px; gap: 4px; padding: 4px; background: var(--lg-tint); }
+.pw-tool-stage .canon-button--segment { border-radius: 8px; background: transparent; }
+.pw-tool-stage .canon-button--segment[aria-checked="true"] { background: var(--lg-panel); color: var(--lg-accent); box-shadow: 0 1px 4px #2927320f; }
+.pw-tool-stage .canon-drop-zone { border: 1px dashed color-mix(in srgb, var(--lg-accent) 45%, transparent); border-radius: 15px; overflow: hidden; background: var(--lg-panel); }
+.pw-tool-stage .canon-drop-zone-target { background: color-mix(in srgb, var(--pw-tool-tint) 45%, var(--lg-panel)); border-radius: 14px; color: var(--lg-accent); }
+.pw-tool-stage .canon-canvas-content { border-radius: 16px; overflow: hidden; }
+.pw-tool-stage .canon-menu-cell, .pw-tool-stage .canon-number-field, .pw-tool-stage .canon-text-field { border-radius: 8px; }
+.pw-tool-stage .canon-status { border-radius: 9px; font-family: system-ui, sans-serif; }
+.pw-tool-stage .canon-split-footer { border-radius: 17px; background: var(--lg-panel); border: 1px solid var(--lg-line); box-shadow: 0 5px 22px #2927320a; padding: 6px; }
+.pw-tool-stage .canon-split-footer .canon-grid { border-radius: 12px; overflow: hidden; }
+.pw-tool-stage .dt-canon-edge { background: var(--lg-panel); border: 1px solid var(--lg-line); border-radius: 12px; }
+.pw-tool-footer { display: flex; justify-content: space-between; gap: 15px; color: var(--lg-muted); font-size: 9px; }
+.pw-tool-footer > span:first-child > span { color: #36a77c; font-size: 7px; margin-right: 5px; }
+@container canon-split (min-width: 640px) and (orientation: landscape) {
+  .pw-tool-stage .canon-split-body { padding: 16px; }
+  .pw-tool-stage .canon-split-body > .canon-split-pane { border-radius: 16px; }
+  .pw-tool-stage .canon-split-sidebar { border: 1px solid var(--lg-line); }
+  .pw-tool-stage .canon-split--halves .canon-split-sidebar:has(> .canon-canvas:only-child) { border: 0; }
+  .pw-tool-stage .canon-split-rule { min-width: 16px; }
+  .pw-tool-stage .canon-split-body { column-gap: 8px; }
+}
+@media (width < 1100px) { .pw-tool-workspace { padding: 20px 22px 12px; gap: 16px; } .pw-tool-header h1 { font-size: 23px; } }
+.pw-tool-stage .canon-heading { font-family: system-ui, sans-serif; }
+.pw-tool-stage .canon-slider { background: transparent; gap: 9px; align-items: center; }
+.pw-tool-stage .canon-slider-track { height: 6px; border-radius: 8px; overflow: visible; }
+.pw-tool-stage .canon-slider-fill { border-radius: 8px; }
+.pw-tool-stage .canon-slider-marker { inset-block: auto; top: 50%; height: 15px; width: 15px; transform: translateY(-50%); border: 3px solid var(--lg-panel); border-radius: 50%; background: var(--lg-accent); box-shadow: 0 0 0 1px var(--lg-line); }
+.pw-tool-stage .canon-slider-readout { min-inline-size: 40px; padding: 6px; border-radius: 8px; background: var(--lg-tint); font-size: 11px; }
+.pw-tool-stage .canon-switch { border-radius: 24px; }
+.pw-tool-stage .canon-switch::before { border-radius: 50%; }
+.pw-tool-stage .canon-switch:checked::before { background: #fff; }

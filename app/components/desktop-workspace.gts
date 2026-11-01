@@ -3,6 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { service } from '@ember/service';
 import { on } from '@ember/modifier';
 import { fn } from '@ember/helper';
+import eq from 'ember-truth-helpers/helpers/eq';
 import type RouterService from '@ember/routing/router-service';
 import type FlowService from 'delphitools-v2/services/flow';
 import type ThemeService from 'delphitools-v2/services/theme';
@@ -50,7 +51,7 @@ export default class DesktopWorkspace extends Component<{
 		return (
 			(
 				{
-					index: 'Your local workspace',
+					index: 'Dashboard',
 					converter: 'Batch Converter',
 					setup: 'Offline Setup',
 					editor: 'Substrata',
@@ -103,11 +104,26 @@ export default class DesktopWorkspace extends Component<{
 				<nav class="lg-primary" aria-label="Workspace">
 					<a
 						href="/"
+						aria-current={{if
+							(eq
+								this.router.currentRouteName
+								"index"
+							)
+							"page"
+						}}
 						{{on "click" (fn this.go "/")}}
-					><IconSvg @name="layout-grid" />All
-						tools</a>
+					><IconSvg
+							@name="layout-grid"
+						/>Dashboard</a>
 					<a
 						class="lg-converter-link"
+						aria-current={{if
+							(eq
+								this.router.currentRouteName
+								"converter"
+							)
+							"page"
+						}}
 						href="/converter"
 						{{on
 							"click"
@@ -121,6 +137,13 @@ export default class DesktopWorkspace extends Component<{
 						/>Batch Converter</a>
 					<a
 						href="/workflows"
+						aria-current={{if
+							(eq
+								this.router.currentRouteName
+								"workflows"
+							)
+							"page"
+						}}
 						{{on
 							"click"
 							(fn
@@ -164,6 +187,11 @@ export default class DesktopWorkspace extends Component<{
 					{{else}}<p class="lg-muted">No matching
 							tools.</p>{{/each}}
 				</nav>
+				<div class="lg-sidebar-note"><span
+						aria-hidden="true"
+					>✳</span><strong>A little more doing.<br
+						/>A little less fuss.</strong><small
+					>Your everyday tools, all together.</small></div>
 				<a
 					class="lg-setup-link"
 					href="/setup"

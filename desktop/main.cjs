@@ -282,6 +282,28 @@ async function createWindow() {
 			webviewTag: false,
 		},
 	});
+	window.webContents.on('preload-error', (_event, preload, error) =>
+		console.error('Preload failed:', preload, error),
+	);
+	window.webContents.on(
+		'did-fail-load',
+		(_event, code, description, url, mainFrame) => {
+			if (mainFrame)
+				console.error(
+					'Page failed to load:',
+					code,
+					description,
+					url,
+				);
+		},
+	);
+	window.webContents.on('render-process-gone', (_event, details) =>
+		console.error(
+			'Renderer exited:',
+			details.reason,
+			details.exitCode,
+		),
+	);
 	const external = async (url) => {
 		if (!/^https?:\/\//.test(url)) return;
 		const result = await dialog.showMessageBox(window, {
@@ -393,7 +415,12 @@ app.whenReady()
 					status: response.status,
 					headers,
 				});
-			} catch {
+			} catch (error) {
+				console.error(
+					'Could not serve packaged resource:',
+					request.url,
+					error,
+				);
 				return new Response('Resource unavailable', {
 					status: 404,
 				});
