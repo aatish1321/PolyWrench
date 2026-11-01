@@ -8,7 +8,7 @@
 
 PolyWrench combines Delphi’s open-source toolkit with a new desktop interface and a native batch file converter. It runs in its own application window, with native file dialogs and local conversion engines. It does not require a browser, account, subscription or hosted service.
 
-**Status:** initial implementation. See [verification and limitations](#verification-and-limitations) before distributing builds. Installer workflows are included; creating this repository does not itself publish release installers.
+**Status:** early release. [Download PolyWrench](https://github.com/aatish1321/PolyWrench/releases/latest) for Windows, macOS or Linux. See [verification and limitations](#verification-and-limitations) for the current scope.
 
 ![PolyWrench desktop workspace](docs/workspace.png)
 
@@ -45,20 +45,22 @@ PolyWrench combines Delphi’s open-source toolkit with a new desktop interface 
 
 Packaged applications do **not** need Node.js, npm, Git, Python or Rust. Download the package for your operating system and processor:
 
-| Operating system | Package | GitHub Actions artifact |
-| --- | --- | --- |
-| Ubuntu, Debian, Linux Mint and other Debian-based systems, x86-64 | `.deb` | `PolyWrench-Linux-x64` |
-| Other Linux distributions, x86-64 | `.AppImage` | `PolyWrench-Linux-x64` |
-| Windows, x86-64 | `.exe` installer | `PolyWrench-Windows-x64` |
-| macOS, Intel | `.dmg` | `PolyWrench-macOS-x64` |
-| macOS, Apple Silicon (M-series) | `.dmg` | `PolyWrench-macOS-arm64` |
+| Operating system | Download version 0.1.3 |
+| --- | --- |
+| Ubuntu, Debian, Linux Mint and other Debian-based systems, x86-64 | [Linux .deb](https://github.com/aatish1321/PolyWrench/releases/download/v0.1.3/PolyWrench-0.1.3-linux-amd64.deb) |
+| Other Linux distributions, x86-64 | [Linux AppImage](https://github.com/aatish1321/PolyWrench/releases/download/v0.1.3/PolyWrench-0.1.3-linux-x86_64.AppImage) |
+| Windows, x86-64 | [Windows installer](https://github.com/aatish1321/PolyWrench/releases/download/v0.1.3/PolyWrench-0.1.3-win-x64.exe) |
+| macOS, Intel | [Intel Mac DMG](https://github.com/aatish1321/PolyWrench/releases/download/v0.1.3/PolyWrench-0.1.3-mac-x64.dmg) |
+| macOS, Apple Silicon (M-series) | [Apple Silicon DMG](https://github.com/aatish1321/PolyWrench/releases/download/v0.1.3/PolyWrench-0.1.3-mac-arm64.dmg) |
+
+[All releases](https://github.com/aatish1321/PolyWrench/releases) · [SHA-256 checksums](https://github.com/aatish1321/PolyWrench/releases/download/v0.1.3/SHA256SUMS.txt)
 
 `x64`, `x86-64` and `amd64` refer to the same processor family. The current workflow does not produce Linux ARM or Windows ARM installers. On macOS, **Apple menu → About This Mac** identifies an Apple chip or Intel processor.
 
 ### Download an installer
 
-- **Published releases:** open [Releases](https://github.com/aatish1321/PolyWrench/releases) and download the matching package from a published release's assets, when available.
-- **Builds before publication:** open [Desktop checks and packages](https://github.com/aatish1321/PolyWrench/actions/workflows/desktop.yml), select a successful run for the version/commit you want, and download the matching artifact from the table above. Sign into GitHub to download workflow artifacts, then extract the downloaded ZIP to find the installer. Artifacts are temporary and can expire; see [GitHub's download instructions](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/download-workflow-artifacts?tool=webui).
+- **Public downloads:** use the platform links above or open [Releases](https://github.com/aatish1321/PolyWrench/releases). Installer downloads from a public release do not require a GitHub account.
+- **Builds before publication:** open [Desktop checks and packages](https://github.com/aatish1321/PolyWrench/actions/workflows/desktop.yml), select a successful run for the version/commit you want, and download `PolyWrench-Linux-x64`, `PolyWrench-Windows-x64`, `PolyWrench-macOS-x64` or `PolyWrench-macOS-arm64` from the run’s artifacts. Sign into GitHub to download workflow artifacts, then extract the downloaded ZIP to find the installer. Artifacts are temporary and can expire; see [GitHub's download instructions](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/download-workflow-artifacts?tool=webui).
 - **Built locally:** packages are in the project's `release/` directory; see [Build desktop packages](#build-desktop-packages).
 
 The commands below use version **0.1.3**. Substitute the filename you downloaded for a later version. Quit PolyWrench completely before updating, including any open application windows.
@@ -212,7 +214,7 @@ Output is written to `release/`:
 - Windows x64: NSIS installer.
 - macOS: DMG; build Intel and Apple Silicon separately with electron-builder’s `--x64` / `--arm64` flags.
 
-Use the target operating system to build and test its packages. The GitHub Actions workflow performs the cross-platform matrix and uploads build artifacts. To create a release, push a version tag such as `v0.1.0`; it creates a **draft** GitHub release with installers. Review the draft and platform checks before publishing.
+Use the target operating system to build and test its packages. The GitHub Actions workflow performs the cross-platform matrix and uploads build artifacts. To publish a release, push a version tag matching `package.json`, such as `v0.1.3`. After all four platform jobs pass, the release job checks for all five installers, generates `SHA256SUMS.txt`, uploads the files to a draft and publishes the completed release. A failed platform build or missing installer prevents publication.
 
 Code signing/notarization needs your own publisher credentials; no secrets belong in the repository. Without them, Windows/macOS may display unsigned-app warnings. Automatic application updates are not implemented.
 
@@ -246,7 +248,7 @@ public/               Packaged WASM, fonts, dictionaries and PolyWrench logo
 desktop/              Electron main/preload, native conversion and asset setup
 scripts/              Build, inventory, asset-lock and smoke-test commands
 docs/                 Tool inventory, licenses and verification notes
-.github/workflows/    Desktop CI and draft release packaging
+.github/workflows/    Desktop CI and release publication
 ```
 
 To update offline assets, review the versions, model terms and upstream sources in `scripts/lock-assets.mjs`, run `npm run assets:lock`, inspect the resulting `desktop/assets.lock.json`, then test installation/offline use. End users never generate or trust a download manifest supplied from the network.
