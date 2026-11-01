@@ -1,0 +1,22 @@
+{
+	"name": "delphitools",
+	"compatibility_date": "2026-08-29",
+	// assets-only worker: prerendered per-route files win when build:static ran,
+	// the SPA fallback keeps direct tool links working when only `build` ran
+	"assets": {
+		"directory": "./dist",
+		"not_found_handling": "single-page-application",
+	},
+	// `wrangler deploy --env canon`: the canon branch on its own worker
+	"env": {
+		"canon": {
+			"name": "delphitools-canon",
+			"routes": [
+				{
+					"pattern": "canon.delphi.tools",
+					"custom_domain": true,
+				},
+			],
+		},
+	},
+}

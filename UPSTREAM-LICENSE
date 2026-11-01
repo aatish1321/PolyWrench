@@ -1,0 +1,104 @@
+Zero-Clause BSD (0BSD)
+======================
+
+Copyright (C) 2025-2026 Ruby Morgan Voigt
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
+SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
+IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+
+Third-party works in this repository
+------------------------------------
+
+The 0BSD grant above covers the code and data written for delphitools. The
+files below are the work of others, carried in this repository under their
+own licences, which continue to apply to them:
+
+  app/lib/editor/footnote-md.ts
+      Vendored from markdown-it-footnote 4.0.0, MIT.
+
+  app/lib/substrata/preset-shapes.ts
+      SVG path data from Phosphor Icons v2.1.1, MIT
+      (Copyright (c) 2023 Phosphor Icons).
+
+  app/lib/pandoc/pandoc-core.js
+      The pandoc-wasm JavaScript wrapper, MIT (Tweag I/O Limited, Johannes
+      Wilm, and pandoc-wasm contributors). The pandoc.wasm binary itself is
+      GPL-2.0-or-later and is not in this repository; the Document Converter
+      fetches it from a public CDN at run time.
+
+  public/lib/imagetracer_v1.2.6.js
+      imagetracerjs (Andras Jankovics), The Unlicense.
+
+  public/compress/
+      jSquash builds of MozJPEG, libwebp, OxiPNG and libavif/aom; see the
+      LICENSE.*.md files in that directory.
+
+  public/jxl/
+      jSquash build of libjxl (wrapper Apache-2.0, libjxl BSD-3-Clause).
+
+  public/mupdf/
+      MuPDF, AGPL-3.0; see LICENSE.mupdf.txt in that directory.
+
+  public/mediainfo/
+      MediaInfoLib, BSD-2-Clause; see LICENSE.mediainfo.txt in that
+      directory.
+
+  public/fonts/OpenSansCondensedV.woff2, OpenSansCondensedV-Italic.woff2
+      Open Sans (The Open Sans Project Authors), SIL Open Font License
+      1.1; instanced at width 75, weight 400 to 700.
+
+  public/fonts/iAWriterQuattroV.woff2, iAWriterQuattroV-Italic.woff2
+      iA Writer Quattro (Information Architects), SIL Open Font License 1.1.
+
+  public/fonts/Iosevka-400.woff2, Iosevka-700.woff2
+      Iosevka (Renzhi Li), SIL Open Font License 1.1; subset to Latin-1,
+      punctuation, arrows and box drawing, ligature features removed.
+
+  public/fonts/fluoWrite-Regular.otf
+      FluoWrite (Speak the Sky, https://speakthesky.com), proprietary;
+      free for print and digital use, not for redistribution as a font.
+
+  public/fonts/NotoSansShavian-Regular.woff2
+      Noto Sans Shavian (Google), SIL Open Font License 1.1.
+
+  app/components/canon-docs/brands/
+      Simple Icons 16.35.0 (simpleicons.org), CC0 1.0; the marks
+      belong to their owners.
+
+  public/flags/
+      circle-flags (HatScripts), MIT.
+
+  public/data/shavian-dictionary-full.json, app/lib/shavian/dictionary-core.json
+      Derived from the CMU Pronouncing Dictionary (Carnegie Mellon
+      University), BSD-2-Clause.
+
+  public/data/eff-large-wordlist.txt
+      EFF long wordlist (Electronic Frontier Foundation), CC BY 3.0.
+
+  public/substrata/luts/
+      Part of the film-emulation LUTs are downsampled from the RawTherapee
+      Film Simulation Collection (Pat David, Pavlov Dmitry, Michael Ezra),
+      CC BY-SA 4.0; the derived files remain CC BY-SA 4.0. See
+      ACKNOWLEDGEMENTS.md for which, and for the LUTs generated with
+      spectral_film_lut.
+
+Artwork is not covered by this licence: the hero art in public/heroes/ and
+public/art/, the stickers in public/stickers/, the tiles in public/tiles/,
+the Substrata onboarding art in public/substrata/onboarding/ and the
+delphi mark remain the property of their artists (credited in
+app/lib/hero-art.ts and on the front page) and are used with their
+permission.
+
+Models and packages fetched at run time (the background-removal model,
+speech-recognition models, pandoc.wasm) and npm dependencies are not part
+of this repository and keep their own licences; ACKNOWLEDGEMENTS.md lists
+the notable ones.

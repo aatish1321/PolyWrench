@@ -1,0 +1,73 @@
+# compiled output
+/dist/
+/tmp/
+
+# dependencies
+/node_modules/
+
+# misc
+*.local
+/.pnp*
+/.eslintcache
+/coverage/
+*.log
+*.tsbuildinfo
+/.vite/
+/.cache/
+
+# broccoli-debug
+/DEBUG/
+
+# macOS noise
+.DS_Store
+
+# env: .env.development is tracked; local overrides are not
+.env*.local
+
+# claude / local-only working notes
+AGENTS.md
+CLAUDE.md
+/.claude/
+/.superpowers/
+
+# agent worktrees and scratch clones
+/.delta/
+/.emdash/
+/.context/
+
+# editors
+/.cursor/
+/.vscode/
+/.idea/
+/.zed/
+
+# wheelybin: local-only scratch
+/wheelybin/
+
+# session scratch (one-off debug/repro rigs land as root dot-files;
+# anything worth keeping into scripts/verify/)
+/.*.mjs
+!/.prettierrc.mjs
+!/.stylelintrc.mjs
+!/.template-lintrc.mjs
+
+# build data (downloaded source files for dictionary builds)
+/scripts/data/
+
+# package-lock.json is tracked on purpose
+# bun.lock local: cf builds is a piece of shit
+/bun.lock
+
+# hero and art masters: the optimised webp under public/ is what ships.
+# assets/og tracked, scripts/og.mjs 
+/assets/heroes/
+/assets/art/
+
+/release/
+/artifacts/
+
+/.agents/
+/.codex/
+/.aws/
+/core
+/core.*

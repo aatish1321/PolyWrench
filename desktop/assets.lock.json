@@ -1,0 +1,566 @@
+{
+  "version": 1,
+  "packs": [
+    {
+      "id": "ffmpeg-linux-x64",
+      "title": "FFmpeg",
+      "platform": "linux-x64",
+      "engine": "ffmpeg",
+      "executable": "ffmpeg",
+      "description": "Image, audio and video batch conversion",
+      "license": "GPL-3.0-or-later (build-specific terms in downloaded LICENSE)",
+      "licenseUrl": "https://github.com/eugeneware/ffmpeg-static",
+      "files": [
+        {
+          "url": "https://github.com/eugeneware/ffmpeg-static/releases/download/b6.1.1/ffmpeg-linux-x64.gz",
+          "path": "ffmpeg",
+          "sha256": "bfe8a8fc511530457b528c48d77b5737527b504a3797a9bc4866aeca69c2dffa",
+          "bytes": 29354986,
+          "gzip": true,
+          "executable": true
+        },
+        {
+          "url": "https://github.com/eugeneware/ffmpeg-static/releases/download/b6.1.1/linux-x64.LICENSE",
+          "path": "LICENSE",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "bytes": 35147
+        },
+        {
+          "url": "https://github.com/eugeneware/ffmpeg-static/releases/download/b6.1.1/linux-x64.README",
+          "path": "README",
+          "sha256": "72f4b1b06d419d22ace6e7cc75f06826f90737345aa0b1736158929f4aacc537",
+          "bytes": 2235
+        }
+      ]
+    },
+    {
+      "id": "pandoc-linux-x64",
+      "title": "Pandoc",
+      "platform": "linux-x64",
+      "engine": "pandoc",
+      "executable": "pandoc-3.13/bin/pandoc",
+      "description": "Document, markup and ebook batch conversion",
+      "license": "GPL-2.0-or-later",
+      "licenseUrl": "https://github.com/jgm/pandoc/blob/3.13/COPYING.md",
+      "files": [
+        {
+          "url": "https://github.com/jgm/pandoc/releases/download/3.13/pandoc-3.13-linux-amd64.tar.gz",
+          "path": "archive.tar.gz",
+          "sha256": "38aa33b325a2bc96a4c39409631212db55702f564250bcdbead180b3bf646389",
+          "bytes": 36101020,
+          "archive": "tar"
+        }
+      ]
+    },
+    {
+      "id": "ffmpeg-win32-x64",
+      "title": "FFmpeg",
+      "platform": "win32-x64",
+      "engine": "ffmpeg",
+      "executable": "ffmpeg.exe",
+      "description": "Image, audio and video batch conversion",
+      "license": "GPL-3.0-or-later (build-specific terms in downloaded LICENSE)",
+      "licenseUrl": "https://github.com/eugeneware/ffmpeg-static",
+      "files": [
+        {
+          "url": "https://github.com/eugeneware/ffmpeg-static/releases/download/b6.1.1/ffmpeg-win32-x64.gz",
+          "path": "ffmpeg.exe",
+          "sha256": "8883a3dffbd0a16cf4ef95206ea05283f78908dbfb118f73c83f4951dcc06d77",
+          "bytes": 29581307,
+          "gzip": true,
+          "executable": true
+        },
+        {
+          "url": "https://github.com/eugeneware/ffmpeg-static/releases/download/b6.1.1/win32-x64.LICENSE",
+          "path": "LICENSE",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "bytes": 35147
+        },
+        {
+          "url": "https://github.com/eugeneware/ffmpeg-static/releases/download/b6.1.1/win32-x64.README",
+          "path": "README",
+          "sha256": "a636a7183c58006351acbaf35303c0ed85c6e1320fd4e80de453ba6157de6311",
+          "bytes": 39494
+        }
+      ]
+    },
+    {
+      "id": "pandoc-win32-x64",
+      "title": "Pandoc",
+      "platform": "win32-x64",
+      "engine": "pandoc",
+      "executable": "pandoc-3.13/pandoc.exe",
+      "description": "Document, markup and ebook batch conversion",
+      "license": "GPL-2.0-or-later",
+      "licenseUrl": "https://github.com/jgm/pandoc/blob/3.13/COPYING.md",
+      "files": [
+        {
+          "url": "https://github.com/jgm/pandoc/releases/download/3.13/pandoc-3.13-windows-x86_64.zip",
+          "path": "archive.zip",
+          "sha256": "23e1f2e978a3df80db8bf65c9c59534f41a23140480cfb4f783a882ab7dc6a4e",
+          "bytes": 42983200,
+          "archive": "zip"
+        }
+      ]
+    },
+    {
+      "id": "ffmpeg-darwin-x64",
+      "title": "FFmpeg",
+      "platform": "darwin-x64",
+      "engine": "ffmpeg",
+      "executable": "ffmpeg",
+      "description": "Image, audio and video batch conversion",
+      "license": "GPL-3.0-or-later (build-specific terms in downloaded LICENSE)",
+      "licenseUrl": "https://github.com/eugeneware/ffmpeg-static",
+      "files": [
+        {
+          "url": "https://github.com/eugeneware/ffmpeg-static/releases/download/b6.1.1/ffmpeg-darwin-x64.gz",
+          "path": "ffmpeg",
+          "sha256": "929b375c1182d956c51f7ac25e0b2b0411fb01f6f407aa15c9758efeb4242106",
+          "bytes": 25296431,
+          "gzip": true,
+          "executable": true
+        },
+        {
+          "url": "https://github.com/eugeneware/ffmpeg-static/releases/download/b6.1.1/darwin-x64.LICENSE",
+          "path": "LICENSE",
+          "sha256": "2e1d16c72fd74e12063776371da757322f8b77589386532f4fd8634bde7de1af",
+          "bytes": 4346
+        },
+        {
+          "url": "https://github.com/eugeneware/ffmpeg-static/releases/download/b6.1.1/darwin-x64.README",
+          "path": "README",
+          "sha256": "e88a0325f8e5b75210355e37341824f074d3cd82def2125be54c914b62848a36",
+          "bytes": 6227
+        }
+      ]
+    },
+    {
+      "id": "pandoc-darwin-x64",
+      "title": "Pandoc",
+      "platform": "darwin-x64",
+      "engine": "pandoc",
+      "executable": "pandoc-3.13-x86_64/bin/pandoc",
+      "description": "Document, markup and ebook batch conversion",
+      "license": "GPL-2.0-or-later",
+      "licenseUrl": "https://github.com/jgm/pandoc/blob/3.13/COPYING.md",
+      "files": [
+        {
+          "url": "https://github.com/jgm/pandoc/releases/download/3.13/pandoc-3.13-x86_64-macOS.zip",
+          "path": "archive.zip",
+          "sha256": "1823278715aa405aaf21b59cde5dc789346aa8d4fc307467f9a9ee84162bedc5",
+          "bytes": 26891866,
+          "archive": "zip"
+        }
+      ]
+    },
+    {
+      "id": "ffmpeg-darwin-arm64",
+      "title": "FFmpeg",
+      "platform": "darwin-arm64",
+      "engine": "ffmpeg",
+      "executable": "ffmpeg",
+      "description": "Image, audio and video batch conversion",
+      "license": "GPL-3.0-or-later (build-specific terms in downloaded LICENSE)",
+      "licenseUrl": "https://github.com/eugeneware/ffmpeg-static",
+      "files": [
+        {
+          "url": "https://github.com/eugeneware/ffmpeg-static/releases/download/b6.1.1/ffmpeg-darwin-arm64.gz",
+          "path": "ffmpeg",
+          "sha256": "8923876afa8db5585022d7860ec7e589af192f441c56793971276d450ed3bbfa",
+          "bytes": 19246198,
+          "gzip": true,
+          "executable": true
+        },
+        {
+          "url": "https://github.com/eugeneware/ffmpeg-static/releases/download/b6.1.1/darwin-arm64.LICENSE",
+          "path": "LICENSE",
+          "sha256": "cb48bf09a11f5fb576cddb0431c8f5ed0a60157a9ec942adffc13907cbe083f2",
+          "bytes": 4376
+        },
+        {
+          "url": "https://github.com/eugeneware/ffmpeg-static/releases/download/b6.1.1/darwin-arm64.README",
+          "path": "README",
+          "sha256": "05ba4b92c96605434b1aaae3eedf5a2c280c9607bf78ffca9a5b536d9af2dc6a",
+          "bytes": 1810
+        }
+      ]
+    },
+    {
+      "id": "pandoc-darwin-arm64",
+      "title": "Pandoc",
+      "platform": "darwin-arm64",
+      "engine": "pandoc",
+      "executable": "pandoc-3.13-arm64/bin/pandoc",
+      "description": "Document, markup and ebook batch conversion",
+      "license": "GPL-2.0-or-later",
+      "licenseUrl": "https://github.com/jgm/pandoc/blob/3.13/COPYING.md",
+      "files": [
+        {
+          "url": "https://github.com/jgm/pandoc/releases/download/3.13/pandoc-3.13-arm64-macOS.zip",
+          "path": "archive.zip",
+          "sha256": "f436d18bebbfb3ddd326597686dacab9fac5dc23bd060495020f35a28a43a7c3",
+          "bytes": 43148194,
+          "archive": "zip"
+        }
+      ]
+    },
+    {
+      "id": "pandoc-wasm",
+      "title": "Document Converter engine",
+      "description": "Offline engine for the original Document Converter tool",
+      "license": "GPL-2.0-or-later",
+      "licenseUrl": "https://github.com/tweag/pandoc-wasm",
+      "files": [
+        {
+          "url": "https://unpkg.com/pandoc-wasm@1.0.1/src/pandoc.wasm",
+          "path": "pandoc.wasm",
+          "sha256": "28b8957656c10114bc34e63978503b06be7404c92129fef9299782fd1829eef8",
+          "bytes": 58379729
+        }
+      ]
+    },
+    {
+      "id": "whisper-base",
+      "model": "Xenova/whisper-base",
+      "revision": "64da57285918e20ea79ea5c88eed7197933abaa8",
+      "title": "Subtitles \u2014 Base",
+      "description": "Local speech recognition; GPU and CPU models (Turbo requires WebGPU)",
+      "license": "Apache-2.0 / upstream Whisper MIT; see model card",
+      "restricted": false,
+      "licenseUrl": "https://huggingface.co/Xenova/whisper-base/blob/64da57285918e20ea79ea5c88eed7197933abaa8/README.md",
+      "files": [
+        {
+          "url": "https://huggingface.co/Xenova/whisper-base/resolve/64da57285918e20ea79ea5c88eed7197933abaa8/README.md",
+          "path": "README.md",
+          "sha256": "dc362c71002d21febf5cd5256713cd9406d0eb5c32631f73a39791af6029ce9d",
+          "bytes": 1160
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-base/resolve/64da57285918e20ea79ea5c88eed7197933abaa8/added_tokens.json",
+          "path": "added_tokens.json",
+          "sha256": "ce949fe720c14311cb6c446e69cfe340dc669d7b006077a6feed6ae571dd7e88",
+          "bytes": 2082
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-base/resolve/64da57285918e20ea79ea5c88eed7197933abaa8/config.json",
+          "path": "config.json",
+          "sha256": "d1d347fdb422e6347c2f843a90d375aa67ea3f4b3e20d2c3075f9a9f6243685b",
+          "bytes": 2248
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-base/resolve/64da57285918e20ea79ea5c88eed7197933abaa8/generation_config.json",
+          "path": "generation_config.json",
+          "sha256": "3bba359e33fdd6dc1c10f71846a477d339b0242f462f70ea1dd73274caa38d05",
+          "bytes": 3776
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-base/resolve/64da57285918e20ea79ea5c88eed7197933abaa8/normalizer.json",
+          "path": "normalizer.json",
+          "sha256": "bf1c507dc8724ca9cf9903640dacfb69dae2f00edee4f21ceba106a7392f26dd",
+          "bytes": 52666
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-base/resolve/64da57285918e20ea79ea5c88eed7197933abaa8/onnx/decoder_model_merged_q4.onnx",
+          "path": "onnx/decoder_model_merged_q4.onnx",
+          "sha256": "a68dcdbb6551967030dcbdcef400d6e62b1624234c2e606f75d1d2878aef5def",
+          "bytes": 123641874
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-base/resolve/64da57285918e20ea79ea5c88eed7197933abaa8/onnx/decoder_model_merged_quantized.onnx",
+          "path": "onnx/decoder_model_merged_quantized.onnx",
+          "sha256": "a6beb6baabb66f00b6a686d828c95ffca6146d51900cbad0266cad38f64cf861",
+          "bytes": 53707539
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-base/resolve/64da57285918e20ea79ea5c88eed7197933abaa8/onnx/encoder_model_q4.onnx",
+          "path": "onnx/encoder_model_q4.onnx",
+          "sha256": "dc0cb2885dc2bc570dc8de8d00987cd20314e5773f3baf968b3219810142d886",
+          "bytes": 18749674
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-base/resolve/64da57285918e20ea79ea5c88eed7197933abaa8/onnx/encoder_model_quantized.onnx",
+          "path": "onnx/encoder_model_quantized.onnx",
+          "sha256": "3e345e977b55620a37c0c2b2af0644e019afdfad562dcf71eb929bb7274285f9",
+          "bytes": 23200850
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-base/resolve/64da57285918e20ea79ea5c88eed7197933abaa8/preprocessor_config.json",
+          "path": "preprocessor_config.json",
+          "sha256": "a6a76d28c93edb273669eb9e0b0636a2bddbb1272c3261e47b7ca6dfdbac1b8d",
+          "bytes": 339
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-base/resolve/64da57285918e20ea79ea5c88eed7197933abaa8/quant_config.json",
+          "path": "quant_config.json",
+          "sha256": "757dc2d96699ce44e209c63c79ee4d41758a4baff39de9c5bc59ad90de454e81",
+          "bytes": 2840
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-base/resolve/64da57285918e20ea79ea5c88eed7197933abaa8/quantize_config.json",
+          "path": "quantize_config.json",
+          "sha256": "15ed182b51e68a3a75c1c00d7b9c5464364cbc09b26e1baa840868c938dbad5f",
+          "bytes": 2840
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-base/resolve/64da57285918e20ea79ea5c88eed7197933abaa8/special_tokens_map.json",
+          "path": "special_tokens_map.json",
+          "sha256": "e67ae3a0aaa99abcd9f187138e12db1f65c16a14761c50ef10eef2c174a7a691",
+          "bytes": 2194
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-base/resolve/64da57285918e20ea79ea5c88eed7197933abaa8/tokenizer.json",
+          "path": "tokenizer.json",
+          "sha256": "27fc476bfe7f17299480be2273fc0608e4d5a99aba2ab5dec5374b4482d1a566",
+          "bytes": 2480466
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-base/resolve/64da57285918e20ea79ea5c88eed7197933abaa8/tokenizer_config.json",
+          "path": "tokenizer_config.json",
+          "sha256": "2a4c4281cf9f51ac6ccc406fdc711a087afe6530f671fa7b80953edc498275ce",
+          "bytes": 282683
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-base/resolve/64da57285918e20ea79ea5c88eed7197933abaa8/vocab.json",
+          "path": "vocab.json",
+          "sha256": "50d6a919f0a0601d56a04eb583c780d18553aa388254ba3158eb6a00f13e2c1a",
+          "bytes": 1036584
+        }
+      ]
+    },
+    {
+      "id": "whisper-small",
+      "model": "Xenova/whisper-small",
+      "revision": "2d67713f236afa48a18992566e7647f6ca848e13",
+      "title": "Subtitles \u2014 Small",
+      "description": "Local speech recognition; GPU and CPU models (Turbo requires WebGPU)",
+      "license": "Apache-2.0 / upstream Whisper MIT; see model card",
+      "restricted": false,
+      "licenseUrl": "https://huggingface.co/Xenova/whisper-small/blob/2d67713f236afa48a18992566e7647f6ca848e13/README.md",
+      "files": [
+        {
+          "url": "https://huggingface.co/Xenova/whisper-small/resolve/2d67713f236afa48a18992566e7647f6ca848e13/README.md",
+          "path": "README.md",
+          "sha256": "12ae844fce48ede74fa80a1e24a7a34a3d9975bd4ba4f2a234762cf9a1f7a057",
+          "bytes": 1163
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-small/resolve/2d67713f236afa48a18992566e7647f6ca848e13/added_tokens.json",
+          "path": "added_tokens.json",
+          "sha256": "ce949fe720c14311cb6c446e69cfe340dc669d7b006077a6feed6ae571dd7e88",
+          "bytes": 2082
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-small/resolve/2d67713f236afa48a18992566e7647f6ca848e13/config.json",
+          "path": "config.json",
+          "sha256": "5a6429d21d7a3379dd0861b74510f9f7076f32b563bffc9fcb072482d55ab3be",
+          "bytes": 2232
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-small/resolve/2d67713f236afa48a18992566e7647f6ca848e13/generation_config.json",
+          "path": "generation_config.json",
+          "sha256": "0b7407a4e53a677f826e03c75d409e6f830663932bf43dda3b08c5efa2223279",
+          "bytes": 3837
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-small/resolve/2d67713f236afa48a18992566e7647f6ca848e13/normalizer.json",
+          "path": "normalizer.json",
+          "sha256": "bf1c507dc8724ca9cf9903640dacfb69dae2f00edee4f21ceba106a7392f26dd",
+          "bytes": 52666
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-small/resolve/2d67713f236afa48a18992566e7647f6ca848e13/onnx/decoder_model_merged_q4.onnx",
+          "path": "onnx/decoder_model_merged_q4.onnx",
+          "sha256": "7de7841243c9f128780dbd18949bca0c7291866f1435b8dafb577bbf445e973b",
+          "bytes": 233230238
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-small/resolve/2d67713f236afa48a18992566e7647f6ca848e13/onnx/decoder_model_merged_quantized.onnx",
+          "path": "onnx/decoder_model_merged_quantized.onnx",
+          "sha256": "fcfc6100dc7339e7507e10f8b274350be7c4f8d8b575f0293f94cc0e156d6d24",
+          "bytes": 156780950
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-small/resolve/2d67713f236afa48a18992566e7647f6ca848e13/onnx/encoder_model_q4.onnx",
+          "path": "onnx/encoder_model_q4.onnx",
+          "sha256": "7deb48a1db0bc4fb737fdde0d893c9064c678f4c608f2c5d6ca1af8048d610a1",
+          "bytes": 66134815
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-small/resolve/2d67713f236afa48a18992566e7647f6ca848e13/onnx/encoder_model_quantized.onnx",
+          "path": "onnx/encoder_model_quantized.onnx",
+          "sha256": "969f5ac12974340386bf7a02ea6626003e5e2dee396ffc6ab0eec282bf55ba06",
+          "bytes": 92324809
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-small/resolve/2d67713f236afa48a18992566e7647f6ca848e13/preprocessor_config.json",
+          "path": "preprocessor_config.json",
+          "sha256": "a6a76d28c93edb273669eb9e0b0636a2bddbb1272c3261e47b7ca6dfdbac1b8d",
+          "bytes": 339
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-small/resolve/2d67713f236afa48a18992566e7647f6ca848e13/quant_config.json",
+          "path": "quant_config.json",
+          "sha256": "757dc2d96699ce44e209c63c79ee4d41758a4baff39de9c5bc59ad90de454e81",
+          "bytes": 2840
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-small/resolve/2d67713f236afa48a18992566e7647f6ca848e13/quantize_config.json",
+          "path": "quantize_config.json",
+          "sha256": "8d753d43dd1af715b29f7b471008e5161aca34deaadfa347d109b60a1d474d84",
+          "bytes": 2840
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-small/resolve/2d67713f236afa48a18992566e7647f6ca848e13/special_tokens_map.json",
+          "path": "special_tokens_map.json",
+          "sha256": "e67ae3a0aaa99abcd9f187138e12db1f65c16a14761c50ef10eef2c174a7a691",
+          "bytes": 2194
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-small/resolve/2d67713f236afa48a18992566e7647f6ca848e13/tokenizer.json",
+          "path": "tokenizer.json",
+          "sha256": "27fc476bfe7f17299480be2273fc0608e4d5a99aba2ab5dec5374b4482d1a566",
+          "bytes": 2480466
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-small/resolve/2d67713f236afa48a18992566e7647f6ca848e13/tokenizer_config.json",
+          "path": "tokenizer_config.json",
+          "sha256": "2a4c4281cf9f51ac6ccc406fdc711a087afe6530f671fa7b80953edc498275ce",
+          "bytes": 282683
+        },
+        {
+          "url": "https://huggingface.co/Xenova/whisper-small/resolve/2d67713f236afa48a18992566e7647f6ca848e13/vocab.json",
+          "path": "vocab.json",
+          "sha256": "50d6a919f0a0601d56a04eb583c780d18553aa388254ba3158eb6a00f13e2c1a",
+          "bytes": 1036584
+        }
+      ]
+    },
+    {
+      "id": "whisper-turbo",
+      "model": "onnx-community/whisper-large-v3-turbo_timestamped",
+      "revision": "b3f77bf9a8c4d5ea3415827033d1ffea7955fd9a",
+      "title": "Subtitles \u2014 Large Turbo",
+      "description": "Local speech recognition; GPU and CPU models (Turbo requires WebGPU)",
+      "license": "Apache-2.0 / upstream Whisper MIT; see model card",
+      "restricted": false,
+      "licenseUrl": "https://huggingface.co/onnx-community/whisper-large-v3-turbo_timestamped/blob/b3f77bf9a8c4d5ea3415827033d1ffea7955fd9a/README.md",
+      "files": [
+        {
+          "url": "https://huggingface.co/onnx-community/whisper-large-v3-turbo_timestamped/resolve/b3f77bf9a8c4d5ea3415827033d1ffea7955fd9a/README.md",
+          "path": "README.md",
+          "sha256": "19af35fc51ff4eab95ea53a4955af5c2b13f720b802be3191b79fd6f053e4ce7",
+          "bytes": 551
+        },
+        {
+          "url": "https://huggingface.co/onnx-community/whisper-large-v3-turbo_timestamped/resolve/b3f77bf9a8c4d5ea3415827033d1ffea7955fd9a/added_tokens.json",
+          "path": "added_tokens.json",
+          "sha256": "3c51f66c4c21f9e126970078f11ae77a78c74aee8df606ee9daba86e467108e0",
+          "bytes": 34648
+        },
+        {
+          "url": "https://huggingface.co/onnx-community/whisper-large-v3-turbo_timestamped/resolve/b3f77bf9a8c4d5ea3415827033d1ffea7955fd9a/config.json",
+          "path": "config.json",
+          "sha256": "32c02d1dfb9a93ff236cdcf0f741f8f3a4cedb437c407a361a022451ac009131",
+          "bytes": 1330
+        },
+        {
+          "url": "https://huggingface.co/onnx-community/whisper-large-v3-turbo_timestamped/resolve/b3f77bf9a8c4d5ea3415827033d1ffea7955fd9a/generation_config.json",
+          "path": "generation_config.json",
+          "sha256": "8568ddf83476167b4607014956b87142763fa6923e71259a606734beb39bdfc8",
+          "bytes": 3797
+        },
+        {
+          "url": "https://huggingface.co/onnx-community/whisper-large-v3-turbo_timestamped/resolve/b3f77bf9a8c4d5ea3415827033d1ffea7955fd9a/normalizer.json",
+          "path": "normalizer.json",
+          "sha256": "bf1c507dc8724ca9cf9903640dacfb69dae2f00edee4f21ceba106a7392f26dd",
+          "bytes": 52666
+        },
+        {
+          "url": "https://huggingface.co/onnx-community/whisper-large-v3-turbo_timestamped/resolve/b3f77bf9a8c4d5ea3415827033d1ffea7955fd9a/onnx/decoder_model_merged_q4.onnx",
+          "path": "onnx/decoder_model_merged_q4.onnx",
+          "sha256": "6bf129462f6bc8722726291e3fdbd8bc07000f66336b4ef1387d5d8d636f4186",
+          "bytes": 334207912
+        },
+        {
+          "url": "https://huggingface.co/onnx-community/whisper-large-v3-turbo_timestamped/resolve/b3f77bf9a8c4d5ea3415827033d1ffea7955fd9a/onnx/encoder_model_q4.onnx",
+          "path": "onnx/encoder_model_q4.onnx",
+          "sha256": "41ad35ee01012d68837d142d74de34d3bb32dc040a61817de470011219b1b1eb",
+          "bytes": 425003939
+        },
+        {
+          "url": "https://huggingface.co/onnx-community/whisper-large-v3-turbo_timestamped/resolve/b3f77bf9a8c4d5ea3415827033d1ffea7955fd9a/preprocessor_config.json",
+          "path": "preprocessor_config.json",
+          "sha256": "7ccc62c6f2765af1f3b46c00c9b5894426835a05021c8b9c01eecb6dfb542711",
+          "bytes": 340
+        },
+        {
+          "url": "https://huggingface.co/onnx-community/whisper-large-v3-turbo_timestamped/resolve/b3f77bf9a8c4d5ea3415827033d1ffea7955fd9a/quantize_config.json",
+          "path": "quantize_config.json",
+          "sha256": "8da6e4e50ef7c210ba66a98a4256e6d60e38cef8a9a9c74d327251aaf4e78767",
+          "bytes": 285
+        },
+        {
+          "url": "https://huggingface.co/onnx-community/whisper-large-v3-turbo_timestamped/resolve/b3f77bf9a8c4d5ea3415827033d1ffea7955fd9a/special_tokens_map.json",
+          "path": "special_tokens_map.json",
+          "sha256": "baea4ea09372eb4fca86b4e4346139fd73cb807d5087e9de0948e971739c3e74",
+          "bytes": 2186
+        },
+        {
+          "url": "https://huggingface.co/onnx-community/whisper-large-v3-turbo_timestamped/resolve/b3f77bf9a8c4d5ea3415827033d1ffea7955fd9a/tokenizer.json",
+          "path": "tokenizer.json",
+          "sha256": "b3c8202bbf06d8ee4232c5984baa563784ac4737e2e7fdc42fa180200d3cfcdb",
+          "bytes": 2480645
+        },
+        {
+          "url": "https://huggingface.co/onnx-community/whisper-large-v3-turbo_timestamped/resolve/b3f77bf9a8c4d5ea3415827033d1ffea7955fd9a/tokenizer_config.json",
+          "path": "tokenizer_config.json",
+          "sha256": "844b642c73a91359722f47b35705f7174686df33d252695d8572cf9ac03a6389",
+          "bytes": 282843
+        },
+        {
+          "url": "https://huggingface.co/onnx-community/whisper-large-v3-turbo_timestamped/resolve/b3f77bf9a8c4d5ea3415827033d1ffea7955fd9a/vocab.json",
+          "path": "vocab.json",
+          "sha256": "e2aa043ef015641d363d8288e7c241c85e36a5c761fb303598e0710233344387",
+          "bytes": 1036558
+        }
+      ]
+    },
+    {
+      "id": "background-removal",
+      "model": "briaai/RMBG-1.4",
+      "revision": "2ceba5a5efaec153162aedea169f76caf9b46cf8",
+      "title": "Background removal",
+      "description": "Local image segmentation; separate model terms apply",
+      "license": "BRIA RMBG-1.4 \u2014 non-commercial use; commercial license required for commercial use",
+      "restricted": true,
+      "licenseUrl": "https://huggingface.co/briaai/RMBG-1.4/blob/2ceba5a5efaec153162aedea169f76caf9b46cf8/README.md",
+      "files": [
+        {
+          "url": "https://huggingface.co/briaai/RMBG-1.4/resolve/2ceba5a5efaec153162aedea169f76caf9b46cf8/README.md",
+          "path": "README.md",
+          "sha256": "24e08231e4a1f467f69fd9a5f279c259544212dbeb581c710700f27effd07875",
+          "bytes": 6395
+        },
+        {
+          "url": "https://huggingface.co/briaai/RMBG-1.4/resolve/2ceba5a5efaec153162aedea169f76caf9b46cf8/config.json",
+          "path": "config.json",
+          "sha256": "d774e7d35151efb2479a83f132a57048334adf722e6e354309e30c56e3b35fbe",
+          "bytes": 548
+        },
+        {
+          "url": "https://huggingface.co/briaai/RMBG-1.4/resolve/2ceba5a5efaec153162aedea169f76caf9b46cf8/onnx/model_fp16.onnx",
+          "path": "onnx/model_fp16.onnx",
+          "sha256": "9fdfdb41866d872e0acf4a010c35c1a8547bf0eebe0d1544406bbf1c824cb59d",
+          "bytes": 88217533
+        },
+        {
+          "url": "https://huggingface.co/briaai/RMBG-1.4/resolve/2ceba5a5efaec153162aedea169f76caf9b46cf8/preprocessor_config.json",
+          "path": "preprocessor_config.json",
+          "sha256": "6f9c2cfdb87edd9b83c1314629657d5b320a6a89f8481c872a36253132e33afa",
+          "bytes": 345
+        }
+      ]
+    }
+  ]
+}

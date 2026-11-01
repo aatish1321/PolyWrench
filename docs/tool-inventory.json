@@ -1,0 +1,709 @@
+{
+  "upstream": {
+    "repository": "https://github.com/1612elphi/delphitools",
+    "commit": "ce5e32786a0af4f04eb72f36370f3dd5ec6ddf39",
+    "version": "2.3.0"
+  },
+  "entries": [
+    {
+      "id": "matte-genny",
+      "name": "Matte Generator",
+      "category": "Social Media",
+      "href": "/tools/matte-genny",
+      "component": "matte-genny"
+    },
+    {
+      "id": "scroll-genny",
+      "name": "Seamless Scroll Generator",
+      "category": "Social Media",
+      "href": "/tools/scroll-genny",
+      "component": "scroll-genny"
+    },
+    {
+      "id": "social-cropper",
+      "name": "Social Media Cropper",
+      "category": "Social Media",
+      "href": "/tools/social-cropper",
+      "component": "social-cropper"
+    },
+    {
+      "id": "watermarker",
+      "name": "Watermarker",
+      "category": "Social Media",
+      "href": "/tools/watermarker",
+      "component": "watermarker"
+    },
+    {
+      "id": "colour-atlas",
+      "name": "Colour Atlas",
+      "category": "Colour",
+      "href": "/tools/colour-atlas",
+      "component": "colour-atlas"
+    },
+    {
+      "id": "colorblind-sim",
+      "name": "Colour Blindness Simulator",
+      "category": "Colour",
+      "href": "/tools/colorblind-sim",
+      "component": "colorblind-sim"
+    },
+    {
+      "id": "colour-converter",
+      "name": "Colour Converter",
+      "category": "Colour",
+      "href": "/tools/colour-converter",
+      "component": "colour-converter"
+    },
+    {
+      "id": "contrast-checker",
+      "name": "Contrast Checker",
+      "category": "Colour",
+      "href": "/tools/contrast-checker",
+      "component": "contrast-checker"
+    },
+    {
+      "id": "gradient-genny",
+      "name": "Gradient Generator",
+      "category": "Colour",
+      "href": "/tools/gradient-genny",
+      "component": "gradient-genny"
+    },
+    {
+      "id": "harmony-genny",
+      "name": "Harmony Generator",
+      "category": "Colour",
+      "href": "/tools/harmony-genny",
+      "component": "harmony-genny"
+    },
+    {
+      "id": "palette-collection",
+      "name": "Palette Collection",
+      "category": "Colour",
+      "href": "/tools/palette-collection",
+      "component": "palette-collection"
+    },
+    {
+      "id": "palette-extractor",
+      "name": "Palette Extractor",
+      "category": "Colour",
+      "href": "/tools/palette-extractor",
+      "component": "palette-extractor"
+    },
+    {
+      "id": "palette-genny",
+      "name": "Palette Generator",
+      "category": "Colour",
+      "href": "/tools/palette-genny",
+      "component": "palette-genny"
+    },
+    {
+      "id": "pixel-picker",
+      "name": "Pixel Picker",
+      "category": "Colour",
+      "href": "/tools/pixel-picker",
+      "component": "pixel-picker"
+    },
+    {
+      "id": "tailwind-shades",
+      "name": "Tailwind Shade Generator",
+      "category": "Colour",
+      "href": "/tools/tailwind-shades",
+      "component": "tailwind-shades"
+    },
+    {
+      "id": "image-atlas",
+      "name": "Image Atlas",
+      "category": "Images & Assets",
+      "href": "/tools/image-atlas",
+      "component": "image-atlas"
+    },
+    {
+      "id": "substrata",
+      "name": "Substrata",
+      "category": "Images & Assets",
+      "href": "/editor",
+      "component": null
+    },
+    {
+      "id": "errata",
+      "name": "Errata",
+      "category": "Images & Assets",
+      "href": "/errata",
+      "component": null
+    },
+    {
+      "id": "artwork-enhancer",
+      "name": "Artwork Enhancer",
+      "category": "Images & Assets",
+      "href": "/tools/artwork-enhancer",
+      "component": "artwork-enhancer"
+    },
+    {
+      "id": "background-remover",
+      "name": "Background Remover",
+      "category": "Images & Assets",
+      "href": "/tools/background-remover",
+      "component": "background-remover"
+    },
+    {
+      "id": "favicon-genny",
+      "name": "Favicon Generator",
+      "category": "Images & Assets",
+      "href": "/tools/favicon-genny",
+      "component": "favicon-genny"
+    },
+    {
+      "id": "image-clipper",
+      "name": "Image Clipper",
+      "category": "Images & Assets",
+      "href": "/tools/image-clipper",
+      "component": "image-clipper"
+    },
+    {
+      "id": "image-compressor",
+      "name": "Image Compressor",
+      "category": "Images & Assets",
+      "href": "/tools/image-compressor",
+      "component": "image-compressor"
+    },
+    {
+      "id": "image-converter",
+      "name": "Image Converter",
+      "category": "Images & Assets",
+      "href": "/tools/image-converter",
+      "component": "image-converter"
+    },
+    {
+      "id": "image-deskewer",
+      "name": "Image De-skewer",
+      "category": "Images & Assets",
+      "href": "/tools/image-deskewer",
+      "component": "image-deskewer"
+    },
+    {
+      "id": "image-masker",
+      "name": "Image Masker",
+      "category": "Images & Assets",
+      "href": "/tools/image-masker",
+      "component": "image-masker"
+    },
+    {
+      "id": "image-splitter",
+      "name": "Image Splitter",
+      "category": "Images & Assets",
+      "href": "/tools/image-splitter",
+      "component": "image-splitter"
+    },
+    {
+      "id": "image-stitcher",
+      "name": "Image Stitcher",
+      "category": "Images & Assets",
+      "href": "/tools/image-stitcher",
+      "component": "image-stitcher"
+    },
+    {
+      "id": "image-tracer",
+      "name": "Image Tracer",
+      "category": "Images & Assets",
+      "href": "/tools/image-tracer",
+      "component": "image-tracer"
+    },
+    {
+      "id": "metadata-stripper",
+      "name": "Metadata Stripper",
+      "category": "Images & Assets",
+      "href": "/tools/metadata-stripper",
+      "component": "metadata-stripper"
+    },
+    {
+      "id": "paste-image",
+      "name": "Paste Image",
+      "category": "Images & Assets",
+      "href": "/tools/paste-image",
+      "component": "paste-image"
+    },
+    {
+      "id": "placeholder-genny",
+      "name": "Placeholder Generator",
+      "category": "Images & Assets",
+      "href": "/tools/placeholder-genny",
+      "component": "placeholder-genny"
+    },
+    {
+      "id": "svg-optimiser",
+      "name": "SVG Optimiser",
+      "category": "Images & Assets",
+      "href": "/tools/svg-optimiser",
+      "component": "svg-optimiser"
+    },
+    {
+      "id": "base64-image-encoder",
+      "name": "Base64 Image Encoder",
+      "category": "Images & Assets",
+      "href": "/tools/base64-image-encoder",
+      "component": "base64-image-encoder"
+    },
+    {
+      "id": "audio-atlas",
+      "name": "Audio Atlas",
+      "category": "Audio & Video",
+      "href": "/tools/audio-atlas",
+      "component": "audio-atlas"
+    },
+    {
+      "id": "video-atlas",
+      "name": "Video Atlas",
+      "category": "Audio & Video",
+      "href": "/tools/video-atlas",
+      "component": "video-atlas"
+    },
+    {
+      "id": "audio-extractor",
+      "name": "Audio Extractor",
+      "category": "Audio & Video",
+      "href": "/tools/audio-extractor",
+      "component": "audio-extractor"
+    },
+    {
+      "id": "audio-normaliser",
+      "name": "Audio Normaliser",
+      "category": "Audio & Video",
+      "href": "/tools/audio-normaliser",
+      "component": "audio-normaliser"
+    },
+    {
+      "id": "audio-trimmer",
+      "name": "Audio Trimmer",
+      "category": "Audio & Video",
+      "href": "/tools/audio-trimmer",
+      "component": "audio-trimmer"
+    },
+    {
+      "id": "auto-subtitle",
+      "name": "Auto Subtitle",
+      "category": "Audio & Video",
+      "href": "/tools/auto-subtitle",
+      "component": "auto-subtitle"
+    },
+    {
+      "id": "frame-extractor",
+      "name": "Frame Extractor",
+      "category": "Audio & Video",
+      "href": "/tools/frame-extractor",
+      "component": "frame-extractor"
+    },
+    {
+      "id": "screen-recorder",
+      "name": "Screen Recorder",
+      "category": "Audio & Video",
+      "href": "/tools/screen-recorder",
+      "component": "screen-recorder"
+    },
+    {
+      "id": "subtitle-converter",
+      "name": "Subtitle Converter",
+      "category": "Audio & Video",
+      "href": "/tools/subtitle-converter",
+      "component": "subtitle-converter"
+    },
+    {
+      "id": "subtitle-studio",
+      "name": "Subtitle Studio",
+      "category": "Audio & Video",
+      "href": "/tools/subtitle-studio",
+      "component": "subtitle-studio"
+    },
+    {
+      "id": "timecode-calc",
+      "name": "Timecode Calculator",
+      "category": "Audio & Video",
+      "href": "/tools/timecode-calc",
+      "component": "timecode-calc"
+    },
+    {
+      "id": "video-muter",
+      "name": "Video Muter",
+      "category": "Audio & Video",
+      "href": "/tools/video-muter",
+      "component": "video-muter"
+    },
+    {
+      "id": "video-to-gif",
+      "name": "Video to GIF",
+      "category": "Audio & Video",
+      "href": "/tools/video-to-gif",
+      "component": "video-to-gif"
+    },
+    {
+      "id": "video-trimmer",
+      "name": "Video Trimmer",
+      "category": "Audio & Video",
+      "href": "/tools/video-trimmer",
+      "component": "video-trimmer"
+    },
+    {
+      "id": "voice-recorder",
+      "name": "Voice Recorder",
+      "category": "Audio & Video",
+      "href": "/tools/voice-recorder",
+      "component": "voice-recorder"
+    },
+    {
+      "id": "waveform-genny",
+      "name": "Waveform Generator",
+      "category": "Audio & Video",
+      "href": "/tools/waveform-genny",
+      "component": "waveform-genny"
+    },
+    {
+      "id": "doc-converter",
+      "name": "Document Converter",
+      "category": "Typography & Text",
+      "href": "/tools/doc-converter",
+      "component": "doc-converter"
+    },
+    {
+      "id": "text-editor",
+      "name": "Text Editor",
+      "category": "Typography & Text",
+      "href": "/tools/text-editor",
+      "component": "text-editor"
+    },
+    {
+      "id": "font-explorer",
+      "name": "Font File Explorer",
+      "category": "Typography & Text",
+      "href": "/tools/font-explorer",
+      "component": "font-explorer"
+    },
+    {
+      "id": "glyph-browser",
+      "name": "Glyph Browser",
+      "category": "Typography & Text",
+      "href": "/tools/glyph-browser",
+      "component": "glyph-browser"
+    },
+    {
+      "id": "large-type",
+      "name": "Large Type",
+      "category": "Typography & Text",
+      "href": "/tools/large-type",
+      "component": "large-type"
+    },
+    {
+      "id": "line-height-calc",
+      "name": "Line Height Calculator",
+      "category": "Typography & Text",
+      "href": "/tools/line-height-calc",
+      "component": "line-height-calc"
+    },
+    {
+      "id": "paper-sizes",
+      "name": "Paper Sizes",
+      "category": "Typography & Text",
+      "href": "/tools/paper-sizes",
+      "component": "paper-sizes"
+    },
+    {
+      "id": "px-to-rem",
+      "name": "PX to REM",
+      "category": "Typography & Text",
+      "href": "/tools/px-to-rem",
+      "component": "px-to-rem"
+    },
+    {
+      "id": "text-diff",
+      "name": "Text Diff",
+      "category": "Typography & Text",
+      "href": "/tools/text-diff",
+      "component": "text-diff"
+    },
+    {
+      "id": "typo-calc",
+      "name": "Typography Calculator",
+      "category": "Typography & Text",
+      "href": "/tools/typo-calc",
+      "component": "typo-calc"
+    },
+    {
+      "id": "word-counter",
+      "name": "Word Counter",
+      "category": "Typography & Text",
+      "href": "/tools/word-counter",
+      "component": "word-counter"
+    },
+    {
+      "id": "pdf-preflight",
+      "name": "PDF Preflight",
+      "category": "PDF",
+      "href": "/tools/pdf-preflight",
+      "component": "pdf-preflight"
+    },
+    {
+      "id": "pdf-organiser",
+      "name": "PDF Organiser",
+      "category": "PDF",
+      "href": "/tools/pdf-organiser",
+      "component": "pdf-organiser"
+    },
+    {
+      "id": "image-to-pdf",
+      "name": "Images to PDF",
+      "category": "PDF",
+      "href": "/tools/image-to-pdf",
+      "component": "image-to-pdf"
+    },
+    {
+      "id": "pdf-to-images",
+      "name": "PDF to Images",
+      "category": "PDF",
+      "href": "/tools/pdf-to-images",
+      "component": "image-to-pdf"
+    },
+    {
+      "id": "pdf-rotate-crop",
+      "name": "PDF Rotate & Crop",
+      "category": "PDF",
+      "href": "/tools/pdf-rotate-crop",
+      "component": "pdf-rotate-crop"
+    },
+    {
+      "id": "pdf-page-numberer",
+      "name": "PDF Page Numbers",
+      "category": "PDF",
+      "href": "/tools/pdf-page-numberer",
+      "component": "pdf-page-numberer"
+    },
+    {
+      "id": "pdf-compressor",
+      "name": "PDF Compressor",
+      "category": "PDF",
+      "href": "/tools/pdf-compressor",
+      "component": "pdf-compressor"
+    },
+    {
+      "id": "imposer",
+      "name": "Print Imposer",
+      "category": "Print & Production",
+      "href": "/tools/imposer",
+      "component": "imposer"
+    },
+    {
+      "id": "zine-imposer",
+      "name": "Zine Imposer",
+      "category": "Print & Production",
+      "href": "/tools/zine-imposer",
+      "component": "zine-imposer"
+    },
+    {
+      "id": "cron-builder",
+      "name": "Cron Builder",
+      "category": "Dev Tools",
+      "href": "/tools/cron-builder",
+      "component": "cron-builder"
+    },
+    {
+      "id": "http-status",
+      "name": "HTTP Status",
+      "category": "Dev Tools",
+      "href": "/tools/http-status",
+      "component": "http-status"
+    },
+    {
+      "id": "json-formatter",
+      "name": "JSON Formatter",
+      "category": "Dev Tools",
+      "href": "/tools/json-formatter",
+      "component": "json-formatter"
+    },
+    {
+      "id": "jwt-decoder",
+      "name": "JWT Decoder",
+      "category": "Dev Tools",
+      "href": "/tools/jwt-decoder",
+      "component": "jwt-decoder"
+    },
+    {
+      "id": "meta-tag-genny",
+      "name": "Meta Tag Generator",
+      "category": "Dev Tools",
+      "href": "/tools/meta-tag-genny",
+      "component": "meta-tag-genny"
+    },
+    {
+      "id": "regex-tester",
+      "name": "Regex Tester",
+      "category": "Dev Tools",
+      "href": "/tools/regex-tester",
+      "component": "regex-tester"
+    },
+    {
+      "id": "request-builder",
+      "name": "Request Builder",
+      "category": "Dev Tools",
+      "href": "/tools/request-builder",
+      "component": "request-builder"
+    },
+    {
+      "id": "tailwind-cheatsheet",
+      "name": "Tailwind Cheat Sheet",
+      "category": "Dev Tools",
+      "href": "/tools/tailwind-cheatsheet",
+      "component": "tailwind-cheatsheet"
+    },
+    {
+      "id": "uuid-genny",
+      "name": "UUID Generator",
+      "category": "Dev Tools",
+      "href": "/tools/uuid-genny",
+      "component": "uuid-genny"
+    },
+    {
+      "id": "code-genny",
+      "name": "Barcode Generator",
+      "category": "Other Tools",
+      "href": "/tools/code-genny",
+      "component": "code-genny"
+    },
+    {
+      "id": "decoder",
+      "name": "Cipher Decoder",
+      "category": "Other Tools",
+      "href": "/tools/decoder",
+      "component": "decoder"
+    },
+    {
+      "id": "password-genny",
+      "name": "Password Generator",
+      "category": "Other Tools",
+      "href": "/tools/password-genny",
+      "component": "password-genny"
+    },
+    {
+      "id": "qr-genny",
+      "name": "QR Generator",
+      "category": "Other Tools",
+      "href": "/tools/qr-genny",
+      "component": "qr-genny"
+    },
+    {
+      "id": "markdown-writer",
+      "name": "Text Scratchpad",
+      "category": "Other Tools",
+      "href": "/tools/markdown-writer",
+      "component": "markdown-writer"
+    },
+    {
+      "id": "algebra-calc",
+      "name": "Algebra Calculator",
+      "category": "Calculators",
+      "href": "/tools/algebra-calc",
+      "component": "algebra-calc"
+    },
+    {
+      "id": "base-converter",
+      "name": "Base Converter",
+      "category": "Calculators",
+      "href": "/tools/base-converter",
+      "component": "base-converter"
+    },
+    {
+      "id": "encoder",
+      "name": "Encoding Tools",
+      "category": "Calculators",
+      "href": "/tools/encoder",
+      "component": "encoder"
+    },
+    {
+      "id": "graph-calc",
+      "name": "Graph Calculator",
+      "category": "Calculators",
+      "href": "/tools/graph-calc",
+      "component": "graph-calc"
+    },
+    {
+      "id": "sci-calc",
+      "name": "Scientific Calculator",
+      "category": "Calculators",
+      "href": "/tools/sci-calc",
+      "component": "sci-calc"
+    },
+    {
+      "id": "time-calc",
+      "name": "Time Calculator",
+      "category": "Calculators",
+      "href": "/tools/time-calc",
+      "component": "time-calc"
+    },
+    {
+      "id": "unit-converter",
+      "name": "Unit Converter",
+      "category": "Calculators",
+      "href": "/tools/unit-converter",
+      "component": "unit-converter"
+    },
+    {
+      "id": "shavian-transliterator",
+      "name": "Shavian Transliterator",
+      "category": "Turbo-nerd Shit",
+      "href": "/tools/shavian-transliterator",
+      "component": "shavian-transliterator"
+    },
+    {
+      "id": "morse-code",
+      "name": "Morse Code",
+      "category": "Turbo-nerd Shit",
+      "href": "/tools/morse-code",
+      "component": "morse-code"
+    },
+    {
+      "id": "braille-converter",
+      "name": "Braille Converter",
+      "category": "Turbo-nerd Shit",
+      "href": "/tools/braille-converter",
+      "component": "braille-converter"
+    },
+    {
+      "id": "ipa-transcriber",
+      "name": "IPA Transcription",
+      "category": "Turbo-nerd Shit",
+      "href": "/tools/ipa-transcriber",
+      "component": "ipa-transcriber"
+    },
+    {
+      "id": "nato-phonetic",
+      "name": "NATO Phonetic",
+      "category": "Turbo-nerd Shit",
+      "href": "/tools/nato-phonetic",
+      "component": "nato-phonetic"
+    },
+    {
+      "id": "stupid-units",
+      "name": "Stupid Units",
+      "category": "Alien Delphi's Experiments",
+      "href": "/tools/stupid-units",
+      "component": "stupid-units"
+    },
+    {
+      "id": "recipe-table",
+      "name": "Recipe Table",
+      "category": "Alien Delphi's Experiments",
+      "href": "/tools/recipe-table",
+      "component": "recipe-table"
+    },
+    {
+      "id": "workflows",
+      "name": "workflows",
+      "category": "Workspace",
+      "href": "/workflows",
+      "component": null
+    },
+    {
+      "id": "experiments",
+      "name": "experiments",
+      "category": "Workspace",
+      "href": "/experiments",
+      "component": null
+    }
+  ]
+}

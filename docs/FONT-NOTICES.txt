@@ -1,0 +1,27 @@
+Iosevka-400.woff2
+Copyright 2015-2023, Renzhi Li (aka. Belleve Invis, belleve@typeof.net).
+
+Iosevka-700.woff2
+Copyright 2015-2023, Renzhi Li (aka. Belleve Invis, belleve@typeof.net).
+
+NotoSansShavian-Regular.woff2
+Copyright 2022 The Noto Project Authors (https://github.com/notofonts/shavian)
+https://scripts.sil.org/OFL
+
+OpenSansCondensedV-Italic.woff2
+Copyright 2020 The Open Sans Project Authors (https://github.com/googlefonts/opensans)
+This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL
+http://scripts.sil.org/OFL
+
+OpenSansCondensedV.woff2
+Copyright 2020 The Open Sans Project Authors (https://github.com/googlefonts/opensans)
+This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL
+http://scripts.sil.org/OFL
+
+iAWriterQuattroV-Italic.woff2
+Copyright 2017 IBM Corp. All rights reserved.
+This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL
+
+iAWriterQuattroV.woff2
+Copyright 2017 IBM Corp. and iA Inc. All rights reserved.
+This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL

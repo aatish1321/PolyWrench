@@ -1,0 +1,23 @@
+{
+	"extends": "@ember/app-tsconfig",
+	"include": ["app", "tests", "types"],
+	"compilerOptions": {
+		"resolveJsonModule": true,
+		"allowJs": true,
+		"paths": {
+			"delphitools-v2/tests/*": ["./tests/*"],
+			"delphitools-v2/*": ["./app/*"],
+			"@glint/template": ["./node_modules/@glint/template"],
+			"@glint/template/*": [
+				"./node_modules/@glint/template/*"
+			],
+			"*": ["./types/*"]
+		},
+		"types": [
+			"ember-source/types",
+			"@embroider/core/virtual",
+			"vite/client",
+			"@glint/ember-tsc/types"
+		]
+	}
+}

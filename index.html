@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>PolyWrench</title>
+    <meta name="description" content="Offline desktop tools and batch file conversion.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      (function () {
+        try {
+          // 31 October only; ?halloween previews it
+          var d = new Date();
+          if ((d.getMonth() === 9 && d.getDate() === 31) || /[?&]halloween\b/.test(location.search))
+            document.documentElement.classList.add('halloween');
+          var t = localStorage.getItem('theme');
+          var dark = t === 'dark' || (t !== 'light' && matchMedia('(prefers-color-scheme:dark)').matches);
+          // delphicanon tokens follow prefers-color-scheme unless html.light is set
+          document.documentElement.classList.add(dark ? 'dark' : 'light');
+          if (localStorage.getItem('font') === 'classic') document.documentElement.classList.add('classic');
+        } catch (e) {}
+        // ctrl+shift+h toggles the halloween preview
+        addEventListener('keydown', function (e) {
+          if (!e.ctrlKey || !e.shiftKey || e.code !== 'KeyH') return;
+          e.preventDefault();
+          var u = new URL(location.href);
+          if (u.searchParams.has('halloween')) u.searchParams.delete('halloween');
+          else u.searchParams.set('halloween', '');
+          location.href = u.href;
+        });
+      })();
+    </script>
+
+    {{content-for "head"}}
+
+    <link integrity="" rel="stylesheet" href="/@embroider/virtual/vendor.css">
+
+    {{content-for "head-footer"}}
+  </head>
+  <body>
+    {{content-for "body"}}
+
+    <script src="/@embroider/virtual/vendor.js"></script>
+    <script type="module">
+      import Application from './app/app';
+      import environment from './app/config/environment';
+
+      Application.create(environment.APP);
+    </script>
+
+    {{content-for "body-footer"}}
+  </body>
+</html>
