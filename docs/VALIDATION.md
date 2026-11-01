@@ -8,7 +8,7 @@ Verified on Ubuntu x86-64, 2026-11-01:
 - Light/dark themes and the compact 960px window were checked, including no horizontal document overflow.
 - An actual image was loaded and converted through the redesigned Image Converter controls.
 - The replacement logo was used in the app, README asset, window icon and freshly built 0.1.1 AppImage/deb packages.
-- The original Windows CI startup timeout is not yet explained by its limited log. The harness now attaches listeners before a controlled reload, disables hardware rendering for CI on all platforms, and saves screenshots, HTML and Electron diagnostics on failure. CI uploads these even when smoke checks fail. Windows success must be confirmed by the new workflow run; a longer timeout alone was not treated as a fix.
+- The original Windows CI startup timeout was addressed in the test harness. The harness now attaches listeners before a controlled reload, disables hardware rendering for CI on all platforms, and saves screenshots, HTML and Electron diagnostics on failure. CI uploads these even when smoke checks fail. The new workflow run confirmed that the Windows smoke step passed and advanced to installer packaging. Ubuntu CI completed successfully. A longer timeout alone was not treated as a fix. The previous limited log does not establish whether rendering or startup timing caused that earlier failure; real Windows hardware was not tested.
 
 # Original implementation — PolyWrench 0.1.0
 
