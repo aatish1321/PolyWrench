@@ -319,7 +319,8 @@ export default class PdfPageNumberer extends Component {
 		try {
 			const bytes = await file.arrayBuffer();
 			const pdf = await open(bytes);
-			if (token !== this.#token) return void pdf.destroy();
+			if (token !== this.#token)
+				return void pdf.loadingTask.destroy();
 			this.#bytes = bytes;
 			this.#pdf = pdf;
 			const found = await sizes(pdf);
@@ -504,7 +505,7 @@ export default class PdfPageNumberer extends Component {
 			if (url) URL.revokeObjectURL(url);
 		if (this.picture) URL.revokeObjectURL(this.picture);
 		this.picture = '';
-		void this.#pdf?.destroy();
+		void this.#pdf?.loadingTask.destroy();
 		this.#pdf = undefined;
 	}
 

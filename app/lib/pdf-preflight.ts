@@ -880,13 +880,16 @@ export async function analyseWithPdfJs(
 		);
 		const rectsOf = (boxes: PageBox[]) =>
 			boxes.map((b) => {
-				const [x1, y1, x2, y2] =
-					viewport.convertToViewportRectangle([
+				const [x1, y1] =
+					viewport.convertToViewportPoint(
 						b.x,
 						b.y,
+					) as [number, number];
+				const [x2, y2] =
+					viewport.convertToViewportPoint(
 						b.x + b.width,
 						b.y + b.height,
-					]) as [number, number, number, number];
+					) as [number, number];
 				return {
 					x: Math.min(x1, x2),
 					y: Math.min(y1, y2),

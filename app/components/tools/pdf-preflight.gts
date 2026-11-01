@@ -240,7 +240,7 @@ export default class PdfPreflight extends Component {
 				file.size,
 				() => !live(),
 			);
-			if (!live()) return void pdfDoc?.destroy();
+			if (!live()) return void pdfDoc?.loadingTask.destroy();
 			this.report = report;
 			this.#pdf = pdfDoc;
 			this.analysing = false;
@@ -366,7 +366,7 @@ export default class PdfPreflight extends Component {
 		this.pages = [];
 		this.preview = '';
 		this.boxes = [];
-		void this.#pdf?.destroy();
+		void this.#pdf?.loadingTask.destroy();
 		this.#pdf = null;
 	}
 

@@ -148,7 +148,8 @@ export default class PdfCompressor extends Component {
 			// unreadable here; MuPDF may still compress it
 			return;
 		}
-		if (token !== this.#token) return void pdf.destroy();
+		if (token !== this.#token)
+			return void pdf.loadingTask.destroy();
 		this.#pdf = pdf;
 		this.pages = (await sizes(pdf)).map((size) => ({ size }));
 		if (token !== this.#token) return;
@@ -212,7 +213,7 @@ export default class PdfCompressor extends Component {
 		this.compressing = false;
 		this.compressed = null;
 		this.failed = false;
-		void this.#result?.destroy();
+		void this.#result?.loadingTask.destroy();
 		this.#result = undefined;
 		if (this.after) {
 			URL.revokeObjectURL(this.after);
@@ -246,7 +247,8 @@ export default class PdfCompressor extends Component {
 			const pdf = await open(result.bytes).catch(
 				() => undefined,
 			);
-			if (seq !== this.#seq) return void pdf?.destroy();
+			if (seq !== this.#seq)
+				return void pdf?.loadingTask.destroy();
 			this.#result = pdf;
 			void this.#compare();
 		} catch {
@@ -283,8 +285,8 @@ export default class PdfCompressor extends Component {
 		this.#revokeCompare();
 		this.before = '';
 		this.after = '';
-		void this.#pdf?.destroy();
-		void this.#result?.destroy();
+		void this.#pdf?.loadingTask.destroy();
+		void this.#result?.loadingTask.destroy();
 		this.#pdf = undefined;
 		this.#result = undefined;
 	}

@@ -392,7 +392,8 @@ export default class Imposer extends Component {
 			console.error('imposer: failed to load PDF', error);
 			return;
 		}
-		if (token !== this.#token) return void pdf.destroy();
+		if (token !== this.#token)
+			return void pdf.loadingTask.destroy();
 		this.#pdf = pdf;
 		const points = await sizes(pdf);
 		if (token !== this.#token) return;
@@ -448,7 +449,7 @@ export default class Imposer extends Component {
 	};
 
 	#close() {
-		void this.#pdf?.destroy();
+		void this.#pdf?.loadingTask.destroy();
 		this.#pdf = null;
 		this.#bytes = null;
 		this.#thumbs.clear();

@@ -199,7 +199,7 @@ module('Unit | lib | pdf-preflight', function () {
 			'a.pdf',
 			bytes.length,
 		);
-		void pdfDoc?.destroy();
+		void pdfDoc?.loadingTask.destroy();
 		const found = report.issues.find((i) =>
 			i.message.startsWith('Very low resolution image'),
 		);

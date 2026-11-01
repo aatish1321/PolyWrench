@@ -1,3 +1,10 @@
+# CI compatibility fixes — PolyWrench 0.1.2
+
+- macOS smoke failures came from asserting blur while the runner requested reduced transparency. The test now explicitly checks both transparency preferences, preserving the application's accessibility behavior.
+- The PDF.js 6 update PR removed document `destroy()` and viewport rectangle conversion methods. All affected tools, PDF Studio and unit fixtures now use loading-task cleanup and viewport point conversion, supported by PDF.js 5 and 6. Type checking and the 104-route Electron smoke passed against PDF.js 6.2.108; smoke now renders, clears and reopens an actual PDF.
+- Legacy Ember build helpers pinned vulnerable `tmp` versions that Dependabot could not upgrade. A targeted override resolves all copies to 0.2.7. A regression test exercises symlink detection, file watching and external-editor temporary-file creation/cleanup through the actual helpers.
+- Workflow concurrency cancels superseded runs for the same branch or PR. Dependency update checks remain enabled.
+
 # Branding, type and motion — PolyWrench 0.1.2
 
 Verified on Ubuntu x86-64, 2026-11-01:

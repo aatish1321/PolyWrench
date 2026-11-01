@@ -82,7 +82,7 @@ async function pdfPages(file: File, max: number): Promise<ZineImage[]> {
 			out.push(await decode(blob, `${base} p${n}`));
 		}
 	} finally {
-		void pdf.destroy();
+		void pdf.loadingTask.destroy();
 	}
 	return out;
 }

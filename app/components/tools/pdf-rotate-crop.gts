@@ -465,9 +465,11 @@ export default class PdfRotateCrop extends Component {
 			const bytes = await file.arrayBuffer();
 			if (token !== this.#token) return;
 			const pdf = await open(bytes);
-			if (token !== this.#token) return void pdf.destroy();
+			if (token !== this.#token)
+				return void pdf.loadingTask.destroy();
 			const found = await geometry(pdf);
-			if (token !== this.#token) return void pdf.destroy();
+			if (token !== this.#token)
+				return void pdf.loadingTask.destroy();
 			this.#bytes = bytes;
 			this.#pdf = pdf;
 			this.geometry = found;
@@ -635,7 +637,7 @@ export default class PdfRotateCrop extends Component {
 		if (this.picture?.url) URL.revokeObjectURL(this.picture.url);
 		this.thumbs = [];
 		this.picture = null;
-		void this.#pdf?.destroy();
+		void this.#pdf?.loadingTask.destroy();
 		this.#pdf = undefined;
 	}
 

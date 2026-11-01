@@ -5,6 +5,7 @@ import { join } from 'node:path';
 import assert from 'node:assert/strict';
 import electron from 'electron';
 import puppeteer from 'puppeteer-core';
+import { PDFDocument } from 'pdf-lib';
 import { inventory } from './tool-inventory.mjs';
 
 const data =
@@ -172,6 +173,15 @@ try {
 	);
 	await mkdir('artifacts', { recursive: true });
 	await page.evaluate(() => document.fonts.ready);
+	const media = await page.createCDPSession();
+	await media.send('Emulation.setEmulatedMedia', {
+		features: [
+			{
+				name: 'prefers-reduced-transparency',
+				value: 'no-preference',
+			},
+		],
+	});
 	const typography = await page.evaluate(() => ({
 		body: getComputedStyle(document.querySelector('.lg-app'))
 			.fontFamily,
@@ -198,6 +208,24 @@ try {
 		'Both fonts load from packaged files',
 	);
 	assert(typography.frost.includes('blur'), 'Frosted surface is enabled');
+	await media.send('Emulation.setEmulatedMedia', {
+		features: [
+			{
+				name: 'prefers-reduced-transparency',
+				value: 'reduce',
+			},
+		],
+	});
+	assert.equal(
+		await page.$eval(
+			'.lg-widget',
+			(el) => getComputedStyle(el).backdropFilter,
+		),
+		'none',
+		'Reduced transparency disables blur',
+	);
+	await media.send('Emulation.setEmulatedMedia', { features: [] });
+	await media.detach();
 	await page.emulateMediaFeatures([
 		{ name: 'prefers-reduced-motion', value: 'reduce' },
 	]);
@@ -321,6 +349,29 @@ try {
 			await page.screenshot({
 				path: 'artifacts/image-converter-loaded.png',
 			});
+		}
+		if (route === '/tools/pdf-organiser') {
+			const pdf = await PDFDocument.create();
+			pdf.addPage([200, 300]);
+			const fixture = join(data, 'smoke.pdf');
+			await writeFile(fixture, await pdf.save());
+			for (let attempt = 0; attempt < 2; attempt++) {
+				await (
+					await page.$(
+						'.pdf-organiser input[type="file"]',
+					)
+				).uploadFile(fixture);
+				await page.waitForFunction(() =>
+					[
+						...document.querySelectorAll(
+							'.porg-strip img',
+						),
+					].some((img) => img.naturalWidth > 0),
+				);
+				await page.click('.porg-file button');
+				await page.waitForSelector('.porg-blank');
+			}
+			console.log('PASS PDF rendering, cleanup and reopen');
 		}
 		await assertAppBranding(page);
 		const errors = exceptions.slice(before);

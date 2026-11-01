@@ -46,7 +46,9 @@ function useSource(
 		: bytes
 			? loadPdfDocument(bytes.slice())
 			: Promise.resolve(null);
-	void previous.then((pdf) => pdf?.destroy()).catch(() => undefined);
+	void previous
+		.then((pdf) => pdf?.loadingTask.destroy())
+		.catch(() => undefined);
 	sourceBytes = bytes;
 	setContentSource(bytes, preloaded?.lib);
 }
@@ -86,7 +88,9 @@ store.subscribe(() => {
 	edited = {
 		sig,
 		pdf: (async () => {
-			await previous?.pdf.then((p) => p?.destroy());
+			await previous?.pdf.then((p) =>
+				p?.loadingTask.destroy(),
+			);
 			const doc = store.getSnapshot();
 			if (!sig || !doc) return null;
 			const bytes = await editedBytes(doc.pages);
@@ -177,7 +181,7 @@ export async function replaceDocument(
 		);
 		const read = await readSource(bytes);
 		if (store.getSnapshot() !== doc || !isCurrent()) {
-			void read.pdf.destroy();
+			void read.pdf.loadingTask.destroy();
 			return false;
 		}
 		const source = adopt(bytes, read);

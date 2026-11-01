@@ -276,7 +276,7 @@ export default class PdfOrganiser extends Component {
 				return { ...source, pictures };
 			});
 		});
-		void pdf.destroy();
+		void pdf.loadingTask.destroy();
 	}
 
 	remove = (id: number) => {

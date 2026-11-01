@@ -14634,9 +14634,9 @@ SOFTWARE.
 
 
 ========================================================================
-@xmldom/xmldom@0.9.10
+@xmldom/xmldom@0.9.12
 License: MIT
-Source: https://registry.npmjs.org/@xmldom/xmldom/-/xmldom-0.9.10.tgz
+Source: https://registry.npmjs.org/@xmldom/xmldom/-/xmldom-0.9.12.tgz
 
 LICENSE
 Copyright 2019 - present Christopher J. Brody and other contributors, as listed in: https://github.com/xmldom/xmldom/graphs/contributors
@@ -21105,35 +21105,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 ========================================================================
-can-symlink/node_modules/tmp@0.0.28
-License: MIT
-Source: https://registry.npmjs.org/tmp/-/tmp-0.0.28.tgz
-
-LICENSE
-The MIT License (MIT)
-
-Copyright (c) 2014 KARASZI István
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-
-========================================================================
 caniuse-lite@1.0.30001809
 License: CC-BY-4.0
 Source: https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001809.tgz
@@ -24072,9 +24043,9 @@ SOFTWARE.
 
 
 ========================================================================
-css-select@5.2.2
+css-select@6.0.0
 License: BSD-2-Clause
-Source: https://registry.npmjs.org/css-select/-/css-select-5.2.2.tgz
+Source: https://registry.npmjs.org/css-select/-/css-select-6.0.0.tgz
 
 LICENSE
 Copyright (c) Felix Böhm
@@ -24147,9 +24118,9 @@ THE SOFTWARE.
 
 
 ========================================================================
-css-what@6.2.2
+css-what@7.0.0
 License: BSD-2-Clause
-Source: https://registry.npmjs.org/css-what/-/css-what-6.2.2.tgz
+Source: https://registry.npmjs.org/css-what/-/css-what-7.0.0.tgz
 
 LICENSE
 Copyright (c) Felix Böhm
@@ -30177,35 +30148,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 ========================================================================
-external-editor/node_modules/tmp@0.0.33
-License: MIT
-Source: https://registry.npmjs.org/tmp/-/tmp-0.0.33.tgz
-
-LICENSE
-The MIT License (MIT)
-
-Copyright (c) 2014 KARASZI István
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-
-========================================================================
 extract-stack@2.0.0
 License: MIT
 Source: https://registry.npmjs.org/extract-stack/-/extract-stack-2.0.0.tgz
@@ -35412,9 +35354,9 @@ THE SOFTWARE.
 
 
 ========================================================================
-js-yaml@4.3.1
+js-yaml@4.3.2
 License: MIT
-Source: https://registry.npmjs.org/js-yaml/-/js-yaml-4.3.1.tgz
+Source: https://registry.npmjs.org/js-yaml/-/js-yaml-4.3.2.tgz
 
 LICENSE
 (The MIT License)
@@ -40721,9 +40663,9 @@ SOFTWARE.
 
 
 ========================================================================
-morgan@1.11.0
+morgan@1.12.1
 License: MIT
-Source: https://registry.npmjs.org/morgan/-/morgan-1.11.0.tgz
+Source: https://registry.npmjs.org/morgan/-/morgan-1.12.1.tgz
 
 LICENSE
 (The MIT License)
@@ -42900,35 +42842,6 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-========================================================================
-os-tmpdir@1.0.2
-License: MIT
-Source: https://registry.npmjs.org/os-tmpdir/-/os-tmpdir-1.0.2.tgz
-
-license
-The MIT License (MIT)
-
-Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
 
 
 ========================================================================
@@ -59327,9 +59240,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ========================================================================
-svgo@4.0.2
+svgo@4.1.0
 License: MIT
-Source: https://registry.npmjs.org/svgo/-/svgo-4.0.2.tgz
+Source: https://registry.npmjs.org/svgo/-/svgo-4.1.0.tgz
 
 LICENSE
 MIT License
@@ -65255,87 +65168,6 @@ LICENSE
 The MIT License (MIT)
 
 Copyright (c) 2013-2017 Stefan Penner, Robert Jackson and ember-cli contributors
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-
-========================================================================
-watch-detector/node_modules/glob@7.2.3
-License: ISC
-Source: https://registry.npmjs.org/glob/-/glob-7.2.3.tgz
-
-LICENSE
-The ISC License
-
-Copyright (c) Isaac Z. Schlueter and Contributors
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted, provided that the above
-copyright notice and this permission notice appear in all copies.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
-IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-
-## Glob Logo
-
-Glob's logo created by Tanya Brassie <http://tanyabrassie.com/>, licensed
-under a Creative Commons Attribution-ShareAlike 4.0 International License
-https://creativecommons.org/licenses/by-sa/4.0/
-
-
-========================================================================
-watch-detector/node_modules/rimraf@2.7.1
-License: ISC
-Source: https://registry.npmjs.org/rimraf/-/rimraf-2.7.1.tgz
-
-LICENSE
-The ISC License
-
-Copyright (c) Isaac Z. Schlueter and Contributors
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted, provided that the above
-copyright notice and this permission notice appear in all copies.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
-IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-
-
-========================================================================
-watch-detector/node_modules/tmp@0.1.0
-License: MIT
-Source: https://registry.npmjs.org/tmp/-/tmp-0.1.0.tgz
-
-LICENSE
-The MIT License (MIT)
-
-Copyright (c) 2014 KARASZI István
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

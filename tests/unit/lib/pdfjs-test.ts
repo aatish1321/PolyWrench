@@ -23,14 +23,14 @@ module('Unit | lib | pdfjs', function () {
 			{ width: 200, height: 400 },
 			{ width: 100, height: 300 },
 		]);
-		await pdf.destroy();
+		await pdf.loadingTask.destroy();
 	});
 
 	test('renderPage fits the long edge', async function (assert) {
 		const pdf = await sample();
 		const canvas = await renderPage(pdf, 0, 100);
 		assert.deepEqual([canvas.width, canvas.height], [50, 100]);
-		await pdf.destroy();
+		await pdf.loadingTask.destroy();
 	});
 
 	test('renderPage takes a total rotation', async function (assert) {
@@ -39,14 +39,14 @@ module('Unit | lib | pdfjs', function () {
 		assert.deepEqual([own.width, own.height], [20, 60]);
 		const flat = await renderPage(pdf, 1, 60, { rotation: 0 });
 		assert.deepEqual([flat.width, flat.height], [60, 20]);
-		await pdf.destroy();
+		await pdf.loadingTask.destroy();
 	});
 
 	test('renderPage caps the scale', async function (assert) {
 		const pdf = await sample();
 		const canvas = await renderPage(pdf, 0, 4000, { maxScale: 2 });
 		assert.deepEqual([canvas.width, canvas.height], [400, 800]);
-		await pdf.destroy();
+		await pdf.loadingTask.destroy();
 	});
 
 	test('pageUrl is empty for a page that does not exist', async function (assert) {
@@ -55,7 +55,7 @@ module('Unit | lib | pdfjs', function () {
 		const url = await pageUrl(pdf, 0, 100);
 		assert.true(url.startsWith('blob:'));
 		URL.revokeObjectURL(url);
-		await pdf.destroy();
+		await pdf.loadingTask.destroy();
 	});
 
 	test('thumbnails stop once live turns false', async function (assert) {
@@ -71,6 +71,6 @@ module('Unit | lib | pdfjs', function () {
 		);
 		assert.deepEqual(seen, [0]);
 		assert.strictEqual(thumbEdge, 160);
-		await pdf.destroy();
+		await pdf.loadingTask.destroy();
 	});
 });

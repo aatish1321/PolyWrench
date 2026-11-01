@@ -89,7 +89,7 @@ export default class PreflightPanel extends Component<{
 				bytes.length,
 				stale,
 			);
-			void pdfDoc?.destroy();
+			void pdfDoc?.loadingTask.destroy();
 			if (stale()) return;
 			this.report = report;
 			this.failed = false;

@@ -596,7 +596,8 @@ export default class ImageToPdf extends Component {
 					this.renderFailed = true;
 				return;
 			}
-			if (token !== this.#token) return void pdf.destroy();
+			if (token !== this.#token)
+				return void pdf.loadingTask.destroy();
 			this.#pdf = pdf;
 			this.pdfPages = (await sizes(pdf)).map((size) => ({
 				size,
@@ -630,7 +631,7 @@ export default class ImageToPdf extends Component {
 	#closePdf() {
 		for (const page of this.pdfPages)
 			if (page.picture) URL.revokeObjectURL(page.picture);
-		void this.#pdf?.destroy();
+		void this.#pdf?.loadingTask.destroy();
 		this.#pdf = undefined;
 	}
 

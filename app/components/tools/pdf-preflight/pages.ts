@@ -24,12 +24,16 @@ export async function boxMarks(
 		['crop', info.cropBox],
 	] as const) {
 		if (!box) continue;
-		const rect = viewport.convertToViewportRectangle([
-			box.x,
-			box.y,
-			box.x + box.width,
-			box.y + box.height,
-		]) as number[];
+		const rect = [
+			...(viewport.convertToViewportPoint(box.x, box.y) as [
+				number,
+				number,
+			]),
+			...(viewport.convertToViewportPoint(
+				box.x + box.width,
+				box.y + box.height,
+			) as [number, number]),
+		];
 		marks.push({
 			kind,
 			style: htmlSafe(

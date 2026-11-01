@@ -183,6 +183,9 @@
 		"tar": "^7.5.22",
 		"fflate": "^0.8.3"
 	},
+	"overrides": {
+		"tmp": "0.2.7"
+	},
 	"main": "desktop/main.cjs",
 	"build": {
 		"appId": "io.github.aatish1321.polywrench",
