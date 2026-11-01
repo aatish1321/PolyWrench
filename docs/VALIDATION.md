@@ -10,6 +10,7 @@ Verified on Ubuntu x86-64, 2026-11-01:
 - Paste-image filename branding was checked against the actual download-name function. Palette and transliteration exports now use the application's name.
 - The 0.1.2 AppImage and deb were built. Packaged font bytes match their source assets, and the old website CLI installer is absent from the package.
 - Existing note storage keys and document-format identifiers were preserved; application branding changes do not rewrite user content.
+- After the merged Transformers 4.3.2 dependency update, the production build, type/native checks and 104-route smoke passed again. Actual Whisper Base CPU inference and Pandoc WASM Markdown-to-Word conversion both passed with networking disabled. Dependency license notices were refreshed from the installed lockfile.
 
 The original processing code's license notices remain packaged. Credits are not displayed in the application; project attribution remains in the README and required license/provenance files.
 
