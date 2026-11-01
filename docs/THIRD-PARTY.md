@@ -8,7 +8,7 @@ PolyWrench is an independent derivative of Delphi Tools, pinned by `UPSTREAM.jso
 - **MediaInfo:** BSD-2-Clause. License in `public/mediainfo/`.
 - **jSquash codecs:** MozJPEG, libwebp, OxiPNG, libavif/aom and libjxl. Notices are included in `public/compress/` and `public/jxl/`.
 - **Pandoc WASM JavaScript wrapper:** MIT. Its source header and upstream attribution remain in `app/lib/pandoc/pandoc-core.js`. The separately downloaded Pandoc WASM engine is GPL-2.0-or-later.
-- **Font files:** Bricolage Grotesque, IBM Plex Sans, Open Sans, iA Writer Quattro, Iosevka and Noto Sans Shavian, SIL Open Font License 1.1. Embedded font notices are recorded in `FONT-NOTICES.txt`. Upstream licenses: https://github.com/googlefonts/opensans/blob/main/OFL.txt , https://github.com/iaolo/iA-Fonts/tree/master/iA%20Writer%20Quattro , https://github.com/be5invis/Iosevka/blob/main/LICENSE.md , https://github.com/notofonts/shavian/blob/main/OFL.txt .
+- **Font files:** Google Sans, Open Sans, iA Writer Quattro, Iosevka and Noto Sans Shavian, SIL Open Font License 1.1. Embedded font notices are recorded in `FONT-NOTICES.txt`. Upstream licenses: https://github.com/googlefonts/opensans/blob/main/OFL.txt , https://github.com/iaolo/iA-Fonts/tree/master/iA%20Writer%20Quattro , https://github.com/be5invis/Iosevka/blob/main/LICENSE.md , https://github.com/notofonts/shavian/blob/main/OFL.txt .
 - **Phosphor shapes:** MIT, original notices retained in `app/lib/substrata/preset-shapes.ts`.
 - **CMU-derived Shavian dictionaries:** BSD-2-Clause. https://github.com/cmusphinx/cmudict .
 - **EFF word list:** CC BY 3.0, Electronic Frontier Foundation. https://www.eff.org/dice .
@@ -34,7 +34,6 @@ The original hero artwork, illustrations, stickers, promotional character/magazi
 
 ## PolyWrench interface fonts
 
-- Bricolage Grotesque: converted without changing glyphs to WOFF2 from Google Fonts revision `6ce172f74aa355ea43eb964fa4a91570a4d3064d`, `ofl/bricolagegrotesque/BricolageGrotesque[opsz,wdth,wght].ttf`. The full license is bundled as `public/fonts/BricolageGrotesque-OFL.txt`.
-- IBM Plex Sans: converted without changing glyphs to WOFF2 from Google Fonts revision `0b58fb370093f9a9f4ff785d94405710b79de67c`, `ofl/ibmplexsans/IBMPlexSans[wdth,wght].ttf`. The full license is bundled as `public/fonts/IBMPlexSans-OFL.txt`.
+Google Sans upright and italic variable fonts are converted without changing glyphs to WOFF2 from Google Fonts revision `6c1dbe27dcf7d817d4b62cec033ba77fa8e2a5ec`, `ofl/googlesans/GoogleSans[GRAD,opsz,wght].ttf` and `GoogleSans-Italic[GRAD,opsz,wght].ttf`. The full SIL Open Font License is bundled as `public/fonts/GoogleSans-OFL.txt`. Official source: https://github.com/googlefonts/googlesans .
 
-Both font families load from packaged local files; no runtime font service is used.
+The font loads from packaged local files; no runtime font service is used.

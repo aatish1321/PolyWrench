@@ -1,20 +1,20 @@
 @font-face {
-  font-family: 'Bricolage Grotesque';
-  src: url('/fonts/BricolageGrotesque.woff2') format('woff2');
-  font-weight: 200 800;
+  font-family: 'Google Sans';
+  src: url('/fonts/GoogleSans.woff2') format('woff2');
+  font-weight: 400 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'IBM Plex Sans';
-  src: url('/fonts/IBMPlexSans.woff2') format('woff2');
-  font-weight: 100 700;
-  font-style: normal;
+  font-family: 'Google Sans';
+  src: url('/fonts/GoogleSans-Italic.woff2') format('woff2');
+  font-weight: 400 700;
+  font-style: italic;
   font-display: swap;
 }
 html:root {
-  --pw-font-display: 'Bricolage Grotesque', sans-serif;
-  --pw-font-body: 'IBM Plex Sans', sans-serif;
+  --pw-font-display: 'Google Sans', sans-serif;
+  --pw-font-body: 'Google Sans', sans-serif;
   --canon-font: var(--pw-font-body);
   --pw-glass-panel: color-mix(in srgb, var(--lg-panel) 83%, transparent);
   --pw-glass-shadow: 0 8px 28px rgb(73 52 116 / 4%);

@@ -195,17 +195,12 @@ try {
 			.backdropFilter,
 	}));
 	assert(
-		typography.body.includes('IBM Plex Sans') &&
-			typography.heading.includes('Bricolage Grotesque'),
+		typography.body.includes('Google Sans') &&
+			typography.heading.includes('Google Sans'),
 	);
 	assert(
-		typography.loaded.some((name) =>
-			name.includes('IBM Plex Sans'),
-		) &&
-			typography.loaded.some((name) =>
-				name.includes('Bricolage Grotesque'),
-			),
-		'Both fonts load from packaged files',
+		typography.loaded.some((name) => name.includes('Google Sans')),
+		'Google Sans loads from packaged files',
 	);
 	assert(typography.frost.includes('blur'), 'Frosted surface is enabled');
 	await media.send('Emulation.setEmulatedMedia', {

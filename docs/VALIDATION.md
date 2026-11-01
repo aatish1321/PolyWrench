@@ -1,3 +1,11 @@
+# Google Sans update — PolyWrench 0.1.2
+
+- Google Sans upright and italic variable fonts are bundled locally with their full OFL notice. Replaced interface font assets were removed.
+- The production build, focused lint and 104-route Electron smoke passed on Ubuntu. The smoke verifies that headings and controls use the loaded Google Sans family, alongside both transparency preferences and reduced motion.
+- Ubuntu AppImage/deb packages were rebuilt; both packaged font files match their source bytes and include the license.
+- Peach & Teal, Sky & Butter, and Berry & Pistachio dashboard previews were rendered for selection. The application's current palette remains unchanged pending the user's choice.
+- The preceding CI-fix run completed successfully on Ubuntu, Windows, Intel macOS and Apple Silicon macOS: https://github.com/aatish1321/PolyWrench/actions/runs/41348157436 . This result predates the Google Sans change.
+
 # CI compatibility fixes — PolyWrench 0.1.2
 
 - macOS smoke failures came from asserting blur while the runner requested reduced transparency. The test now explicitly checks both transparency preferences, preserving the application's accessibility behavior.
