@@ -85,3 +85,54 @@
 		padding-inline: 0;
 	}
 }
+
+.err-sig-methods {
+	display: flex;
+	gap: 8px;
+	padding: 12px;
+}
+.err-sig-methods button {
+	border: 1px solid var(--canon-border);
+	border-radius: 16px;
+	padding: 6px 16px;
+	background: var(--canon-card);
+	color: var(--canon-foreground);
+	cursor: pointer;
+}
+.err-sig-methods button[aria-pressed="true"] {
+	background: var(--canon-primary);
+	color: var(--canon-primary-foreground);
+}
+.err-sig-name {
+	display: grid;
+	gap: 6px;
+	padding: 0 12px 12px;
+}
+.err-sig-name input {
+	min-width: 0;
+	padding: 10px;
+	border: 1px solid var(--canon-border);
+	border-radius: 8px;
+	background: var(--canon-card);
+	color: var(--canon-foreground);
+}
+.err-sig-note {
+	padding: 12px;
+	margin: 0;
+	font-size: 12px;
+	line-height: 1.6;
+	color: var(--canon-muted-foreground);
+}
+
+.err-sig {
+	inline-size: 480px;
+}
+.err-sig .err-mode-body {
+	display: flex;
+	flex-direction: column;
+}
+.err-sig .err-mode-body > * {
+	box-sizing: border-box;
+	inline-size: 100%;
+	flex-shrink: 0;
+}

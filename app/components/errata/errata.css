@@ -705,33 +705,17 @@
 	background: color-mix(in srgb, var(--canon-muted) 70%, transparent);
 }
 
-/* the main menu card's ink; tile size from backdrop.gts */
+/* Keep the working area quiet so the document remains the focus. */
 .err-backdrop {
-	--err-ink: #b96f08;
-
 	position: absolute;
-	inset: -160px 0 0 -240px;
-	visibility: hidden;
-	background: var(--err-ink);
-	opacity: 0.1;
-	mask-image: var(--err-tile);
-	mask-size: 240px 160px;
+	inset: 0;
 	pointer-events: none;
-	animation: err-backdrop 60s linear infinite;
-}
-
-.dark .err-backdrop {
-	--err-ink: #db9334;
-}
-
-.err-backdrop.is-ready {
-	visibility: visible;
-}
-
-@keyframes err-backdrop {
-	to {
-		translate: 240px 160px;
-	}
+	background-image: radial-gradient(
+		var(--lg-muted) 0.7px,
+		transparent 0.7px
+	);
+	background-size: 24px 24px;
+	opacity: 0.12;
 }
 
 .err-export-failed {
@@ -746,14 +730,27 @@
 	.err-page-gap {
 		transition: none;
 	}
-
-	.err-backdrop {
-		animation: none;
-	}
 }
 
 /* icon-only cells a panel yields stay square */
 .err-mode-head > .sub-cell.canon-button--symbol {
 	inline-size: var(--sub-cell);
 	padding: 0;
+}
+
+.err-welcome {
+	max-inline-size: 440px;
+	padding: 24px;
+	border-radius: 20px;
+	background: var(--canon-card);
+	color: var(--canon-foreground);
+	box-shadow: 0 12px 40px #0001;
+}
+.err-welcome h1 {
+	margin: 0 0 12px;
+	font-size: 26px;
+}
+.err-welcome p {
+	font-size: 13px;
+	line-height: 1.7;
 }

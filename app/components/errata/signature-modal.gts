@@ -1,4 +1,5 @@
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { modifier } from 'ember-modifier';
@@ -34,7 +35,11 @@ function placeSignature(dataUrl: string): void {
 	const img = new Image();
 	img.onload = () => {
 		const { width, height } = pageSize(page);
-		const w = PLACED_WIDTH;
+		const w = Math.min(
+			PLACED_WIDTH,
+			width * 0.8,
+			(height * 0.8 * img.naturalWidth) / img.naturalHeight,
+		);
 		const h = (img.naturalHeight / img.naturalWidth) * w;
 		const id = newId();
 		addObject(page.id, {
@@ -58,6 +63,9 @@ function placeSignature(dataUrl: string): void {
 // Fill & sign as a tool panel in the settings bar's place: the draw pad,
 // the saved signatures, Upload; Place puts the drawing on the page
 export default class SignatureModal extends Component {
+	@tracked typing = false;
+	@tracked name = '';
+	@tracked uploadError = '';
 	shown = new TrackedExternal(modal.subscribe, modal.get);
 	saved = new TrackedExternal(signatures.subscribe, signatures.get);
 	#pad: HTMLCanvasElement | null = null;
@@ -122,6 +130,7 @@ export default class SignatureModal extends Component {
 			] as const;
 		};
 		const down = (e: PointerEvent) => {
+			if (this.typing) return;
 			drawing = true;
 			canvas.setPointerCapture(e.pointerId);
 			ctx.beginPath();
@@ -159,6 +168,30 @@ export default class SignatureModal extends Component {
 			);
 	};
 
+	setTyping = (typing: boolean) => {
+		this.typing = typing;
+		this.name = '';
+		this.clear();
+	};
+
+	typeName = (event: Event) => {
+		this.name = (event.target as HTMLInputElement).value;
+		const pad = this.#pad;
+		if (!pad) return;
+		this.clear();
+		const ctx = pad.getContext('2d')!;
+		ctx.font = 'italic 48px Georgia, serif';
+		ctx.fillStyle = '#111';
+		ctx.textAlign = 'center';
+		ctx.textBaseline = 'middle';
+		ctx.fillText(
+			this.name.trim(),
+			PAD_W / 2,
+			PAD_H / 2,
+			PAD_W - 32,
+		);
+	};
+
 	useDrawn = () => {
 		const pad = this.#pad;
 		if (!pad) return;
@@ -166,6 +199,7 @@ export default class SignatureModal extends Component {
 		if (!trimmed) return;
 		const dataUrl = trimmed.toDataURL('image/png');
 		addSignature(dataUrl);
+		this.name = '';
 		this.clear();
 		placeSignature(dataUrl);
 		modal.set(null);
@@ -185,12 +219,57 @@ export default class SignatureModal extends Component {
 		const file = input.files?.[0];
 		input.value = '';
 		if (!file) return;
+		this.uploadError = '';
+		if (
+			!['image/png', 'image/jpeg'].includes(file.type) ||
+			file.size > 10 * 1024 * 1024
+		) {
+			this.uploadError =
+				'Choose a PNG or JPEG smaller than 10 MB.';
+			return;
+		}
 		const reader = new FileReader();
 		reader.onload = () => {
-			const dataUrl = reader.result as string;
-			addSignature(dataUrl);
-			placeSignature(dataUrl);
-			modal.set(null);
+			const img = new Image();
+			img.onload = () => {
+				// Export embeds signatures as PNG, including JPEG uploads.
+				const canvas = document.createElement('canvas');
+				const scale = Math.min(
+					1,
+					2048 /
+						Math.max(
+							img.naturalWidth,
+							img.naturalHeight,
+						),
+				);
+				canvas.width = Math.max(
+					1,
+					Math.round(img.naturalWidth * scale),
+				);
+				canvas.height = Math.max(
+					1,
+					Math.round(img.naturalHeight * scale),
+				);
+				canvas.getContext('2d')!.drawImage(
+					img,
+					0,
+					0,
+					canvas.width,
+					canvas.height,
+				);
+				const dataUrl = canvas.toDataURL('image/png');
+				addSignature(dataUrl);
+				placeSignature(dataUrl);
+				modal.set(null);
+			};
+			img.onerror = () => {
+				this.uploadError =
+					'This image could not be opened.';
+			};
+			img.src = reader.result as string;
+		};
+		reader.onerror = () => {
+			this.uploadError = 'This image could not be read.';
 		};
 		reader.readAsDataURL(file);
 	};
@@ -228,10 +307,61 @@ export default class SignatureModal extends Component {
 				/>
 			</:actions>
 			<:default>
+				<div
+					class="err-sig-methods"
+					role="group"
+					aria-label="Signature method"
+				>
+					<button
+						type="button"
+						aria-pressed={{unless
+							this.typing
+							"true"
+							"false"
+						}}
+						{{on
+							"click"
+							(fn
+								this.setTyping
+								false
+							)
+						}}
+					>Draw</button>
+					<button
+						type="button"
+						aria-pressed={{if
+							this.typing
+							"true"
+							"false"
+						}}
+						{{on
+							"click"
+							(fn this.setTyping true)
+						}}
+					>Type</button>
+				</div>
+				{{#if this.typing}}
+					<label class="err-sig-name">Your name
+						<input
+							type="text"
+							maxlength="100"
+							autocomplete="name"
+							value={{this.name}}
+							{{on
+								"input"
+								this.typeName
+							}}
+						/>
+					</label>
+				{{/if}}
 				<div class="err-sig-draw">
 					<canvas
 						class="err-sig-pad"
-						aria-label="Draw signature"
+						aria-label={{if
+							this.typing
+							"Typed signature preview"
+							"Draw signature"
+						}}
 						{{this.pad}}
 					></canvas>
 					<input
@@ -243,6 +373,14 @@ export default class SignatureModal extends Component {
 						{{on "change" this.onUpload}}
 					/>
 				</div>
+				<p class="err-sig-note">Place, then drag or
+					resize your signature on the page. Saved
+					signatures stay on this device; use × to
+					remove one.</p>
+				{{#if this.uploadError}}<p
+						class="err-sig-note"
+						role="alert"
+					>{{this.uploadError}}</p>{{/if}}
 				{{#if this.saved.current.length}}
 					<div class="err-sig-grid">
 						{{#each

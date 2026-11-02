@@ -109,7 +109,7 @@ const BOX_GROUPS: { heading: string; cells: BoxCell[] }[] = [
 				label: 'Fill & sign',
 				icon: 'signature',
 				description:
-					'Draw or upload your signature and place it',
+					'Draw, type or upload your signature and place it',
 				tool: 'fill-sign',
 			},
 			{

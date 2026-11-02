@@ -1,11 +1,12 @@
+/* eslint n/no-unsupported-features/node-builtins: ["error", { "ignores": ["localStorage"] }] -- localStorage is used only inside Chromium page.evaluate callbacks. */
 import { spawn } from 'node:child_process';
-import { mkdtemp, mkdir, writeFile, rm } from 'node:fs/promises';
+import { mkdtemp, mkdir, writeFile, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import assert from 'node:assert/strict';
 import electron from 'electron';
 import puppeteer from 'puppeteer-core';
-import { PDFDocument } from 'pdf-lib';
+import { PDFDocument, PDFName } from 'pdf-lib';
 import { inventory } from './tool-inventory.mjs';
 
 const data =
@@ -97,6 +98,9 @@ try {
 	await page.waitForFunction(() => document.readyState === 'complete', {
 		timeout: 30000,
 	});
+	await page.evaluate(() =>
+		window.localStorage.setItem('theme', 'light'),
+	);
 	await page.reload({ waitUntil: 'load' });
 	await page.waitForSelector('.lg-tool-card', { timeout: 30000 });
 	assert.equal(
@@ -364,6 +368,219 @@ try {
 			await page.screenshot({
 				path: 'artifacts/image-converter-loaded.png',
 			});
+		}
+		if (route === '/errata') {
+			await page.click(
+				'button[aria-label="Toggle colour theme"]',
+			);
+			await page.waitForFunction(
+				() =>
+					getComputedStyle(
+						document.documentElement,
+					)
+						.getPropertyValue(
+							'--canon-card',
+						)
+						.trim() ===
+					getComputedStyle(
+						document.documentElement,
+					)
+						.getPropertyValue('--lg-panel')
+						.trim(),
+			);
+			const pdf = await PDFDocument.create();
+			pdf.addPage([600, 800]).drawText('Signature test');
+			const fixture = join(data, 'signature-source.pdf');
+			const downloads = join(data, 'signed-exports');
+			await mkdir(downloads, { recursive: true });
+			await writeFile(fixture, await pdf.save());
+			await (
+				await page.$('input[aria-label="Open PDF"]')
+			).uploadFile(fixture);
+			await page.waitForSelector('[data-page-label]');
+			const openSign = async () => {
+				await page.click('.sub-canvas-wrap');
+				await page.keyboard.press('g');
+				await page.waitForSelector('.err-sig.is-open');
+				await page.waitForFunction(() => {
+					const r = document
+						.querySelector(
+							'.err-sig.is-open',
+						)
+						.getBoundingClientRect();
+					return (
+						r.top >= 0 &&
+						r.bottom <= window.innerHeight
+					);
+				});
+			};
+			const place = async () => {
+				await page.click(
+					'.err-sig.is-open .err-mode-apply',
+				);
+				await page.waitForSelector('.err-sig.is-open', {
+					hidden: true,
+				});
+				await page.waitForFunction(
+					() =>
+						document.querySelector(
+							'.err-sig-place img',
+						)?.naturalWidth > 0,
+				);
+			};
+			await openSign();
+			await page.click(
+				'.err-sig-methods button:nth-child(2)',
+			);
+			await page.type('.err-sig-name input', 'Alex Example');
+			await page.screenshot({
+				path: 'artifacts/pdf-editor-signature.png',
+			});
+			await place();
+			await page.click('button[aria-label="Undo"]');
+			await page.click('button[aria-label="Redo"]');
+			await openSign();
+			await page.click('.err-sig-methods button:first-child');
+			const pad = await page.$('.err-sig-pad');
+			const rect = await pad.boundingBox();
+			await page.mouse.move(rect.x + 20, rect.y + 40);
+			await page.mouse.down();
+			await page.mouse.move(rect.x + 140, rect.y + 80, {
+				steps: 12,
+			});
+			await page.mouse.up();
+			await place();
+			await openSign();
+			const invalid = join(data, 'invalid-signature.txt');
+			await writeFile(invalid, 'Not an image');
+			await (
+				await page.$(
+					'input[aria-label="Upload signature"]',
+				)
+			).uploadFile(invalid);
+			await page.waitForSelector(
+				'.err-sig.is-open [role="alert"]',
+			);
+			const upload = join(data, 'signature.jpg');
+			const jpeg = await page.evaluate(() => {
+				const c = document.createElement('canvas');
+				c.width = 100;
+				c.height = 30;
+				const ctx = c.getContext('2d');
+				ctx.fillStyle = '#fff';
+				ctx.fillRect(0, 0, 100, 30);
+				ctx.fillStyle = '#111';
+				ctx.fillText('Upload', 5, 20);
+				return c.toDataURL('image/jpeg').split(',')[1];
+			});
+			await writeFile(upload, Buffer.from(jpeg, 'base64'));
+			await (
+				await page.$(
+					'input[aria-label="Upload signature"]',
+				)
+			).uploadFile(upload);
+			await page.waitForSelector('.err-sig.is-open', {
+				hidden: true,
+			});
+			const saved = await page.evaluate(() =>
+				JSON.parse(
+					window.localStorage.getItem(
+						'errata:signatures',
+					),
+				),
+			);
+			assert.equal(
+				saved.length,
+				3,
+				'All signature methods saved locally',
+			);
+			assert(
+				saved.every((url) =>
+					url.startsWith('data:image/png'),
+				),
+				'Uploads normalized for PDF embedding',
+			);
+			const cdp = await page.createCDPSession();
+			await cdp.send('Browser.setDownloadBehavior', {
+				behavior: 'allow',
+				downloadPath: downloads,
+				eventsEnabled: true,
+			});
+			const downloaded = new Promise((resolve, reject) => {
+				const timer = setTimeout(
+					() =>
+						reject(
+							new Error(
+								'Signed PDF export timed out',
+							),
+						),
+					30000,
+				);
+				cdp.on('Browser.downloadProgress', (event) => {
+					if (event.state === 'completed') {
+						clearTimeout(timer);
+						resolve();
+					}
+				});
+			});
+			await page.screenshot({
+				path: 'artifacts/pdf-editor-signed.png',
+			});
+			await page.click('button[aria-label="Export"]');
+			await downloaded;
+			const result = await PDFDocument.load(
+				await readFile(
+					join(downloads, 'signature-source.pdf'),
+				),
+			);
+			assert.equal(result.getPageCount(), 1);
+			assert.equal(
+				result
+					.getPage(0)
+					.node.Resources()
+					.lookup(PDFName.of('XObject'))
+					.keys().length,
+				3,
+				'Export embeds all three signature images',
+			);
+			await cdp.detach();
+			await page.reload({ waitUntil: 'load' });
+			await page.waitForSelector(
+				'input[aria-label="Open PDF"]',
+			);
+			await (
+				await page.$('input[aria-label="Open PDF"]')
+			).uploadFile(fixture);
+			await page.waitForSelector('[data-page-label]');
+			await openSign();
+			assert.equal(
+				await page.$$eval(
+					'.err-sig-cell',
+					(cells) => cells.length,
+				),
+				3,
+				'Signatures survive reload',
+			);
+			await page.click('.err-sig-remove');
+			assert.equal(
+				await page.evaluate(
+					() =>
+						JSON.parse(
+							window.localStorage.getItem(
+								'errata:signatures',
+							),
+						).length,
+				),
+				2,
+				'Saved signature can be removed',
+			);
+
+			await page.click(
+				'button[aria-label="Toggle colour theme"]',
+			);
+			console.log(
+				'PASS typed, drawn and JPEG signatures, undo/redo and signed PDF export',
+			);
 		}
 		if (route === '/tools/pdf-organiser') {
 			const pdf = await PDFDocument.create();

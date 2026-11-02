@@ -1,3 +1,11 @@
+# PDF signatures and Carbon Ice — PolyWrench 0.1.5
+
+- Reused the integrated PDF editor for content editing, annotations, page operations, forms and redaction; added a direct sidebar entry and usage guidance.
+- Added typed visual signatures alongside drawing and uploads. JPEG uploads are decoded and normalized to PNG before PDF embedding. Upload errors are shown in the panel, and placed images fit the page.
+- Applied Carbon Ice with matching light/dark palettes, Google Sans, glass surfaces and raised icon tiles. Fixed legacy editor tokens overriding dark colors and replaced the repeating editor backdrop with a quiet dot grid. Reduced-motion and reduced-transparency preferences remain supported.
+- Production build, type checking, focused ESLint and all 14 desktop regression tests passed locally. The real Electron smoke test exercises all 104 routes, typed/drawn/JPEG signatures, invalid upload rejection, undo/redo, actual exported PDF image resources, saved-signature persistence after reload and removal.
+- Signatures are visual marks, not certificate-backed signatures. Existing text editing depends on the source PDF’s fonts and encoding; scanned pages are not automatically OCRed. The desktop smoke checks do not constitute a comprehensive review of all PDF editing features.
+
 # Dependency patches and Paper & Vermilion — PolyWrench 0.1.4
 
 - Integrated the PDF.js update PR and retained the earlier loading-task/viewport compatibility fixes. PDF.js 6.2.108 addresses [GHSA-hq66-cqwq-w95j](https://github.com/advisories/GHSA-hq66-cqwq-w95j).

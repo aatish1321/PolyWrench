@@ -15,7 +15,7 @@
           if ((d.getMonth() === 9 && d.getDate() === 31) || /[?&]halloween\b/.test(location.search))
             document.documentElement.classList.add('halloween');
           var t = localStorage.getItem('theme');
-          var dark = t === 'dark';
+          var dark = t !== 'light';
           // delphicanon tokens follow prefers-color-scheme unless html.light is set
           document.documentElement.classList.add(dark ? 'dark' : 'light');
           if (localStorage.getItem('font') === 'classic') document.documentElement.classList.add('classic');

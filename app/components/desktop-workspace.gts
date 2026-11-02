@@ -137,6 +137,20 @@ export default class DesktopWorkspace extends Component<{
 							@name="arrow-left-right"
 						/>Batch Converter</a>
 					<a
+						href="/errata"
+						aria-current={{if
+							(eq
+								this.router.currentRouteName
+								"errata"
+							)
+							"page"
+						}}
+						{{on
+							"click"
+							(fn this.go "/errata")
+						}}
+					><IconSvg @name="file-text" />PDF Editor</a>
+					<a
 						href="/workflows"
 						aria-current={{if
 							(eq

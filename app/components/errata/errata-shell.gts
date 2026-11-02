@@ -571,8 +571,17 @@ export default class ErrataShell extends Component {
 							data-empty-hint
 						>
 							<div
-								class="sub-empty-card"
+								class="sub-empty-card err-welcome"
 							>
+								<h1>PDF Editor</h1>
+								<p>Edit text,
+									annotate,
+									fill
+									forms
+									and sign
+									— all on
+									your
+									device.</p>
 								<div
 									class="sub-empty-actions"
 								>
@@ -591,7 +600,26 @@ export default class ErrataShell extends Component {
 								</div>
 								<p
 									class="sub-empty-note"
-								>Drop or paste</p>
+								>Open, drop or
+									paste a
+									PDF. Use
+									Edit for
+									existing
+									text,
+									Signature
+									to sign,
+									and
+									Toolbox
+									for
+									pages,
+									forms
+									and
+									redaction.
+									Export
+									saves
+									your
+									edited
+									copy.</p>
 							</div>
 						</div>
 					{{/unless}}
