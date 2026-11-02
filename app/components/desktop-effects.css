@@ -17,7 +17,7 @@ html:root {
   --pw-font-body: 'Google Sans', sans-serif;
   --canon-font: var(--pw-font-body);
   --pw-glass-panel: color-mix(in srgb, var(--lg-panel) 83%, transparent);
-  --pw-glass-shadow: 0 8px 28px rgb(32 62 57 / 4%);
+  --pw-glass-shadow: 0 8px 28px rgb(48 43 39 / 4%);
 }
 html:root.dark { --pw-glass-shadow: 0 10px 30px rgb(0 0 0 / 12%); }
 .lg-app { font-family: var(--pw-font-body); background: var(--lg-bg); }
@@ -62,7 +62,7 @@ html:root.dark { --pw-glass-shadow: 0 10px 30px rgb(0 0 0 / 12%); }
 .lg-quick-card:nth-child(3) { animation-delay: 175ms; }
 .lg-brand:hover .lg-logo { animation: pw-wave 550ms ease-out; }
 .lg-primary a, .lg-tool-nav a, .lg-button, .lg-quick-card, .lg-quick-art > span, .lg-art-file, .lg-workflow-widget { transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease; }
-.lg-quick-card:hover, .lg-workflow-widget:hover { transform: translateY(-3px); box-shadow: 0 9px 22px rgb(32 62 57 / 8%); }
+.lg-quick-card:hover, .lg-workflow-widget:hover { transform: translateY(-3px); box-shadow: 0 9px 22px rgb(48 43 39 / 8%); }
 .lg-quick-card:hover .lg-quick-art > span { transform: rotate(0) translateY(-4px); }
 .lg-converter-card:hover .lg-art-file--pink { transform: rotate(-25deg) translate(-3px, -3px); }
 .lg-converter-card:hover .lg-art-file--yellow { transform: rotate(21deg) translate(2px, -3px); }

@@ -37,3 +37,7 @@ The original hero artwork, illustrations, stickers, promotional character/magazi
 Google Sans upright and italic variable fonts are converted without changing glyphs to WOFF2 from Google Fonts revision `6c1dbe27dcf7d817d4b62cec033ba77fa8e2a5ec`, `ofl/googlesans/GoogleSans[GRAD,opsz,wght].ttf` and `GoogleSans-Italic[GRAD,opsz,wght].ttf`. The full SIL Open Font License is bundled as `public/fonts/GoogleSans-OFL.txt`. Official source: https://github.com/googlefonts/googlesans .
 
 The font loads from packaged local files; no runtime font service is used.
+
+## Build-time minimatch compatibility
+
+Older Ember helpers require minimatch's callable CommonJS export. The first-party adapter in `packages/minimatch-compat/` re-exports the official patched engine's function; it contains no custom matching implementation. Its source and packaged tarball are included in this repository under AGPL-3.0-or-later. The override pins the tarball to a commit, and npm's lockfile verifies its integrity. The underlying minimatch engine retains its upstream license in `NPM-LICENSES.txt`.

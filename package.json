@@ -1,6 +1,6 @@
 {
 	"name": "delphitools-v2",
-	"version": "0.1.3",
+	"version": "0.1.4",
 	"private": true,
 	"description": "PolyWrench \u2014 offline desktop toolkit and batch file converter",
 	"repository": {
@@ -184,7 +184,11 @@
 		"fflate": "^0.8.3"
 	},
 	"overrides": {
-		"tmp": "0.2.7"
+		"tmp": "0.2.7",
+		"minimatch@<6": "https://raw.githubusercontent.com/aatish1321/PolyWrench/9d1ea84330a3d203f3fb09d36db35cf442fda8de/packages/polywrench-minimatch-compat-1.0.0.tgz",
+		"minimatch@>=6": "11.0.4",
+		"glob@>=9.0.0 <14.0.2": "14.0.2",
+		"fflate@>=0.7.0 <0.7.5": "0.7.5"
 	},
 	"main": "desktop/main.cjs",
 	"build": {

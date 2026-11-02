@@ -1,3 +1,14 @@
+# Dependency patches and Paper & Vermilion — PolyWrench 0.1.4
+
+- Integrated the PDF.js update PR and retained the earlier loading-task/viewport compatibility fixes. PDF.js 6.2.108 addresses [GHSA-hq66-cqwq-w95j](https://github.com/advisories/GHSA-hq66-cqwq-w95j).
+- All minimatch implementations resolve to 11.0.4, addressing [GHSA-g3hv-75wg-m249](https://github.com/advisories/GHSA-g3hv-75wg-m249). Older callable imports use a one-line first-party adapter rather than modifying installed dependency files.
+- Applied compatible audit updates, glob 14.0.2 for affected modern callers, and fflate 0.7.5 for the legacy font helper. The complete npm audit reported zero known vulnerabilities, including development dependencies, on 2026-11-02.
+- Type checking, focused lint and all 14 native/build-dependency regression tests passed. New checks cover old/new minimatch APIs, ordinary glob matching, pre-aborted walks and font ZIP round trips.
+- Production build and the 104-route Electron smoke passed on Ubuntu, including actual PDF rendering/cleanup/reopen and image conversion. The selected Paper & Vermilion palette was inspected in light, dark and compact layouts; text/background token contrast checks passed.
+- Ubuntu AppImage/deb installers were rebuilt as 0.1.4. Package inspection confirmed the version, selected palette, Google Sans bytes and refreshed dependency notices.
+
+This is a focused dependency patch, not a comprehensive source-code security audit. A clean package advisory check does not establish that all application code is free of vulnerabilities.
+
 # Peach & Teal — PolyWrench 0.1.3
 
 - Applied the selected palette to the dashboard, sidebar, converter artwork, tool controls and editor chrome. Dark mode uses matching teal, peach and gold surfaces.

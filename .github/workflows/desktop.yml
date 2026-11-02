@@ -94,7 +94,7 @@ jobs:
           generate_release_notes: true
           fail_on_unmatched_files: true
           body: |
-            Offline desktop toolkit with the Peach & Teal interface, Google Sans, frosted panels and animations.
+            Offline desktop toolkit with the Paper & Vermilion interface, Google Sans, frosted panels and animations. Includes patched PDF.js and minimatch dependencies.
 
             Download the installer for your platform below: Windows x64 (.exe), macOS Intel/Apple Silicon (.dmg), or Linux x64 (.deb/AppImage). SHA256SUMS.txt contains checksums for all five packages.
 
