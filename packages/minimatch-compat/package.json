@@ -1,0 +1,10 @@
+{
+  "name": "@polywrench/minimatch-compat",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.cjs",
+  "license": "AGPL-3.0-or-later",
+  "dependencies": {
+    "minimatch-core": "npm:minimatch@11.0.4"
+  }
+}
