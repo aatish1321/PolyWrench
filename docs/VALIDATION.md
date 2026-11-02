@@ -6,6 +6,8 @@
 - Type checking, focused lint and all 14 native/build-dependency regression tests passed. New checks cover old/new minimatch APIs, ordinary glob matching, pre-aborted walks and font ZIP round trips.
 - Production build and the 104-route Electron smoke passed on Ubuntu, including actual PDF rendering/cleanup/reopen and image conversion. The selected Paper & Vermilion palette was inspected in light, dark and compact layouts; text/background token contrast checks passed.
 - Ubuntu AppImage/deb installers were rebuilt as 0.1.4. Package inspection confirmed the version, selected palette, Google Sans bytes and refreshed dependency notices.
+- The [tagged 0.1.4 workflow](https://github.com/aatish1321/PolyWrench/actions/runs/41442209059) completed successfully on Ubuntu, Windows, Intel macOS and Apple Silicon macOS, including the corrected publication job. All five installer links were verified accessible anonymously, and their published asset digests matched `SHA256SUMS.txt`.
+- [Release 0.1.4](https://github.com/aatish1321/PolyWrench/releases/tag/v0.1.4) is public and marked latest. PR #19 is merged. GitHub's dependency graph reports the patched PDF.js/minimatch versions, while alert records #5/#76 were still open at this check; they were not manually dismissed to hide their status.
 
 This is a focused dependency patch, not a comprehensive source-code security audit. A clean package advisory check does not establish that all application code is free of vulnerabilities.
 
