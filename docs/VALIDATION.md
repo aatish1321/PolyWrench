@@ -4,6 +4,8 @@
 - Added typed visual signatures alongside drawing and uploads. JPEG uploads are decoded and normalized to PNG before PDF embedding. Upload errors are shown in the panel, and placed images fit the page.
 - Applied Carbon Ice with matching light/dark palettes, Google Sans, glass surfaces and raised icon tiles. Fixed legacy editor tokens overriding dark colors and replaced the repeating editor backdrop with a quiet dot grid. Reduced-motion and reduced-transparency preferences remain supported.
 - Production build, type checking, focused ESLint and all 14 desktop regression tests passed locally. The real Electron smoke test exercises all 104 routes, typed/drawn/JPEG signatures, invalid upload rejection, undo/redo, actual exported PDF image resources, saved-signature persistence after reload and removal.
+- The locally packaged Ubuntu application also passed the complete 104-route Electron smoke test, including the signature workflow. Package metadata and bundled Google Sans were verified.
+- The [tagged 0.1.5 workflow](https://github.com/aatish1321/PolyWrench/actions/runs/41473984628) passed on Ubuntu, Windows, Intel macOS and Apple Silicon macOS and published [release 0.1.5](https://github.com/aatish1321/PolyWrench/releases/tag/v0.1.5). All five installers and the checksum file returned HTTP 200 anonymously, all installer digests matched `SHA256SUMS.txt`, and the latest-release link resolved to 0.1.5.
 - Signatures are visual marks, not certificate-backed signatures. Existing text editing depends on the source PDF’s fonts and encoding; scanned pages are not automatically OCRed. The desktop smoke checks do not constitute a comprehensive review of all PDF editing features.
 
 # Dependency patches and Paper & Vermilion — PolyWrench 0.1.4
