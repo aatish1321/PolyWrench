@@ -1,4 +1,4 @@
-/* eslint n/no-unsupported-features/node-builtins: ["error", { "ignores": ["localStorage"] }] -- localStorage is used only inside Chromium page.evaluate callbacks. */
+/* eslint n/no-unsupported-features/node-builtins: ["error", { "ignores": ["localStorage", "navigator"] }] -- These browser globals are used only inside Chromium callbacks. */
 import { spawn } from 'node:child_process';
 import { mkdtemp, mkdir, writeFile, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
@@ -98,6 +98,11 @@ try {
 	await page.waitForFunction(() => document.readyState === 'complete', {
 		timeout: 30000,
 	});
+	await page.evaluateOnNewDocument(() =>
+		Object.defineProperty(navigator, 'webdriver', {
+			get: () => true,
+		}),
+	);
 	await page.evaluate(() =>
 		window.localStorage.setItem('theme', 'light'),
 	);
@@ -369,6 +374,168 @@ try {
 				path: 'artifacts/image-converter-loaded.png',
 			});
 		}
+		if (route === '/tools/background-remover') {
+			await page.evaluate(async () => {
+				const c = document.createElement('canvas');
+				c.width = c.height = 64;
+				const ctx = c.getContext('2d');
+				ctx.fillStyle = '#eee';
+				ctx.fillRect(0, 0, 64, 64);
+				ctx.fillStyle = '#222';
+				ctx.fillRect(20, 12, 24, 40);
+				const blob = await new Promise((resolve) =>
+					c.toBlob(resolve),
+				);
+				const transfer = new DataTransfer();
+				transfer.items.add(
+					new File([blob], 'subject.PNG', {
+						type: '',
+					}),
+				);
+				document.querySelector(
+					'.cutout-slot',
+				).dispatchEvent(
+					new DragEvent('drop', {
+						dataTransfer: transfer,
+						bubbles: true,
+						cancelable: true,
+					}),
+				);
+			});
+			await page.waitForSelector('.bg-run');
+			await page.click('.bg-run');
+			if (process.env.POLYWRENCH_VERIFY_BACKGROUND) {
+				await page.waitForFunction(
+					() =>
+						document.querySelector(
+							'.bg-download, .bg-error',
+						),
+					{ timeout: 300000 },
+				);
+				assert(
+					!(await page.$('.bg-error')),
+					await page.$eval(
+						'.background-remover',
+						(el) => el.innerText,
+					),
+				);
+				const alpha = await page.$eval(
+					'.cutout-cut',
+					(c) => {
+						const data = c
+							.getContext('2d')
+							.getImageData(
+								0,
+								0,
+								c.width,
+								c.height,
+							).data;
+						let transparent = 0,
+							opaque = 0;
+						for (
+							let i = 3;
+							i < data.length;
+							i += 4
+						) {
+							if (data[i] < 128)
+								transparent++;
+							else opaque++;
+						}
+						return { transparent, opaque };
+					},
+				);
+				assert(
+					alpha.transparent > 0 &&
+						alpha.opaque > 0,
+					'Real model separates subject and background',
+				);
+				await page.screenshot({
+					path: 'artifacts/background-removal-real.png',
+				});
+				console.log(
+					'PASS real background removal using installed offline model',
+				);
+			} else {
+				await page.waitForSelector('.bg-error');
+				assert.match(
+					await page.$eval(
+						'.bg-error',
+						(el) => el.innerText,
+					),
+					/Offline Setup/,
+				);
+			}
+			console.log(
+				'PASS background remover accepts image with missing MIME type',
+			);
+		}
+		if (route === '/editor') {
+			await page.waitForSelector('[data-empty-hint]');
+			await page.evaluate(() => {
+				const transfer = new DataTransfer();
+				transfer.items.add(
+					new File(
+						[
+							'<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"><rect width="64" height="64" fill="#eee"/><rect x="20" y="12" width="24" height="40" fill="#222"/></svg>',
+						],
+						'test.SVG',
+						{ type: '' },
+					),
+				);
+				document.querySelector(
+					'.sub-canvas-wrap',
+				).dispatchEvent(
+					new DragEvent('drop', {
+						dataTransfer: transfer,
+						bubbles: true,
+						cancelable: true,
+					}),
+				);
+			});
+			await page.click('button[title="FX"]');
+			await page.waitForSelector(
+				'button[aria-label="Add Effect"]',
+			);
+			await page.waitForFunction(
+				() =>
+					!document.querySelector(
+						'button[aria-label="Add Effect"]',
+					)?.disabled,
+			);
+			assert(
+				await page.$('button[aria-label="Add Effect"]'),
+				'SVG with a missing MIME type imports as an editable raster',
+			);
+			if (process.env.POLYWRENCH_VERIFY_BACKGROUND) {
+				await page.click(
+					'button[aria-label="Add Effect"]',
+				);
+				await page.click(
+					'[data-fx-pick="remove-background"]',
+				);
+				await page.waitForFunction(
+					() =>
+						/Cutout ready|Couldn.t process/.test(
+							document.querySelector(
+								'.sub-fxp-matte',
+							)?.innerText || '',
+						),
+					{ timeout: 300000 },
+				);
+				assert.match(
+					await page.$eval(
+						'.sub-fxp-matte',
+						(el) => el.innerText,
+					),
+					/Cutout ready/,
+				);
+				console.log(
+					'PASS Image Studio uses shared offline background-removal loader',
+				);
+			}
+			await page.click('.lg-primary a[href="/"]');
+			await page.waitForSelector('.lg-tool-card');
+		}
 		if (route === '/errata') {
 			await page.click(
 				'button[aria-label="Toggle colour theme"]',
@@ -500,6 +667,27 @@ try {
 				),
 				'Uploads normalized for PDF embedding',
 			);
+			await page.evaluate(async () => {
+				const c = document.createElement('canvas');
+				c.width = c.height = 12;
+				c.getContext('2d').fillRect(0, 0, 12, 12);
+				const blob = await new Promise((resolve) =>
+					c.toBlob(resolve),
+				);
+				const transfer = new DataTransfer();
+				transfer.items.add(
+					new File([blob], 'placed-image.PNG', {
+						type: '',
+					}),
+				);
+				document.querySelector('.err-ed').dispatchEvent(
+					new DragEvent('drop', {
+						dataTransfer: transfer,
+						bubbles: true,
+						cancelable: true,
+					}),
+				);
+			});
 			const cdp = await page.createCDPSession();
 			await cdp.send('Browser.setDownloadBehavior', {
 				behavior: 'allow',
@@ -540,8 +728,8 @@ try {
 					.node.Resources()
 					.lookup(PDFName.of('XObject'))
 					.keys().length,
-				3,
-				'Export embeds all three signature images',
+				4,
+				'Export retains all three signatures and the dropped image',
 			);
 			await cdp.detach();
 			await page.reload({ waitUntil: 'load' });
@@ -669,9 +857,10 @@ try {
 	throw error;
 } finally {
 	browser?.disconnect();
-	child.kill();
+	// Generated test work can be discarded; its save prompt must not stall CI.
+	child.kill('SIGKILL');
 	await new Promise((resolve) =>
-		child.exitCode === null
+		child.exitCode === null && child.signalCode === null
 			? child.once('exit', resolve)
 			: resolve(),
 	);
@@ -807,6 +996,12 @@ async function assertAppBranding(page) {
 			...labels,
 		].join('\n');
 	});
+	assert(
+		!/processing happens entirely in your browser|conversion runs entirely in your browser|engine is fetched from a CDN/i.test(
+			content,
+		),
+		'Desktop processing descriptions describe local device processing',
+	);
 	assert(
 		!/delphi(?:tools|e)?\b|delphi\.tools|1612elphi|rmv\.fyi/i.test(
 			content,

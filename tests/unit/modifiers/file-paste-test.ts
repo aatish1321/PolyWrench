@@ -50,7 +50,20 @@ module('Unit | Modifier | file-paste | matchesAccept', function () {
 	});
 
 	// dropped files can have empty type
-	test('rejects a file with no type against a wildcard', function (assert) {
-		assert.false(matchesAccept(file('a.png', ''), 'image/*'));
+	test('uses known extensions when the OS omits a MIME type', function (assert) {
+		assert.true(matchesAccept(file('a.PNG', ''), 'image/*'));
+		assert.true(
+			matchesAccept(
+				file('a.pdf', 'application/octet-stream'),
+				'application/pdf',
+			),
+		);
+		assert.false(matchesAccept(file('unknown.xyz', ''), 'image/*'));
+		assert.false(
+			matchesAccept(
+				file('fake.png', 'application/pdf'),
+				'image/*',
+			),
+		);
 	});
 });

@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import { modifier } from 'ember-modifier';
 import { deliverPending } from 'delphitools-v2/lib/flow-hooks';
 
@@ -38,13 +39,14 @@ export const acceptsFile = (
 
 export function matchesAccept(file: File, accept: string): boolean {
 	return accept.split(',').some((pattern) => {
-		const p = pattern.trim();
-		if (p.endsWith('/*'))
-			return file.type.startsWith(p.slice(0, -1));
+		const p = pattern.trim().toLowerCase();
+		const type = fileType(file);
+		if (p === '*/*') return true;
+		if (p.endsWith('/*')) return type.startsWith(p.slice(0, -1));
 		if (p.startsWith('.'))
 			return file.name
 				.toLowerCase()
 				.endsWith(p.toLowerCase());
-		return file.type === p;
+		return type === p;
 	});
 }

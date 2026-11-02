@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { concat, fn } from '@ember/helper';
@@ -614,7 +615,7 @@ export default class Picture extends Component<PictureSignature> {
 	fileDrop = (event: DragEvent) => {
 		this.fileMark = undefined;
 		const files = [...(event.dataTransfer?.files ?? [])].filter(
-			(f) => f.type.startsWith('image/'),
+			(f) => fileType(f).startsWith('image/'),
 		);
 		if (!files.length || !this.args.layout) return;
 		event.preventDefault();

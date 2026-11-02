@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { on } from '@ember/modifier';
@@ -127,7 +128,7 @@ export default class PdfCompressor extends Component {
 
 	load = (file: File) => {
 		if (
-			file.type !== 'application/pdf' &&
+			fileType(file) !== 'application/pdf' &&
 			!/\.pdf$/i.test(file.name)
 		)
 			return;

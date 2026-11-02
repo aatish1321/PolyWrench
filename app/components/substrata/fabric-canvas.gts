@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import Component from '@glimmer/component';
 import { modifier } from 'ember-modifier';
 import {
@@ -3443,7 +3444,7 @@ export default class FabricCanvas extends Component {
 			const files = e.dataTransfer?.files;
 			if (!files) return;
 			for (const f of Array.from(files)) {
-				if (f.type.startsWith('image/'))
+				if (fileType(f).startsWith('image/'))
 					void importImageFile(f);
 			}
 		};

@@ -35,9 +35,27 @@ type Pipeline = ((image: string) => Promise<SegmentationResult[]>) & {
 export async function loadRemover(
 	onProgress: (progress: LoadProgress) => void,
 ): Promise<Remover> {
-	const { pipeline, env } = await import('@huggingface/transformers');
+	const {
+		PreTrainedModel,
+		AutoProcessor,
+		ImageSegmentationPipeline,
+		env,
+	} = await import('@huggingface/transformers');
 
 	configureOfflineModels(env);
+	if (typeof window !== 'undefined' && window.desktop) {
+		const { packs } = await window.desktop.status();
+		if (
+			!packs.some(
+				(pack) =>
+					pack.id === 'background-removal' &&
+					pack.ready,
+			)
+		)
+			throw new Error(
+				'Install the Background removal model in Offline Setup before processing an image.',
+			);
+	}
 
 	const progress_callback = (event: {
 		status: string;
@@ -51,12 +69,20 @@ export async function loadRemover(
 		}
 	};
 
-	const build = async (device: Device) =>
-		(await pipeline('image-segmentation', MODEL_ID, {
+	const processor = await AutoProcessor.from_pretrained(MODEL_ID);
+	const build = async (device: Device): Promise<Pipeline> => {
+		// BRIA's ONNX graph is custom; task auto-model dispatch rejects its config.
+		const model = await PreTrainedModel.from_pretrained(MODEL_ID, {
 			device,
 			dtype: DTYPE,
 			progress_callback,
-		})) as unknown as Pipeline;
+		});
+		return new ImageSegmentationPipeline({
+			task: 'image-segmentation',
+			model,
+			processor,
+		});
+	};
 
 	let device: Device = 'webgpu';
 	let pipe: Pipeline;

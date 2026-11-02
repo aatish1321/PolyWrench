@@ -1,5 +1,7 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 /* fabric raster size cap */
 
+import { decodeImage } from 'delphitools-v2/lib/decode-image';
 import { clampToCap } from './webgl-limits';
 import { createRasterLayer } from './doc-model';
 import type { Artboard, Transform } from './doc-model';
@@ -30,15 +32,15 @@ export async function importImageFile(
 	file: File,
 	opts?: ImportOptions,
 ): Promise<void> {
-	if (!file.type.startsWith('image/')) return;
+	if (!fileType(file).startsWith('image/')) return;
 
 	const buf = await file.arrayBuffer();
 	const hash = await sha256Hex(buf);
 
 	let raster = getRaster(hash);
 	if (!raster) {
-		const blob = new Blob([buf], { type: file.type });
-		const probe = await createImageBitmap(blob);
+		const blob = new Blob([buf], { type: fileType(file) });
+		const probe = await decodeImage(blob);
 		const { width, height, scale } = clampToCap(
 			probe.width,
 			probe.height,
@@ -46,12 +48,12 @@ export async function importImageFile(
 
 		let bitmap = probe;
 		if (scale < 1) {
-			probe.close();
-			bitmap = await createImageBitmap(blob, {
+			bitmap = await createImageBitmap(probe, {
 				resizeWidth: width,
 				resizeHeight: height,
 				resizeQuality: 'high',
 			});
+			probe.close();
 		}
 
 		raster = document.createElement('canvas');

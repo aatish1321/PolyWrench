@@ -51,8 +51,21 @@ const pandocNames = {
 	html: 'html5',
 };
 
-function targets(extension, engines) {
+function canonicalExtension(extension) {
 	const ext = extension.toLowerCase().replace(/^\./, '');
+	return (
+		{
+			tif: 'tiff',
+			jpe: 'jpeg',
+			aif: 'aiff',
+			wave: 'wav',
+			htm: 'html',
+		}[ext] || ext
+	);
+}
+
+function targets(extension, engines) {
+	const ext = canonicalExtension(extension);
 	const result = new Set();
 	if (engines.ffmpeg) {
 		if (audio.includes(ext)) audio.forEach((v) => result.add(v));
@@ -86,7 +99,7 @@ function targets(extension, engines) {
 }
 
 function command(input, output, engines, quality = 'standard', workDir) {
-	const source = path.extname(input).slice(1).toLowerCase();
+	const source = canonicalExtension(path.extname(input));
 	const target = path.extname(output).slice(1).toLowerCase();
 	if (
 		!['standard', 'high'].includes(quality) ||
@@ -161,7 +174,9 @@ function command(input, output, engines, quality = 'standard', workDir) {
 		const from =
 			source === 'txt'
 				? 'markdown'
-				: pandocNames[source] || source;
+				: source === 'html'
+					? 'html'
+					: pandocNames[source] || source;
 		return {
 			executable: engines.pandoc,
 			args: [

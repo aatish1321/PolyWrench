@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { array, fn } from '@ember/helper';
@@ -195,7 +196,7 @@ export default class PdfPreflight extends Component {
 
 	load = (file: File) => {
 		this.error = null;
-		if (file.type && file.type !== 'application/pdf') {
+		if (fileType(file) && fileType(file) !== 'application/pdf') {
 			this.error = 'Please upload a PDF file.';
 			return;
 		}

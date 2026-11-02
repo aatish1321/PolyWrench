@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { isDestroying, registerDestructor } from '@ember/destroyable';
@@ -133,7 +134,7 @@ export default class PasteImage extends Component {
 	}
 
 	load = async (file: Blob) => {
-		if (!file.type.startsWith('image/')) return;
+		if (!fileType(file).startsWith('image/')) return;
 		const run = ++this.#loading;
 		const url = URL.createObjectURL(file);
 		const image = new Image();
@@ -153,7 +154,13 @@ export default class PasteImage extends Component {
 			width: image.naturalWidth,
 			height: image.naturalHeight,
 		};
-		this.pasted = { file, type: file.type, url, image, pixels };
+		this.pasted = {
+			file,
+			type: fileType(file),
+			url,
+			image,
+			pixels,
+		};
 		this.crop = whole(pixels);
 	};
 

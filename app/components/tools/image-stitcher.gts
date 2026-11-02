@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import Component from '@glimmer/component';
 import { cached, tracked } from '@glimmer/tracking';
 import { isDestroying, registerDestructor } from '@ember/destroyable';
@@ -446,7 +447,9 @@ export default class ImageStitcher extends Component {
 		void this.add(files, { kind: 'batch', at });
 
 	add(files: File[], target: Target) {
-		const images = files.filter((f) => f.type.startsWith('image/'));
+		const images = files.filter((f) =>
+			fileType(f).startsWith('image/'),
+		);
 		if (!images.length) return this.#adding;
 		this.loads++;
 		this.#adding = this.#adding.then(async () => {

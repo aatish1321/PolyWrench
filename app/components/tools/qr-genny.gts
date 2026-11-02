@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { fn } from '@ember/helper';
@@ -1106,7 +1107,7 @@ export default class QrGennyTool extends Component {
 	}
 
 	readLogo = (file: File) => {
-		if (!file.type.startsWith('image/')) return;
+		if (!fileType(file).startsWith('image/')) return;
 		const reader = new FileReader();
 		reader.onload = () => {
 			if (this.#destroyed) return;

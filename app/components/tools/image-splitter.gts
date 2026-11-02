@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { isDestroying, registerDestructor } from '@ember/destroyable';
@@ -175,7 +176,7 @@ export default class ImageSplitter extends Component {
 	};
 
 	load = async (file: File) => {
-		if (!file.type.startsWith('image/')) return;
+		if (!fileType(file).startsWith('image/')) return;
 		const run = ++this.#loading;
 		const url = URL.createObjectURL(file);
 		const image = new Image();

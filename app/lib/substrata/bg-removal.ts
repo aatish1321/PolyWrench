@@ -2,10 +2,7 @@ import { getDB } from './db';
 import { getRaster } from './raster-cache';
 import { canvasToBlob } from './blobs';
 import { getPersistenceEnabled } from './persistence-pref';
-import { isIosWebKit } from 'delphitools-v2/lib/platform';
-
-// birefnet buffer limit
-const MODEL_ID = 'briaai/RMBG-1.4';
+import { loadRemover, type Remover } from 'delphitools-v2/lib/bg-removal';
 
 export type MatteDevice = 'webgpu' | 'wasm';
 
@@ -81,103 +78,24 @@ export function retryMatte(hash: string): void {
 
 let chain: Promise<void> = Promise.resolve();
 
-// narrow transformers pipeline type
-type SegmentationPipeline = ((image: string) => Promise<unknown>) & {
-	dispose?: () => Promise<void>;
-};
+let pipePromise: Promise<Remover> | null = null;
 
-interface DownloadProgress {
-	status: string;
-	progress?: number;
-}
-
-let pipePromise: Promise<{
-	pipe: SegmentationPipeline;
-	device: MatteDevice;
-}> | null = null;
-
-// skip failed webgpu
-let forceWasm = false;
-
-function loadPipeline(): NonNullable<typeof pipePromise> {
+function loadPipeline(): Promise<Remover> {
 	if (!pipePromise) {
-		pipePromise = (async () => {
-			const { pipeline, env } =
-				await import('@huggingface/transformers');
-			env.allowLocalModels = false;
-			// ios cache api fails on the model files
-			env.useBrowserCache = !isIosWebKit();
-			const onProgress = (e: DownloadProgress) => {
-				if (
-					e.status !== 'progress' ||
-					e.progress === undefined
-				)
-					return;
-				const pct = Math.round(e.progress);
-				if (pct === lastProgress) return;
-				lastProgress = pct;
-				for (const h of waitingDownload)
-					setStatus(h, {
-						state: 'downloading',
-						progress: pct,
-					});
-			};
-			// suppress ort dev overlay
-			const session_options = {
-				logSeverityLevel: 3,
-			} as const;
-			const forced =
-				forceWasm ||
-				!!localStorage.getItem('substrata:forceWasm');
-			if (!forced) {
-				try {
-					const pipe = (await pipeline(
-						'image-segmentation',
-						MODEL_ID,
-						{
-							device: 'webgpu',
-							dtype: 'fp32',
-							progress_callback:
-								onProgress,
-							session_options,
-						},
-					)) as unknown as SegmentationPipeline;
-					return {
-						pipe,
-						device: 'webgpu' as const,
-					};
-				} catch {
-				}
-			}
-			const pipe = (await pipeline(
-				'image-segmentation',
-				MODEL_ID,
-				{
-					device: 'wasm',
-					dtype: 'fp32',
-					progress_callback: onProgress,
-					session_options,
-				},
-			)) as unknown as SegmentationPipeline;
-			return { pipe, device: 'wasm' as const };
-		})().catch((err) => {
-			// allow pipeline retries
+		pipePromise = loadRemover(({ percent }) => {
+			if (percent === lastProgress) return;
+			lastProgress = percent;
+			for (const h of waitingDownload)
+				setStatus(h, {
+					state: 'downloading',
+					progress: percent,
+				});
+		}).catch((error) => {
 			pipePromise = null;
-			throw err;
+			throw error;
 		});
 	}
 	return pipePromise;
-}
-
-async function rebuildPipelineAsWasm(): Promise<{
-	pipe: SegmentationPipeline;
-	device: MatteDevice;
-}> {
-	forceWasm = true;
-	const old = await pipePromise?.catch(() => null);
-	void old?.pipe.dispose?.();
-	pipePromise = null;
-	return loadPipeline();
 }
 
 async function bake(hash: string): Promise<void> {
@@ -195,30 +113,16 @@ async function bake(hash: string): Promise<void> {
 		}
 		waitingDownload.add(hash);
 		setStatus(hash, { state: 'downloading', progress: 0 });
-		let { pipe, device } = await loadPipeline();
+		const remover = await loadPipeline();
 		waitingDownload.delete(hash);
-		setStatus(hash, { state: 'processing', device });
+		setStatus(hash, {
+			state: 'processing',
+			device: remover.device,
+		});
 		const url = URL.createObjectURL(await canvasToBlob(src));
 		let result: unknown;
 		try {
-			try {
-				result = await pipe(url);
-			} catch (runErr) {
-				if (device === 'wasm') throw runErr;
-				waitingDownload.add(hash);
-				setStatus(hash, {
-					state: 'downloading',
-					progress: 0,
-				});
-				({ pipe, device } =
-					await rebuildPipelineAsWasm());
-				waitingDownload.delete(hash);
-				setStatus(hash, {
-					state: 'processing',
-					device,
-				});
-				result = await pipe(url);
-			}
+			result = await remover.segment(url);
 		} finally {
 			URL.revokeObjectURL(url);
 		}
@@ -226,7 +130,7 @@ async function bake(hash: string): Promise<void> {
 			?.mask;
 		if (!mask) throw new Error('segmentation returned no mask');
 		const matte = matteFromMask(mask, src.width, src.height);
-		putMatte(hash, matte, device);
+		putMatte(hash, matte, remover.device);
 		void persistMatte(hash, matte);
 	} catch (err) {
 		waitingDownload.delete(hash);

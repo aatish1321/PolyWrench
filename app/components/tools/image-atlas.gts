@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import Component from '@glimmer/component';
 import { cached, tracked } from '@glimmer/tracking';
 import { on } from '@ember/modifier';
@@ -232,7 +233,7 @@ export default class ImageAtlas extends Component {
 		return atlasSections({
 			name: file.name,
 			size: file.size,
-			type: file.type,
+			type: fileType(file),
 			dims: this.dims,
 			exif: this.exif,
 		});
@@ -265,7 +266,11 @@ export default class ImageAtlas extends Component {
 		const { file } = this;
 		if (!file) return '';
 		if (this.busy) return 'Reading…';
-		return summary(file.type, file.size, fieldCount(this.exif));
+		return summary(
+			fileType(file),
+			file.size,
+			fieldCount(this.exif),
+		);
 	}
 
 	get noLocation() {
@@ -466,7 +471,7 @@ export default class ImageAtlas extends Component {
 			const { exif, icc } = splitIcc(data ?? {});
 			const bytes = new Uint8Array(await file.arrayBuffer());
 			if (
-				file.type === 'image/png' &&
+				fileType(file) === 'image/png' &&
 				!('ProfileDescription' in icc)
 			)
 				Object.assign(

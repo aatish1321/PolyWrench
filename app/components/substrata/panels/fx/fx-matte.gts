@@ -37,7 +37,7 @@ export default class FxMatte extends Component<{ Args: { ctx: FxContext } }> {
 	get text() {
 		switch (this.state) {
 			case 'downloading':
-				return `Downloading model... ${this.status?.progress ?? 0}%`;
+				return `Loading installed model... ${this.status?.progress ?? 0}%`;
 			case 'processing':
 				return 'Removing background...';
 			case 'done':
@@ -86,8 +86,8 @@ export default class FxMatte extends Component<{ Args: { ctx: FxContext } }> {
 			{{/if}}
 		</div>
 		{{#if this.slow}}
-			<div class="sub-fxp-matte-note">No graphics chip
-				available, bear with me</div>
+			<div class="sub-fxp-matte-note">Using CPU processing.
+				This may take longer.</div>
 		{{/if}}
 	</template>
 }

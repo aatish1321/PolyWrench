@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { on } from '@ember/modifier';
@@ -211,7 +212,7 @@ export default class BackgroundRemover extends Component {
 
 	get runText() {
 		if (this.status === 'downloading')
-			return `Downloading... ${this.percent}%`;
+			return `Loading installed model... ${this.percent}%`;
 		if (this.status === 'processing')
 			return 'Removing background...';
 		return 'Remove Background';
@@ -440,7 +441,7 @@ export default class BackgroundRemover extends Component {
 	};
 
 	readFile = async (file: File) => {
-		if (!file.type.startsWith('image/') || this.isBusy) return;
+		if (!fileType(file).startsWith('image/') || this.isBusy) return;
 		const run = ++this.#loading;
 		try {
 			const url = await readDataUrl(file);
@@ -760,7 +761,7 @@ export default class BackgroundRemover extends Component {
 				{{/if}}
 				<CanonRows @framed={{true}}>
 					<CanonStatus
-						@text="Processing happens entirely in your browser. On first use, a ~110MB processing engine is downloaded and cached."
+						@text="Background removal runs locally on your device. Install the optional model once through Offline Setup, then use it offline. Your images are not uploaded."
 						@tone="muted"
 						@row={{true}}
 					/>

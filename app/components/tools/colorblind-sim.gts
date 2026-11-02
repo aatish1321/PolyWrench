@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { fn } from '@ember/helper';
@@ -287,7 +288,7 @@ export default class ColorblindSim extends Component {
 	};
 
 	load = async (file: File) => {
-		if (!file.type.startsWith('image/')) return;
+		if (!fileType(file).startsWith('image/')) return;
 		const run = ++this.#loading;
 		let bitmap: ImageBitmap;
 		try {

@@ -36,9 +36,10 @@ import './media/media.css';
 import './voice-recorder/voice-recorder.css';
 
 const EMPTY_HINT = 'Allow microphone access to start recording.';
-const MIC_DENIED = 'Microphone access was denied. Check browser permissions.';
+const MIC_DENIED =
+	'Microphone access was denied. Check application and system permissions.';
 const NO_MIC = 'No microphone was found on this device.';
-const UNSUPPORTED = 'Recording is not supported in this browser.';
+const UNSUPPORTED = 'Recording is not supported on this device.';
 
 const overviewHeight = 96;
 const noFrames: string[] = [];

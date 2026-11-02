@@ -306,7 +306,7 @@ export default class Gallery extends Component<{ Args: { phone: boolean } }> {
 								/></span>
 							<span
 								class="sub-gal-name"
-							>Save in this browser</span>
+							>Save on this device</span>
 							<CanonSwitch
 								@on={{false}}
 								@onChange={{this.setPersist}}

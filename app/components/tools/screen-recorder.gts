@@ -40,12 +40,13 @@ import './media/media.css';
 import './screen-recorder/screen-recorder.css';
 
 const EMPTY_HINT = 'Choose a screen, window or tab to start recording.';
-const DISPLAY_FAILED = 'Screen sharing failed. Check browser permissions.';
+const DISPLAY_FAILED =
+	'Screen sharing failed. Check application and system permissions.';
 const MIC_DENIED =
 	'Microphone access was denied, so audio will not be mixed in.';
-const UNSUPPORTED = 'Screen recording is not supported in this browser.';
+const UNSUPPORTED = 'Screen recording is not supported on this device.';
 const MIC_LABEL = 'Mix in microphone audio';
-const ASIDE = "Isn't it crazy that your browser can do this, by the way?";
+const ASIDE = 'Capture your screen locally on your device.';
 
 const overviewHeight = 96;
 // iOS AVEdit preview: height over width at most 1.25

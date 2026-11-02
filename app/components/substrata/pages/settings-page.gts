@@ -228,7 +228,7 @@ export default class SettingsPage extends Component<{
 	}
 
 	get status() {
-		if (this.persist.current) return 'Saved in browser';
+		if (this.persist.current) return 'Saved on this device';
 		if (this.doc.current.undo) return 'Not saved';
 		return 'Storage off';
 	}
@@ -798,7 +798,7 @@ export default class SettingsPage extends Component<{
 					>
 						<CanonHeading @text="Storage" />
 						<CanonRow
-							@title="Save in this browser"
+							@title="Save on this device"
 							as |id|
 						>
 							<CanonSwitch

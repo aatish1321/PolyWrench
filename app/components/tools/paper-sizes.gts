@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { fn } from '@ember/helper';
@@ -327,7 +328,7 @@ export default class PaperSizes extends Component {
 
 	open = async (file: File) => {
 		if (
-			file.type === 'application/pdf' ||
+			fileType(file) === 'application/pdf' ||
 			file.name.toLowerCase().endsWith('.pdf')
 		) {
 			const points = await pdfPoints(file);

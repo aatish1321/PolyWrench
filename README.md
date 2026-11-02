@@ -41,6 +41,12 @@ PolyWrench combines Delphi’s open-source toolkit with a new desktop interface 
 | Language tools | Braille, Morse, IPA, NATO phonetics and Shavian transliteration |
 | Experiments | Recipe tables and unusual unit conversions |
 
+## Background removal and file imports
+
+**Background Remover** and Image Studio’s **Remove Background** effect use the same model installed through **Offline Setup**. Install the Background removal pack once, accept its separate model terms, then process images locally without an internet connection. Existing installed model files continue to work with this patch; a model re-download is not required.
+
+File imports recognize common extensions when the operating system leaves the MIME type blank or reports a generic binary type. MIME aliases and common native conversion extensions such as `.tif`, `.aif`, `.wave` and `.htm` are normalized. Recognizing a file does not replace content validation or add a decoder for every possible format.
+
 ## PDF editing and signatures
 
 ![PolyWrench PDF editor and typed signature panel](docs/pdf-editor.png)
@@ -58,15 +64,15 @@ Saved signature images stay in this device’s application data. Remove one usin
 
 Packaged applications do **not** need Node.js, npm, Git, Python or Rust. Download the package for your operating system and processor:
 
-| Operating system | Download version 0.1.5 |
+| Operating system | Download version 0.1.6 |
 | --- | --- |
-| Ubuntu, Debian, Linux Mint and other Debian-based systems, x86-64 | [Linux .deb](https://github.com/aatish1321/PolyWrench/releases/download/v0.1.5/PolyWrench-0.1.5-linux-amd64.deb) |
-| Other Linux distributions, x86-64 | [Linux AppImage](https://github.com/aatish1321/PolyWrench/releases/download/v0.1.5/PolyWrench-0.1.5-linux-x86_64.AppImage) |
-| Windows, x86-64 | [Windows installer](https://github.com/aatish1321/PolyWrench/releases/download/v0.1.5/PolyWrench-0.1.5-win-x64.exe) |
-| macOS, Intel | [Intel Mac DMG](https://github.com/aatish1321/PolyWrench/releases/download/v0.1.5/PolyWrench-0.1.5-mac-x64.dmg) |
-| macOS, Apple Silicon (M-series) | [Apple Silicon DMG](https://github.com/aatish1321/PolyWrench/releases/download/v0.1.5/PolyWrench-0.1.5-mac-arm64.dmg) |
+| Ubuntu, Debian, Linux Mint and other Debian-based systems, x86-64 | [Linux .deb](https://github.com/aatish1321/PolyWrench/releases/download/v0.1.6/PolyWrench-0.1.6-linux-amd64.deb) |
+| Other Linux distributions, x86-64 | [Linux AppImage](https://github.com/aatish1321/PolyWrench/releases/download/v0.1.6/PolyWrench-0.1.6-linux-x86_64.AppImage) |
+| Windows, x86-64 | [Windows installer](https://github.com/aatish1321/PolyWrench/releases/download/v0.1.6/PolyWrench-0.1.6-win-x64.exe) |
+| macOS, Intel | [Intel Mac DMG](https://github.com/aatish1321/PolyWrench/releases/download/v0.1.6/PolyWrench-0.1.6-mac-x64.dmg) |
+| macOS, Apple Silicon (M-series) | [Apple Silicon DMG](https://github.com/aatish1321/PolyWrench/releases/download/v0.1.6/PolyWrench-0.1.6-mac-arm64.dmg) |
 
-[All releases](https://github.com/aatish1321/PolyWrench/releases) · [SHA-256 checksums](https://github.com/aatish1321/PolyWrench/releases/download/v0.1.5/SHA256SUMS.txt)
+[All releases](https://github.com/aatish1321/PolyWrench/releases) · [SHA-256 checksums](https://github.com/aatish1321/PolyWrench/releases/download/v0.1.6/SHA256SUMS.txt)
 
 `x64`, `x86-64` and `amd64` refer to the same processor family. The current workflow does not produce Linux ARM or Windows ARM installers. On macOS, **Apple menu → About This Mac** identifies an Apple chip or Intel processor.
 
@@ -76,20 +82,20 @@ Packaged applications do **not** need Node.js, npm, Git, Python or Rust. Downloa
 - **Builds before publication:** open [Desktop checks and packages](https://github.com/aatish1321/PolyWrench/actions/workflows/desktop.yml), select a successful run for the version/commit you want, and download `PolyWrench-Linux-x64`, `PolyWrench-Windows-x64`, `PolyWrench-macOS-x64` or `PolyWrench-macOS-arm64` from the run’s artifacts. Sign into GitHub to download workflow artifacts, then extract the downloaded ZIP to find the installer. Artifacts are temporary and can expire; see [GitHub's download instructions](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/download-workflow-artifacts?tool=webui).
 - **Built locally:** packages are in the project's `release/` directory; see [Build desktop packages](#build-desktop-packages).
 
-The commands below use version **0.1.5**. Substitute the filename you downloaded for a later version. Quit PolyWrench completely before updating, including any open application windows.
+The commands below use version **0.1.6**. Substitute the filename you downloaded for a later version. Quit PolyWrench completely before updating, including any open application windows.
 
 ### Ubuntu, Debian and Linux Mint
 
 Open a terminal in the folder containing the `.deb`, then run:
 
 ```bash
-sudo apt install ./PolyWrench-0.1.5-linux-amd64.deb
+sudo apt install ./PolyWrench-0.1.6-linux-amd64.deb
 ```
 
 For a local build, run this from the project directory instead:
 
 ```bash
-sudo apt install ./release/PolyWrench-0.1.5-linux-amd64.deb
+sudo apt install ./release/PolyWrench-0.1.6-linux-amd64.deb
 ```
 
 The same command installs PolyWrench for the first time **or upgrades an existing installation when the package version is newer**. It does not create a second copy, and you do not need to uninstall first. Launch PolyWrench from your Applications menu after installation.
@@ -97,18 +103,18 @@ The same command installs PolyWrench for the first time **or upgrades an existin
 If you rebuilt a package **without changing its version**, force replacement of the installed files with `--reinstall`:
 
 ```bash
-sudo apt install --reinstall ./PolyWrench-0.1.5-linux-amd64.deb
+sudo apt install --reinstall ./PolyWrench-0.1.6-linux-amd64.deb
 ```
 
-For example, upgrading **0.1.4 → 0.1.5** uses ordinary `apt install`; replacing an already installed **0.1.5** with a rebuilt **0.1.5** uses `--reinstall`. See the [APT reinstall option](https://manpages.ubuntu.com/manpages/jammy/man8/apt-get.8.html).
+For example, upgrading **0.1.5 → 0.1.6** uses ordinary `apt install`; replacing an already installed **0.1.6** with a rebuilt **0.1.6** uses `--reinstall`. See the [APT reinstall option](https://manpages.ubuntu.com/manpages/jammy/man8/apt-get.8.html).
 
 ### Other Linux distributions: AppImage
 
 Keep the `.AppImage` in a permanent folder, such as `~/Applications`. Open a terminal in that folder, make the file executable and run it:
 
 ```bash
-chmod +x ./PolyWrench-0.1.5-linux-x86_64.AppImage
-./PolyWrench-0.1.5-linux-x86_64.AppImage
+chmod +x ./PolyWrench-0.1.6-linux-x86_64.AppImage
+./PolyWrench-0.1.6-linux-x86_64.AppImage
 ```
 
 Run it as your normal user. AppImage runs directly rather than installing through a package manager; application-menu integration depends on your desktop environment. If it reports missing FUSE support, follow the [official AppImage FUSE instructions](https://docs.appimage.org/user-guide/troubleshooting/fuse.html), or use the `.deb` on a Debian-based system.
@@ -140,7 +146,7 @@ Development builds are not signed/notarized. If macOS blocks an unverified devel
 - Updates are manual: PolyWrench does not currently download or install application updates automatically.
 - Editing or pulling source files does not update an installed application. Build and install a new package, or use [Run from source](#run-from-source) to preview a checkout.
 
-Version 0.1.5 includes the Carbon Ice palette, Google Sans fonts bundled for offline use, frosted glass panels, raised icons and animations. New installations open in dark mode; the theme button switches to a matching light palette. Your saved theme preference is preserved. Reduced-motion and reduced-transparency preferences are respected.
+Version 0.1.6 fixes offline background removal and file detection when the operating system omits a MIME type. Processing runs locally on your device; optional models and engines are installed through Offline Setup. It includes the Carbon Ice palette, Google Sans fonts bundled for offline use, frosted glass panels, raised icons and animations. New installations open in dark mode; the theme button switches to a matching light palette. Your saved theme preference is preserved. Reduced-motion and reduced-transparency preferences are respected.
 
 ## Run from source
 
@@ -227,7 +233,7 @@ Output is written to `release/`:
 - Windows x64: NSIS installer.
 - macOS: DMG; build Intel and Apple Silicon separately with electron-builder’s `--x64` / `--arm64` flags.
 
-Use the target operating system to build and test its packages. The GitHub Actions workflow performs the cross-platform matrix and uploads build artifacts. To publish a release, push a version tag matching `package.json`, such as `v0.1.5`. After all four platform jobs pass, the release job checks for all five installers, generates `SHA256SUMS.txt`, uploads the files to a draft and publishes the completed release. A failed platform build or missing installer prevents publication.
+Use the target operating system to build and test its packages. The GitHub Actions workflow performs the cross-platform matrix and uploads build artifacts. To publish a release, push a version tag matching `package.json`, such as `v0.1.6`. After all four platform jobs pass, the release job checks for all five installers, generates `SHA256SUMS.txt`, uploads the files to a draft and publishes the completed release. A failed platform build or missing installer prevents publication.
 
 Code signing/notarization needs your own publisher credentials; no secrets belong in the repository. Without them, Windows/macOS may display unsigned-app warnings. Automatic application updates are not implemented.
 

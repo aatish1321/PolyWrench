@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import { tracked } from '@glimmer/tracking';
 import { modifier } from 'ember-modifier';
 import { probeVideo, type VideoProbe } from 'delphitools-v2/lib/media-probe';
@@ -77,7 +78,7 @@ export class VideoIntake {
 
 	load = (file: File) => {
 		if (this.#hooks.canLoad && !this.#hooks.canLoad()) return;
-		if (!file.type.startsWith('video/')) {
+		if (!fileType(file).startsWith('video/')) {
 			this.error = NOT_A_VIDEO;
 			return;
 		}

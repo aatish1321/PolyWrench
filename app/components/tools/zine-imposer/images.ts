@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import type { PDFDocument } from 'pdf-lib';
 import type { PageRect } from 'delphicanon/components/canon-page-strip';
 import { BLEED_MM, MM_TO_POINTS } from 'delphitools-v2/lib/imposition';
@@ -24,9 +25,10 @@ const PDF_DPI = 300;
 const PDF_EDGE = 2400;
 
 export const isPdf = (file: File) =>
-	file.type === 'application/pdf' || /\.pdf$/i.test(file.name);
+	fileType(file) === 'application/pdf' || /\.pdf$/i.test(file.name);
 
-const accepted = (file: File) => isPdf(file) || file.type.startsWith('image/');
+const accepted = (file: File) =>
+	isPdf(file) || fileType(file).startsWith('image/');
 
 let serial = 0;
 

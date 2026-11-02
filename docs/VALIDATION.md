@@ -1,3 +1,12 @@
+# Offline background removal and file types — PolyWrench 0.1.6
+
+- Fixed BRIA RMBG-1.4 loading by constructing its custom ONNX model and segmentation pipeline directly, avoiding the unsupported auto-model dispatch. Both Background Remover and Image Studio use the same loader, installed fp16 model, local-only configuration and GPU/CPU fallback. Existing model files do not need to be re-downloaded.
+- Updated processing descriptions, progress messages, onboarding and storage labels to describe local device processing and optional installation through Offline Setup. Removed stale browser/CDN and automatic first-use download claims.
+- Added shared MIME detection for known extensions when OS metadata is blank or generic, plus MIME aliases. Applied it to workflow/paste/drop matching, image/media tools, Image Studio, image-to-PDF and PDF image/signature placement. SVG imports reuse the shared image decoder. A blank-MIME image dropped into an open PDF is placed without replacing the document.
+- Native conversion recognizes `.tif`, `.jpe`, `.aif`, `.wave` and `.htm`. Fixed HTML input incorrectly using Pandoc’s `html5` writer name; real managed-engine HTM-to-DOCX and TIF-to-PNG conversions passed.
+- Type checks, production build and all 17 desktop regression tests passed. Clean-profile and real-installed-model Electron runs passed all 104 routes. Real CPU inference produced transparent background and retained foreground pixels, and Image Studio’s background-removal effect completed using the same local model. Tests also cover missing-model setup guidance, blank-MIME PNG/SVG imports and preservation of an open PDF’s existing signatures after dropping an image.
+- Focused ESLint checks found one pre-existing empty catch in FabricCanvas’s development export probe; no application behavior was changed for that diagnostic. The complete legacy lint and browser unit suites are not claimed as clean. File recognition still requires a compatible decoder and valid contents; every possible format/codec combination was not tested.
+
 # PDF signatures and Carbon Ice — PolyWrench 0.1.5
 
 - Reused the integrated PDF editor for content editing, annotations, page operations, forms and redaction; added a direct sidebar entry and usage guidance.

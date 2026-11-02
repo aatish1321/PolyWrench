@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { fn } from '@ember/helper';
@@ -67,7 +68,7 @@ function readDataUrl(file: File): Promise<string> {
 
 // img misreports unsized svgs; pinSvgSize gives them one
 async function dataUrlOf(file: File) {
-	if (file.type !== 'image/svg+xml') return readDataUrl(file);
+	if (fileType(file) !== 'image/svg+xml') return readDataUrl(file);
 	const svg = pinSvgSize(await file.text());
 	if (svg === null) throw new Error('svg');
 	return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;

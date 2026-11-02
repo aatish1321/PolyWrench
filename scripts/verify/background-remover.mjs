@@ -38,7 +38,7 @@ check(
 	empty.slot,
 );
 check('empty: no source, no run', !empty.source && !empty.run);
-check('the web note stays', /entirely in your browser/.test(empty.note ?? ''));
+check('the local processing note stays', /locally on your device/.test(empty.note ?? ''));
 
 const make = (colour, width, height) =>
 	page.evaluate(

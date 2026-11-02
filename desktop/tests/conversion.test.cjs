@@ -22,6 +22,27 @@ test('formats require engines and respect input families', () => {
 	assert(!targets('.docx', { pandoc: 'pandoc' }).includes('docx'));
 });
 
+test('common extension aliases retain valid native conversion targets', () => {
+	for (const ext of ['TIF', 'JPE', 'AIF', 'WAVE']) {
+		assert(targets(ext, { ffmpeg: 'ffmpeg' }).length > 0, ext);
+		assert(
+			command(
+				`input.${ext}`,
+				ext === 'TIF' || ext === 'JPE'
+					? 'out.png'
+					: 'out.mp3',
+				{ ffmpeg: 'ffmpeg' },
+			).args.includes(`input.${ext}`),
+		);
+	}
+	assert(targets('HTM', { pandoc: 'pandoc' }).includes('docx'));
+	assert(
+		command('input.HTM', 'out.docx', {
+			pandoc: 'pandoc',
+		}).args.includes('html'),
+	);
+});
+
 test('commands use argument arrays and reject invalid targets', () => {
 	const spec = command(
 		'/tmp/a $(echo hacked).mov',

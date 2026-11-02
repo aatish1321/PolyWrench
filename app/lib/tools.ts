@@ -652,7 +652,7 @@ export const toolCategories: ToolCategory[] = [
 				id: 'voice-recorder',
 				name: 'Voice Recorder',
 				description:
-					'Record voice memos in the browser',
+					'Record voice memos locally on your device',
 				icon: 'mic',
 				href: '/tools/voice-recorder',
 				produces: ['audio/webm'],

@@ -71,7 +71,7 @@ const FAILURES: Record<Exclude<Failure, ''>, string> = {
 };
 // wording by Ruby, from the web tool
 const EXPERIMENTAL_WARNING =
-	'This will download 760 MB of engine files to work, and needs a pretty beefy computer, are you sure?';
+	'This mode requires the large speech model from Offline Setup and a compatible GPU with sufficient memory. Continue?';
 
 const Wave = <template><IconSvg @name="audio-waveform" /></template>;
 const Trash = <template><IconSvg @name="trash-2" /></template>;
@@ -207,7 +207,7 @@ export default class AutoSubtitleTool extends Component {
 
 	get status() {
 		return this.downloading
-			? `Downloading… ${this.percent}%`
+			? `Loading installed model… ${this.percent}%`
 			: 'Transcribing…';
 	}
 

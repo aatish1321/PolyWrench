@@ -55,7 +55,7 @@ const dash = '—';
 // the print styles leave the page edge to the printer
 const PREVIEW_CSS = '<style>body { padding: 24px 28px; }</style>';
 const ABOUT =
-	'Conversion runs entirely in your browser — your documents are never uploaded. On first use the ~50 MB Pandoc engine is fetched from a CDN and cached for the rest of your visit. Powered by';
+	'Conversion runs locally on your device. Optional document engines are installed through Offline Setup and remain available offline. Your documents are not uploaded. Powered by';
 /** iOS CanonCodeBlock(maxHeight: 360) */
 const CODE_HEIGHT = 360;
 
@@ -207,7 +207,7 @@ export default class DocConverterTool extends Component {
 	get convertLabel() {
 		if (this.busy)
 			return this.loading
-				? 'Downloading engine…'
+				? 'Loading installed engine…'
 				: 'Converting…';
 		// a failed engine load clears on any change
 		if (this.engineState === 'error' && this.error) return 'Retry';
@@ -228,7 +228,7 @@ export default class DocConverterTool extends Component {
 			(this.progress?.receivedBytes ?? 0) /
 			(1024 * 1024)
 		).toFixed(1);
-		return `Fetching Pandoc engine — ${mb} MB${this.pct != null ? ` (${this.pct}%)` : ''}…`;
+		return `Loading installed Pandoc engine — ${mb} MB${this.pct != null ? ` (${this.pct}%)` : ''}…`;
 	}
 
 	get canSwap() {

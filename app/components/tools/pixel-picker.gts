@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import Component from '@glimmer/component';
 import { cached, tracked } from '@glimmer/tracking';
 import { fn } from '@ember/helper';
@@ -322,7 +323,7 @@ export default class PixelPicker extends Component {
 
 	// ponytail: full-size canvases (two with Display P3), as iOS samples at full size; cap the edge if memory bites
 	load = async (file: File) => {
-		if (!file.type.startsWith('image/')) return;
+		if (!fileType(file).startsWith('image/')) return;
 		const run = ++this.#loading;
 		let bitmap: ImageBitmap;
 		try {
@@ -582,7 +583,7 @@ export default class PixelPicker extends Component {
 						converted to sRGB, which may
 						shift some colours.
 						{{#unless this.p3Supported}}
-							Your browser does not
+							This device does not
 							support Display P3
 							colour sampling.
 						{{/unless}}

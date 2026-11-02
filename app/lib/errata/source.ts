@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import type { PDFDocument } from 'pdf-lib';
 import type { PDFDocumentProxy } from 'pdfjs-dist';
 import { getPdfJs, loadPdfDocument } from 'delphitools-v2/lib/pdfjs';
@@ -235,7 +236,7 @@ export async function openFile(file: File): Promise<void> {
 	opening.set(opening.get() + 1);
 	try {
 		if (
-			file.type === 'application/pdf' ||
+			fileType(file) === 'application/pdf' ||
 			/\.pdf$/i.test(file.name)
 		)
 			await openPdf(file);

@@ -53,7 +53,7 @@ export const RELEASES: Release[] = [
 		version: '2.2.0',
 		since: '2.1.1',
 		features: [
-			'Errata: Edit PDFs in the browser. Yes, I went there. Still in beta, so calibrate your expectations. Of course, completely free, unlimited, local and open source as always.',
+			'Errata: Edit PDFs on your device. Yes, I went there. Still in beta, so calibrate your expectations. Of course, completely free, unlimited, local and open source as always.',
 		],
 		fixes: [
 			'PDF Imposer: Rotated and cropped pages now land upright and in the right spot.',
@@ -158,7 +158,7 @@ export const RELEASES: Release[] = [
 			'Audio Extractor: Drop a video file and get a clean audio track from it, every time!',
 			'Audio Normaliser: Pretend you know what LUFS means when you upload to social media!',
 			'Audio Trimmer: Trim down any audio file In/Out style without getting out the editing workstation!',
-			"Auto Subtitle: Speech to text, in the browser! Uses open-source transcription technologies and your computer's GPU to process on-device using Whisper.",
+			"Auto Subtitle: Speech to text, on your device! Uses open-source transcription technologies and your computer's GPU to process on-device using Whisper.",
 			'Braille Converter: Convert latin text to Braille clusters and back again!',
 			'Colour Atlas: Learn everything about a colour, its tints, shades, harmonies and so on! Goes great with our other colour tools!',
 			'Cron Builder: Stop memorising arcane incantations and start setting up your Cronjobs with a simple to use interface!',
@@ -188,7 +188,7 @@ export const RELEASES: Release[] = [
 			'Video Muter: Mmmmph, mmmm, mmmmph!',
 			'Video to GIF: This one is self explanatory!',
 			'Video Trimmer: Cut your video files, In/Out style!',
-			'Voice Recorder: Record your voice, in the browser and in style!',
+			'Voice Recorder: Record your voice locally and in style!',
 			'Waveform Generator: Make your audio files into visual representations!',
 		],
 		fixes: [

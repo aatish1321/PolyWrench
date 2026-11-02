@@ -7,8 +7,8 @@ const insecure = window.isSecureContext === false;
 const SecureContextNotice: TOC<object> = <template>
 	{{#if insecure}}
 		<div role="alert" class="sub-secure">
-			This needs a secure context. If your browser doesn't
-			support HTTPS, you can't save. Sorry!
+			This window cannot access secure local storage. Restart
+			PolyWrench before saving.
 		</div>
 	{{/if}}
 </template>;

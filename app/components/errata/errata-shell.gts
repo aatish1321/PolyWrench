@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { fn } from '@ember/helper';
@@ -487,7 +488,7 @@ export default class ErrataShell extends Component {
 
 	// with a document open an image file lands on the page; a pdf always opens
 	take = (file: File) =>
-		store.getSnapshot() && file.type.startsWith('image/')
+		store.getSnapshot() && fileType(file).startsWith('image/')
 			? placeImage(file)
 			: openFile(file);
 

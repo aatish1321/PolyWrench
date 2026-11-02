@@ -42,7 +42,7 @@ class StorageButton extends Component {
 		<CanonButton
 			class="sub-pg-onb-storage"
 			@kind="primary"
-			@text="Save in this browser"
+			@text="Save on this device"
 			@icon={{component
 				IconSvg
 				name=(if
@@ -132,7 +132,7 @@ export default class Onboarding extends Component<{
 								Everything is
 								local,
 								everything runs
-								on your browser.
+								on your device.
 								This means that
 								it might be slow
 								on low-end
@@ -144,7 +144,7 @@ export default class Onboarding extends Component<{
 							>✦</span>
 							<p>
 								Because this is
-								in your browser,
+								on your device,
 								it’s entirely
 								private by
 								design. Nothing
@@ -167,17 +167,17 @@ export default class Onboarding extends Component<{
 							<p
 								class="sub-pg-onb-note"
 							>
-								One footnote: a
-								few heavyweight
-								tools download
-								themselves on
-								first use — the
-								background
-								remover fetches
-								its model, for
-								instance. This
-								is data going to
-								you, not to me.
+								Optional tools
+								need models or
+								processing
+								engines. Install
+								them once in
+								Offline Setup;
+								they then remain
+								available
+								offline. Your
+								files stay on
+								this device.
 							</p>
 						{{else if (this.is "storage")}}
 							<p>

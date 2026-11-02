@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { on } from '@ember/modifier';
@@ -55,7 +56,7 @@ const MIME: Record<ImageContainer, string> = {
 const REENCODABLE = new Set(['image/png', 'image/jpeg', 'image/webp']);
 
 const isPdf = (file: File, bytes: Uint8Array) =>
-	file.type === 'application/pdf' ||
+	fileType(file) === 'application/pdf' ||
 	String.fromCharCode(...bytes.subarray(0, 5)) === '%PDF-';
 
 // a pdf has no exif blocks; only its xmp packet has a lamp

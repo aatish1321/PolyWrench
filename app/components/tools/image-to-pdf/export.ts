@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import exifr from 'exifr';
 import type { PDFDocumentProxy } from 'pdfjs-dist';
 import {
@@ -58,7 +59,7 @@ export async function buildPdf(
 	for (const [index, source] of sources.entries()) {
 		const { file } = source;
 		const embedded =
-			file.type === 'image/jpeg'
+			fileType(file) === 'image/jpeg'
 				? await doc.embedJpg(
 						// viewers ignore exif orientation
 						((await exifr.orientation(
@@ -71,7 +72,7 @@ export async function buildPdf(
 							: await file.arrayBuffer(),
 					)
 				: await doc.embedPng(
-						file.type === 'image/png'
+						fileType(file) === 'image/png'
 							? await file.arrayBuffer()
 							: await redrawn(
 									file,

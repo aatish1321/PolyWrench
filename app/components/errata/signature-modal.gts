@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { fn } from '@ember/helper';
@@ -221,7 +222,7 @@ export default class SignatureModal extends Component {
 		if (!file) return;
 		this.uploadError = '';
 		if (
-			!['image/png', 'image/jpeg'].includes(file.type) ||
+			!['image/png', 'image/jpeg'].includes(fileType(file)) ||
 			file.size > 10 * 1024 * 1024
 		) {
 			this.uploadError =

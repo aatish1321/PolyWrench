@@ -1,3 +1,4 @@
+import { fileType } from 'delphitools-v2/lib/file-types';
 import { tracked } from '@glimmer/tracking';
 
 const NOT_AUDIO = 'Only audio files are supported';
@@ -46,7 +47,7 @@ export class AudioIntake {
 
 	async #load(file: File) {
 		const looksAudio =
-			file.type.startsWith('audio/') ||
+			fileType(file).startsWith('audio/') ||
 			/\.(mp3|wav|ogg|oga|opus|m4a|aac|flac|webm)$/i.test(
 				file.name,
 			);
@@ -61,7 +62,7 @@ export class AudioIntake {
 		this.fileName = file.name;
 		this.file = file;
 		this.fileBytes = file.size;
-		this.fileType = file.type;
+		this.fileType = fileType(file);
 		this.buffer = null;
 		this.#hooks.onLoad?.(file);
 
